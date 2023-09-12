@@ -21,7 +21,7 @@ The application name is __easy-test. She aims to prepare us for keeping on easy-
 
 ## Technologies
 
-* [Laravel](https://laravel.com/): Version 10.8 
+* [Laravel](https://laravel.com/): Version 10.23
 * [tailwindcss](https://tailwindcss.com/): Version 3.1.0
 
 
