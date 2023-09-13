@@ -1,8 +1,9 @@
 import React from "react";
 import InputSearch from "../components/InputSearch";
 import { FaFilter } from "react-icons/fa";
+import { FaRegPenToSquare } from "react-icons/fa6";
+import { IoMdArrowRoundDown } from "react-icons/io";
 import IconNotification from "../components/IconNotification";
-
 const Customers = () => {
   return (
     <div className="container m-10 mx-auto">
@@ -42,16 +43,31 @@ const Customers = () => {
                 </div>
               </th>
               <th scope="col" class="px-6 py-3">
-                Name
+                <div className="flex gap-2">
+                  Name{" "}
+                  <span>
+                    <IoMdArrowRoundDown />
+                  </span>
+                </div>
               </th>
               <th scope="col" class="px-6 py-3">
-                Email address
+                <div className="flex gap-2">
+                  Email address{" "}
+                  <span>
+                    <IoMdArrowRoundDown />
+                  </span>
+                </div>
               </th>
               <th scope="col" class="px-6 py-3">
                 Country
               </th>
               <th scope="col" class="px-6 py-3">
-                Phone
+                <div className="flex gap-2">
+                  Phone{" "}
+                  <span>
+                    <IoMdArrowRoundDown />
+                  </span>
+                </div>
               </th>
               <th scope="col" class="px-6 py-3"></th>
             </tr>
@@ -91,9 +107,10 @@ const Customers = () => {
                 <a
                   href="#"
                   type="button"
-                  class="font-medium text-amber-600 dark:text-amber-500 hover:underline"
+                  class="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                 >
-                  Edit user
+                  <FaRegPenToSquare />
+                  Edit
                 </a>
               </td>
             </tr>
@@ -119,12 +136,14 @@ const Customers = () => {
                 <a
                   href="#"
                   type="button"
-                  class="font-medium text-amber-600 dark:text-amber-500 hover:underline"
+                  class="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                 >
-                  Edit user
+                  <FaRegPenToSquare />
+                  Edit
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
               <td class="w-4 p-4">
                 <div class="flex items-center">
@@ -146,12 +165,14 @@ const Customers = () => {
                 <a
                   href="#"
                   type="button"
-                  class="font-medium text-amber-600 dark:text-amber-500 hover:underline"
+                  class="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                 >
-                  Edit user
+                  <FaRegPenToSquare />
+                  Edit
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
               <td class="w-4 p-4">
                 <div class="flex items-center">
@@ -173,9 +194,10 @@ const Customers = () => {
                 <a
                   href="#"
                   type="button"
-                  class="font-medium text-amber-600 dark:text-amber-500 hover:underline"
+                  class="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                 >
-                  Edit user
+                  <FaRegPenToSquare />
+                  Edit
                 </a>
               </td>
             </tr>
