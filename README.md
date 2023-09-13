@@ -28,7 +28,7 @@ The application name is __easy-test. She aims to prepare us for keeping on easy-
 ## Project Team
 
 - [Makhan Diakho](https://github.com/yerrymina1195)
-- [Latyr Sene](https://github.com.com/atyr0503)
+- [Latyr Sene](https://github.com.com/latyr0503)
 - [Maimouna Diouf](https://github.com/Maimouna-Diouf-98)
 - [Lamine Cissé](https://github.com/LAMINE-CISSE-Dev)
 
