@@ -1,12 +1,16 @@
 import "./App.css";
+import Connexion from "./Pages/Connexion";
+import { Route, Routes, Navigate } from "react-router-dom";
+import Dashbord from "./Pages/Dashbord";
 import Inscription from "./Pages/Inscription";
-
 
 function App() {
   return (
-   <>
-   <Inscription/>
-   </>
+    <Routes>
+      <Route path="/" element={<Connexion />} />
+      <Route path="/inscription" element={<Inscription />} />
+      <Route path="/dashbord" element={<Dashbord />} />
+    </Routes>
   );
 }
 

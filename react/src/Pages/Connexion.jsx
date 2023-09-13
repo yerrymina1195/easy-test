@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 function Connexion() {
   return (
@@ -19,7 +19,7 @@ function Connexion() {
            <div>
              <div className="flex items-center justify-between">
                <label htmlFor="email" className="block ">
-                 <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+                 <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
                    Email address
                  </span>
                </label>
@@ -39,7 +39,7 @@ function Connexion() {
            <div>
              <div className="flex items-center justify-between">
                <label htmlFor="password" className="block ">
-                 <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+                 <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
                    Password
                  </span>
                </label>
