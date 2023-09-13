@@ -1,5 +1,5 @@
-import React from 'react'
 
+import { Link } from "react-router-dom";
 function Connexion() {
   return (
     <>
@@ -12,6 +12,7 @@ function Connexion() {
          <h2 className="mt-1 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
            Sign in
          </h2>
+        
        </div>
 
        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -19,7 +20,7 @@ function Connexion() {
            <div>
              <div className="flex items-center justify-between">
                <label htmlFor="email" className="block ">
-                 <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+                 <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
                    Email address
                  </span>
                </label>
@@ -39,7 +40,7 @@ function Connexion() {
            <div>
              <div className="flex items-center justify-between">
                <label htmlFor="password" className="block ">
-                 <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
+                 <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
                    Password
                  </span>
                </label>
@@ -65,6 +66,14 @@ function Connexion() {
              </button>
            </div>
          </form>
+         <h2 className=" mt-2 text-center">
+        <Link
+          to="/inscription"
+          className="font-medium text-indigo-600  hover:text-indigo-500"
+        >
+          sign up for free
+        </Link>
+        </h2>
        </div>
      </div>
     </div>

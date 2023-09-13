@@ -1,7 +1,6 @@
 import React from "react";
 import { GoSearch } from "react-icons/go";
 
-
 const InputSearch = () => {
   return (
     <div>
