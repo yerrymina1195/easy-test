@@ -1,4 +1,7 @@
 import { GrNotification } from "react-icons/gr";
+import InputSearch from "../components/InputSearch";
+
+import logo from "../assets/env2.PNG"
 
 function Dashbord() {
   return (
@@ -15,15 +18,7 @@ function Dashbord() {
         >
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                placeholder="Search"
-                required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
-              />
+              <InputSearch/>
             </li>
             <li>
               <a
@@ -37,6 +32,9 @@ function Dashbord() {
                   <span>0</span>
                 </button>
               </a>
+            </li>
+            <li>
+           
             </li>
           </ul>
         </div>
