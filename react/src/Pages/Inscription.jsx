@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 const Inscription = () => {
   return (
     <>
@@ -10,6 +10,15 @@ const Inscription = () => {
           <h2 className="mt-1 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign up
           </h2>
+          <p className="mt-2 text-center text-sm text-gray-600">
+        Or{" "}
+        <Link
+          to="/"
+          className=" text-indigo-600 hover:text-indigo-500"
+        >
+          Login with your account
+        </Link>
+      </p>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
