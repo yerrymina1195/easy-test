@@ -1,10 +1,11 @@
 import "./App.css";
-import Connexion from "./Pages/Connexion";
+import Inscription from "./Pages/Inscription";
+
 
 function App() {
   return (
    <>
-   <Connexion/>
+   <Inscription/>
    </>
   );
 }
