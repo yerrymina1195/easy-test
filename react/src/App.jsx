@@ -3,6 +3,7 @@ import Connexion from "./Pages/Connexion";
 import { Route, Routes } from "react-router-dom";
 import Dashbord from "./Pages/Dashbord";
 import Inscription from "./Pages/Inscription";
+import Produits from "./Pages/Produits";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Route path="/" element={<Connexion />} />
       <Route path="/inscription" element={<Inscription />} />
       <Route path="/dashbord" element={<Dashbord />} />
+      <Route path="/produit" element={<Produits />} />
     </Routes>
   );
 }
