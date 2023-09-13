@@ -1,6 +1,6 @@
 import "./App.css";
 import Connexion from "./Pages/Connexion";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Dashbord from "./Pages/Dashbord";
 import Inscription from "./Pages/Inscription";
 
