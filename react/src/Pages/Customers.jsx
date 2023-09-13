@@ -1,5 +1,7 @@
 import React from "react";
 import InputSearch from "../components/InputSearch";
+import { FaFilter } from "react-icons/fa";
+import IconNotification from "../components/IconNotification";
 
 const Customers = () => {
   return (
@@ -17,12 +19,12 @@ const Customers = () => {
       </div>
 
       <div class="relative border-t-2 bg-white overflow-x-auto shadow-md sm:rounded-lg">
-        <div class="flex items-center border-b-2 justify-between p-4  dark:bg-gray-800">
-          <div></div>
+        <div class="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
           {/* <label for="table-search" class="sr-only">
             Search
           </label> */}
           <InputSearch />
+          <IconNotification icon={<FaFilter />} number={0} />
         </div>
         <table class="w-full text-sm text-left  text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
