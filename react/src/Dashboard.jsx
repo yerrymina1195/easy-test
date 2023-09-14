@@ -15,7 +15,7 @@ function Dashboard() {
         </div>
       </div>
     </div>
-  );U
+  );
 }
 
 export default Dashboard;
