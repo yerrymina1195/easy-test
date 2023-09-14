@@ -40,8 +40,9 @@ function Navbar() {
                 onClick={() => {
                   setopenDropDown(!openDropDown);
                 }}
+                className="border-1 border-indigo-600"
               >
-                <img className="h-8 w-8 rounded-full " src={logo} alt="" />
+                <img className="h-8 w-8 rounded-full  " src={logo} alt="" />
               </button>
               {openDropDown && (
                 <div className="absolute flex flex-col m-4 right-10 text-slate-500 bg-white divide-y  z-20 shadow-lg min-w-[180px] rounded-lg items-center">
