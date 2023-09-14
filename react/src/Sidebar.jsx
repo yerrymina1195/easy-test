@@ -5,13 +5,14 @@ import { BsHandbag, BsTag, BsFolder2Open, BsPeople } from "react-icons/bs";
 import { TfiBookmarkAlt } from "react-icons/tfi";
 import { SiGoogledocs } from "react-icons/si";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Sidebar() {
   const [openAcordion, setOpenAccordion] = useState(false);
   const [openAcordion1, setOpenAccordion1] = useState(false);
 
   return (
-    <aside className="fixed left-0 w-1/5 h-screen">
+    <aside className="fixed left-0 w-60 z-40 h-screen mt-10">
       <div className="h-full px-3 py-4 overflow-y-auto bg-gray-100 ">
         <ul className="space-y-2 font-medium  text-slate-600 ">
           <li className=" py-8">
@@ -71,12 +72,14 @@ function Sidebar() {
                         0
                       </span>
                     </div>
-                    <div className=" flex justify-start items-center  py-3 space-x-4">
-                      <IoIosPeople className="w-7 h-auto flex-shrink-0" />
-                      <span className="flex-1 ml-3 whitespace-nowrap">
-                        Customers
-                      </span>
-                    </div>
+                    <Link to="/dashboard/customers">
+                      <div className=" flex justify-start items-center  py-3 space-x-4">
+                        <IoIosPeople className="w-7 h-auto flex-shrink-0" />
+                        <span className="flex-1 ml-3 whitespace-nowrap">
+                          Customers
+                        </span>
+                      </div>
+                    </Link>
                     <div className=" flex justify-start items-center py-3 space-x-4">
                       <BsHandbag className="w-7 h-auto flex-shrink-0" />
                       <div className="gap-24 flex items-center ">
@@ -93,18 +96,22 @@ function Sidebar() {
                         </span>
                       </div>
                     </div>
+                    <Link to="/dashboard/categories">
                     <div className=" flex justify-start items-center  py-3 space-x-4">
                       <BsTag className="w-7 h-auto flex-shrink-0" />
                       <span className="flex-1 ml-3 whitespace-nowrap">
                         Categories
                       </span>
                     </div>
+                    </Link>
+                    <Link to="/dashboard/brands">
                     <div className=" flex justify-start items-center  py-3 space-x-4">
                       <TfiBookmarkAlt className="w-7 h-auto flex-shrink-0" />
                       <span className="flex-1 ml-3 whitespace-nowrap">
                         Brands
                       </span>
                     </div>
+                    </Link>
                   </div>
                 )}
               </div>

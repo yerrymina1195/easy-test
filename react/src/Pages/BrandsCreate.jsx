@@ -1,4 +1,4 @@
-import React from "react";
+
 import Editor from "../components/Editor";
 import BtnToggle from "../components/BtnToggle";
 
