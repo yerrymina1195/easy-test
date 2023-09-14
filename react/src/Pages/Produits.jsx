@@ -59,7 +59,7 @@ const Produits = () => {
                 </div>
         </div>
         <div class="border-gray-400 px-5 mt-5 myover">
-        <div class="relative">
+        <div class="relative border-b-1 w-100">
             <div class="input">
             <div class="absolute inset-y-0 right-30 flex items-center pl-3 pointer-events-none ">
             <GoSearch class="recherche"/>
@@ -71,8 +71,7 @@ const Produits = () => {
             placeholder="Search"
             />
           </div>
-
-            {/* <div><FaFilter /> <MdViewColumn /></div> */}
+          <div class="inline-flex mt-2"><Link to="/icone"><FaFilter class="text-1xl ml-1 mt-1 text-gray-300"/></Link><Link to="/icone"><MdViewColumn class="text-2xl ml-1 text-gray-300"/></Link></div>
 
       </div>
         <table class="table-auto">
