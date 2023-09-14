@@ -4,6 +4,7 @@ import { FaFilter } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import IconNotification from "../components/IconNotification";
+import { Link } from "react-router-dom";
 const Customers = () => {
   const dataTable = [
     {
@@ -45,9 +46,11 @@ const Customers = () => {
           <h2 className="text-2xl py-3 font-bold">Customers</h2>
         </div>
         <div className="grid justify-items-end">
-          <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-            New customer
-          </button>
+          <Link to='/customers/create'>
+            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
+              New customer
+            </button>
+          </Link>
         </div>
       </div>
 

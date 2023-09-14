@@ -7,7 +7,7 @@ const BrandsCreate = () => {
     <div className="container m-10 mx-auto">
       <div className="columns-1 m-5">
         <div className="grid justify-items-start">
-          <p className="">Brands &#62; List</p>
+          <p className="">Brands &#62; create</p>
           <h2 className="text-2xl py-3 font-bold">Create Brand</h2>
         </div>
       </div>
