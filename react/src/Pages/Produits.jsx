@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import "../styles/product.css"
+import IconNotification from "../components/IconNotification";
 import example from "../images/cooffe.jpeg"
 import example1 from "../images/code.jpeg"
 import example2 from "../images/in.jpeg"
@@ -71,9 +72,10 @@ const Produits = () => {
             placeholder="Search"
             />
           </div>
-          <div class="inline-flex mt-2"><Link to="/icone"><FaFilter class="text-1xl ml-1 mt-1 text-gray-300"/></Link><Link to="/icone"><MdViewColumn class="text-2xl ml-1 text-gray-300"/></Link></div>
+          <div class="inline-flex "><Link to="/icone"><IconNotification icon={<FaFilter class="mr-3  text-gray-300" />} number={0} /></Link><Link to="/icone"><MdViewColumn class="text-2xl ml-1 mt-2 text-gray-300"/></Link></div>
 
       </div>
+      <div class="overflow-auto">
         <table class="table-auto">
                 <thead>
                     <tr>
@@ -98,23 +100,27 @@ const Produits = () => {
                 </thead>
                 <tbody>
                     <tr>
-                    <td class="border px-4 py-2">
-                    <input
+                    <td class="px-4 py-2">
+                        <input
                         id="checkbox-all-search"
                         type="checkbox"
                         class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
+                      <label for="checkbox-all-search" class="sr-only">
+                        checkbox
+                      </label>
                     </td>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example} alt="" class="w-20"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
+                    <hr/>
                     </tr>
                     <tr class="bg-gray-100">
                     <th class="px-4 py-2">
@@ -127,16 +133,16 @@ const Produits = () => {
                         checkbox
                       </label>
                     </th>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example1} alt="" class="w-20"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill class=""/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                     <tr>
                     <th class="px-4 py-2">
@@ -149,16 +155,16 @@ const Produits = () => {
                         checkbox
                       </label>
                     </th>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example2} alt="" class="w-20"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                     <tr>
                     <td class="px-4 py-2">
@@ -171,16 +177,16 @@ const Produits = () => {
                         checkbox
                       </label>
                     </td>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example3} alt="" class="w-20"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                     <tr>
                     <td class="px-4 py-2">
@@ -193,16 +199,16 @@ const Produits = () => {
                         checkbox
                       </label>
                     </td>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example4} alt="" class="w-20"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                     <tr>
                     <td class="px-4 py-2">
@@ -215,16 +221,16 @@ const Produits = () => {
                         checkbox
                       </label>
                     </td>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example5} alt="" class="w-20"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                     <tr>
                     <td class="px-4 py-2">
@@ -237,16 +243,16 @@ const Produits = () => {
                         checkbox
                       </label>
                     </td>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example6} alt="" class="w-20"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                     <tr>
                     <td class="px-4 py-2">
@@ -259,16 +265,16 @@ const Produits = () => {
                         checkbox
                       </label>
                     </td>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example7} alt="" class="w-20"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                     <tr>
                     <td class="px-4 py-2">
@@ -281,16 +287,16 @@ const Produits = () => {
                         checkbox
                       </label>
                     </td>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example8} alt="" class="w-20 h-10"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-5 w-100 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                     <tr>
                     <td class="px-4 py-2">
@@ -303,16 +309,16 @@ const Produits = () => {
                         checkbox
                       </label>
                     </td>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example9} alt="" class="w-20 h-10"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500 "/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdExpandCircleDown class="w-20 text-3xl text-green-500 "/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                     <tr>
                     <td class="px-4 py-2">
@@ -325,19 +331,20 @@ const Produits = () => {
                         checkbox
                       </label>
                     </td>
-                    <td class="border px-4 py-2">
+                    <td cclass="px-4 py-2">
                         <img src={example10} alt="" class="w-20 h-10"/>
                     </td>
-                    <td class="border px-4 py-2">Portail uniforme numérisé</td>
-                    <td class="border px-4 py-2">Oberbrunner-Zemlak</td>
-                    <td class="border px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
-                    <td class="border px-4 py-2">381.02</td>
-                    <td class="border px-4 py-2">94741841</td>
-                    <td class="border px-4 py-2 text-center">1</td>
-                    <td class="border px-4 py-2"><Link class="text-amber-600"><RiEditBoxFill/> Modifier</Link></td>
+                    <td cclass="px-4 py-2">Portail uniforme numérisé</td>
+                    <td cclass="px-4 py-2">Oberbrunner-Zemlak</td>
+                    <td cclass="px-4 py-2"><MdCancel class="w-20 text-3xl text-red-700"/></td>
+                    <td cclass="px-4 py-2">381.02</td>
+                    <td cclass="px-4 py-2">94741841</td>
+                    <td class="px-4 py-2 text-center">1</td>
+                    <td class="px-4 py-2"><Link class="text-amber-600 inline-flex"><RiEditBoxFill class="text-2xl mr-2"/> Modifier</Link></td>
                     </tr>
                 </tbody>
        </table>
+       </div>
         </div>
         <div class="px-20">
         <nav

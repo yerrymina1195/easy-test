@@ -4,15 +4,19 @@
 }
 .myover{
     border: 1px solid #ccc;
-    width: 97%;
+    width: 96%;
     overflow: auto;
     margin: auto;
  border-radius: 10px;
     border-bottom: 1px solid;
 
 }
-table{
-    border-collapse: collapse;
+table, tr, th, td{
+    padding: 1rem;
+}
+tr{
+    border-bottom: 1px solid #ccc;
+    width: 100%;
 }
 .relative{
     border-bottom: 1px solid #ccc;
@@ -25,3 +29,4 @@ table{
     display: flex;
     justify-content: end;
 }
+

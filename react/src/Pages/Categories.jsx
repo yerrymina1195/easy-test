@@ -1,66 +1,62 @@
 import React from "react";
 import InputSearch from "../components/InputSearch";
-import { FaFilter } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
-import IconNotification from "../components/IconNotification";
-const Customers = () => {
+import { AiOutlineCheckCircle } from "react-icons/ai";
+
+const Categories = () => {
   const dataTable = [
     {
       name: "Abdoulaye SENE",
-      email: "latyr0503@gmail.com",
-      contry: "Sénégal",
-      phone: "+221 77 124 10 31",
+      parent: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
     },
     {
       name: "Latyr SENE",
-      email: "latyr@gmail.com",
-      contry: "Gambie",
-      phone: "+221 77 251 85 31",
+      parent: "Lorem ipsum dolor sit",
+      date: "Nov 22, 2023",
+      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
     },
     {
       name: "Maina SOW",
-      email: "maina@gmail.com",
-      contry: "Mali",
-      phone: "+221 77 754 10 54",
+      parent: "Lorem ipsum dolor sit",
+      date: "Avr 5, 2023",
+      icon: <AiOutlineCheckCircle className="w-5 h-5 text-red-700" />,
     },
     {
       name: "Mariéme DIOP",
-      email: "diop@gmail.com",
-      contry: "Guinée",
-      phone: "+221 77 125 10 31",
+      parent: "Lorem ipsum dolor sit",
+      date: "Dec 6, 2023",
+      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
     },
     {
-      name: "Rakhma biaye",
-      email: "rakhma@gmail.com",
-      contry: "Sénégal",
-      phone: "+221 77 124 10 31",
+      name: "Rakhma BIAYE",
+      parent: "Lorem ipsum dolor sit",
+      date: "Mai 7, 2023",
+      icon: <AiOutlineCheckCircle className="w-5 h-5 text-red-700" />,
     },
   ];
   return (
-    <div className="container m-10 mx-auto">
+    <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">
         <div className="grid justify-items-start">
-          <p className="">Customers &#62; List</p>
-          <h2 className="text-2xl py-3 font-bold">Customers</h2>
+          <p className="">Categories &#62; List</p>
+          <h2 className="text-2xl py-3 font-bold">Categories</h2>
         </div>
         <div className="grid justify-items-end">
           <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-            New customer
+            New Categories
           </button>
         </div>
       </div>
 
-      <div class="relative border-2 bg-white overflow-x-auto rounded-2xl">
+      <div class="relative border-2 bg-white rounded-2xl">
         <div class="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
-          {/* <label for="table-search" class="sr-only">
-            Search
-          </label> */}
           <InputSearch />
-          <IconNotification icon={<FaFilter />} number={0} />
         </div>
-        <div className="overflow-auto">
-          <table class="md:w-full text-sm text-left  text-gray-500 dark:text-gray-400">
+        <div className="overflow-auto ">
+          <table class="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" class="p-4">
@@ -85,18 +81,23 @@ const Customers = () => {
                 </th>
                 <th scope="col" class="px-6 py-3">
                   <div className="flex gap-2">
-                    Email address{" "}
+                    Parent{" "}
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
                   </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
-                  Country
+                  <div className="flex gap-2">
+                    Visibility{" "}
+                    <span>
+                      <IoMdArrowRoundDown />
+                    </span>
+                  </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
                   <div className="flex gap-2">
-                    Phone{" "}
+                    Updated Date{" "}
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
@@ -106,18 +107,6 @@ const Customers = () => {
               </tr>
             </thead>
             <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
-                <td class="w-4 p-4"></td>
-                <td class="px-6 py-4">
-                  <InputSearch />
-                </td>
-                <td class="px-6 py-4">
-                  <InputSearch />
-                </td>
-                <td class="px-6 py-4"></td>
-                <td class="px-6 py-4"></td>
-                <td class="px-6 py-4"></td>
-              </tr>
               {dataTable.map((data) => {
                 return (
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
@@ -134,9 +123,9 @@ const Customers = () => {
                       </div>
                     </td>
                     <td class="px-6 py-4">{data.name}</td>
-                    <td class="px-6 py-4">{data.email}</td>
-                    <td class="px-6 py-4">{data.contry}</td>
-                    <td class="px-6 py-4">{data.phone}</td>
+                    <td class="px-6 py-4">{data.parent}</td>
+                    <td class="px-6 py-4">{data.icon}</td>
+                    <td class="px-6 py-4">{data.date}</td>
                     <td class="px-6 py-4">
                       <a
                         href="#"
@@ -232,4 +221,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Categories;
