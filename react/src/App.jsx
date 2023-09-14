@@ -8,6 +8,8 @@ import Customers from "./Pages/Customers";
 import CustomersCreate from "./Pages/CustomersCreate";
 import Categories from "./Pages/Categories";
 import CreateProduits from "./Pages/CreateProduits";
+import Brands from "./Pages/Brands";
+import BrandsCreate from "./Pages/BrandsCreate";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       <Route path="/customers" element={<Customers />} />
       <Route path="/customers/create" element={<CustomersCreate />} />
       <Route path="/categories" element={<Categories />} />
+      <Route path="/brands" element={<Brands />} />
+      <Route path="/brands/create" element={<BrandsCreate />} />
     </Routes>
   );
 }

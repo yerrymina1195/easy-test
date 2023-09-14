@@ -2,7 +2,7 @@ import React from "react";
 import InputSearch from "../components/InputSearch";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
-import { AiOutlineCheckCircle } from "react-icons/ai";
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 
 const Categories = () => {
   const dataTable = [
@@ -22,7 +22,7 @@ const Categories = () => {
       name: "Maina SOW",
       parent: "Lorem ipsum dolor sit",
       date: "Avr 5, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-red-700" />,
+      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
     },
     {
       name: "Mariéme DIOP",
@@ -34,7 +34,13 @@ const Categories = () => {
       name: "Rakhma BIAYE",
       parent: "Lorem ipsum dolor sit",
       date: "Mai 7, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-red-700" />,
+      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
+    },
+    {
+      name: "Moussa FALL",
+      parent: "Lorem ipsum dolor sit",
+      date: "Jav 17, 2023",
+      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
     },
   ];
   return (
