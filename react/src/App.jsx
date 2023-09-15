@@ -9,7 +9,7 @@ import Brands from "./Pages/Brands";
 import BrandsCreate from "./Pages/BrandsCreate";
 import CategoriesCreate from "./Pages/CategoriesCreate";
 
-import Dashboard from "./Dashboard";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
       <Route path="/inscription" element={<Inscription />} />
       <Route path="/dashboard/" element={<Dashboard />} >
           <Route path="/dashboard/customers" element={<Customers />} />
-          <Route path="/dashboard/customers/create" element={<CustomersCreate />} />
+          <Route path="/dashboard/customersCreate" element={<CustomersCreate />} />
           <Route path="/dashboard/categories" element={<Categories />} />
          <Route path="/dashboard/categories/create" element={<CategoriesCreate />} />
          <Route path="/dashboard/brands" element={<Brands />} />

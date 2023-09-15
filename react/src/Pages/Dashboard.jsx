@@ -1,7 +1,7 @@
 import Sidebar from "./Sidebar";
-import Navbar from "./Pages/Navbar";
+import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
-import Customers from "./Pages/Customers";
+import Customers from "./Customers";
 
 function Dashboard() {
   return (
@@ -14,7 +14,7 @@ function Dashboard() {
           <Sidebar />
         </div>
 
-        <div className="mt-12 pl-72  pe-10 w-auto  col-span-1">
+        <div className="mt-12 pl-60  pe-10 w-auto  col-span-1">
           <Outlet />
         </div>
       </div>
