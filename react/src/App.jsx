@@ -25,9 +25,8 @@ function App() {
       <Route path="/brands" element={<Brands />} />
       <Route path="/brands/create" element={<BrandsCreate />} />
 
-      {/* dgfhjklkjhgf */}
+      
       <Route path="/exemple" element={<ExempleDashboard />} />
-      {/* uplîjhukgjvhbknl,m */}
     </Routes>
   );
 }
