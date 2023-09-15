@@ -1,6 +1,50 @@
 
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useStateContext } from "../contexts/ContextProvider";
+import axiosClient from "../axios.js";
 function Connexion() {
+  const { setCurrentUser, setUserToken } = useStateContext();
+  const navitage = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState({ __html: "" });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setError({ __html: "" });
+
+
+    axiosClient
+      .post("/login", {
+        email,
+        password,
+ 
+      })
+      .then(({ data }) => {
+        setCurrentUser(data.user);
+        setUserToken(data.token);
+      console.log(data)
+      alert(`Bienvenu ${data.user.name}`)
+      navitage('/customers', { replace: true })
+      })
+      .catch((error) => {
+        
+        if (error.response) {
+            const finalErrors = Object.values(error.response.data.errors).reduce((accum, next) => [...accum, ...next], [])
+            console.log(finalErrors)
+            setError({__html: finalErrors.join('<br>')})
+          }
+          console.error(error)
+      });
+  };
+
+
+
+
+
+
+
+
   return (
     <>
     <div className="  h-[550px] flex justify-center content-center items-center ">
@@ -12,11 +56,12 @@ function Connexion() {
          <h2 className="mt-1 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
            Sign in
          </h2>
-        
+         {error.__html && (<div className="bg-red-500 rounded py-2 px-3 text-white" dangerouslySetInnerHTML={error}>
+      </div>)}
        </div>
 
        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-         <form className="space-y-6" action="#" method="POST">
+         <form className="space-y-6" onSubmit={onSubmit} action="#" method="POST">
            <div>
              <div className="flex items-center justify-between">
                <label htmlFor="email" className="block ">
@@ -29,7 +74,9 @@ function Connexion() {
                <input
                  id="email"
                  name="email"
-                 type="email"
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                  autoComplete="email"
                  required
                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 outline-none shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
@@ -50,6 +97,8 @@ function Connexion() {
                  id="password"
                  name="password"
                  type="password"
+                 value={password}
+                 onChange={e => setPassword(e.target.value)}
                  autoComplete="current-password"
                  required
                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"

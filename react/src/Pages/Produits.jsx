@@ -34,9 +34,11 @@ const Produits = () => {
               <p class="text-4xl font-bold">Des produits</p>
             </div>
             <div class="col-end-10 col-span-2 ...">
+            <Link to="/produit/create">
             <button className="rounded-md bg-amber-600 px-3 font-bold py-1.5 text-sm leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
             New Produits
           </button>
+          </Link>
             </div>
         </div>
           <div class="md:columns-3 sm:columns-1 px-3 mt-3">
