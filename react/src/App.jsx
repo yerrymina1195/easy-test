@@ -10,6 +10,8 @@ import CreateProduits from "./Pages/CreateProduits";
 import Brands from "./Pages/Brands";
 import BrandsCreate from "./Pages/BrandsCreate";
 import CategoriesCreate from "./Pages/CategoriesCreate";
+import Test from "./components/Test";
+import ExempleDashboard from "./components/ExempleDashboard";
 
 import Dashboard from "./Dashboard";
 
@@ -26,6 +28,7 @@ function App() {
       <Route path="/categories" element={<Categories />} />
       <Route path="/brands" element={<Brands />} />
       <Route path="/brands/create" element={<BrandsCreate />} />
+<<<<<<< HEAD
       <Route path="/dashboard/" element={<Dashboard />} >
           <Route path="/dashboard/customers" element={<Customers />} />
           <Route path="/dashboard/customers/create" element={<CustomersCreate />} />
@@ -34,6 +37,13 @@ function App() {
          <Route path="/dashboard/brands" element={<Brands />} />
          <Route path="/dashboard/brands/create" element={<BrandsCreate />} />
       </Route >
+=======
+
+      {/* dgfhjklkjhgf */}
+      <Route path="/test" element={<Test />} />
+      <Route path="/exemple" element={<ExempleDashboard />} />
+      {/* uplîjhukgjvhbknl,m */}
+>>>>>>> b16d8e890427e8895c653c105450e806d764c353
     </Routes>
   );
 }
