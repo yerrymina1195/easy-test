@@ -2,13 +2,14 @@ import "./App.css";
 import Connexion from "./Pages/Connexion";
 import { Route, Routes } from "react-router-dom";
 import Inscription from "./Pages/Inscription";
+import Produits from "./Pages/Produits";
 import Customers from "./Pages/Customers";
 import CustomersCreate from "./Pages/CustomersCreate";
 import Categories from "./Pages/Categories";
+import CreateProduits from "./Pages/CreateProduits";
 import Brands from "./Pages/Brands";
 import BrandsCreate from "./Pages/BrandsCreate";
 import CategoriesCreate from "./Pages/CategoriesCreate";
-
 import Dashboard from "./Pages/Dashboard";
 
 function App() {
@@ -16,6 +17,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Connexion />} />
       <Route path="/inscription" element={<Inscription />} />
+    
+      <Route path="/produit" element={<Produits />} />
+      <Route path="/produit/create" element={<CreateProduits />} />
+      
       <Route path="/dashboard/" element={<Dashboard />} >
           <Route path="/dashboard/customers" element={<Customers />} />
           <Route path="/dashboard/customersCreate" element={<CustomersCreate />} />
