@@ -9,6 +9,8 @@ import Categories from "./Pages/Categories";
 import Brands from "./Pages/Brands";
 import BrandsCreate from "./Pages/BrandsCreate";
 import CategoriesCreate from "./Pages/CategoriesCreate";
+import Test from "./components/Test";
+import ExempleDashboard from "./components/ExempleDashboard";
 
 function App() {
   return (
@@ -22,6 +24,11 @@ function App() {
       <Route path="/categories/create" element={<CategoriesCreate />} />
       <Route path="/brands" element={<Brands />} />
       <Route path="/brands/create" element={<BrandsCreate />} />
+
+      {/* dgfhjklkjhgf */}
+      <Route path="/test" element={<Test />} />
+      <Route path="/exemple" element={<ExempleDashboard />} />
+      {/* uplîjhukgjvhbknl,m */}
     </Routes>
   );
 }
