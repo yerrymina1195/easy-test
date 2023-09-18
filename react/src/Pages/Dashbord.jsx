@@ -1,13 +1,35 @@
 import React from "react";
 import { BiLogOut } from "react-icons/bi";
 import { FaBookOpen, FaGithub } from "react-icons/fa";
-import { BsGraphDownArrow, BsGraphUpArrow } from "react-icons/bs";
+import { BsGraphDownArrow,BsGraphUpArrow } from "react-icons/bs";
+import { useStateContext } from "../contexts/ContextProvider";
+import axiosClient from "../axios.js";
 import InputSearch from "../components/InputSearch";
-import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+
 
 function Dashbord() {
+  const { currentUser, setCurrentUser,setUserToken} =
+  useStateContext();
+  
+  const logout = (e) => {
+    e.preventDefault();
+    axiosClient.post("/logout").then((res) => {
+      localStorage.removeItem('user')
+      setCurrentUser(null);
+      setUserToken(null);
+    });
+  
+  };
+    const nameWords = currentUser.name.split(' ');
+
+
+const firstLetterOfFirstName = nameWords[0].charAt(0);
+
+
+const lastWordIndex = nameWords.length - 1;
+const lastWord = nameWords[lastWordIndex];
+const firstLetterOfLastName = lastWord.charAt(0);
   const dataTable = [
     {
       name: "Abdoulaye SENE",
@@ -292,18 +314,17 @@ function Dashbord() {
         <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200 p-5">
           <div className="columns-2">
             <div className="columns-1 gap-3 flex  items-center justify-items-center">
-              <img
-                class="w-12 h-12 rounded-full"
-                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                alt="user photo"
-              />
+             <div className="w-10 h-10 rounded-full uppercase font-bold flex items-center justify-center bg-black text-white">
+              <span>{firstLetterOfFirstName}</span>
+              <span>{firstLetterOfLastName}</span>
+             </div>
               <div>
                 <h3 className="font-bold">Welcome</h3>
-                <p className="text-gray-500">Demo User</p>
+                <p className="text-gray-500">{currentUser.name}</p>
               </div>
             </div>
             <div className="float-right">
-              <button className="flex rounded-lg px-3 border border-gray-200 py-2 gap-3 items-center justify-items-center hover:bg-gray-100">
+              <button className="flex rounded-lg px-3 border border-gray-200 py-2 gap-3 items-center justify-items-center hover:bg-gray-100" onClick={(e)=>logout(e)}>
                 <BiLogOut className="text-gray-400 w-5 h-5" />
                 <span className="text-sm text-gray-900 font-medium">
                   Sign out
