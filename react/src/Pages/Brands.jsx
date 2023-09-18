@@ -52,7 +52,7 @@ const Brands = () => {
           <h2 className="text-2xl py-3 font-bold">Brands</h2>
         </div>
         <div className="grid justify-items-end">
-          <Link to='/brands/create'>
+          <Link to="/brands/create">
             <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
               New Brand
             </button>
@@ -118,7 +118,10 @@ const Brands = () => {
             <tbody>
               {dataTable.map((data) => {
                 return (
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
+                  <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
+                    key={data.id}
+                  >
                     <td class="w-4 p-4">
                       <div class="flex items-center">
                         <input
