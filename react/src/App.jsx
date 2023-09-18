@@ -17,16 +17,16 @@ function App() {
     <Routes>
       <Route path="/" element={<Connexion />} />
       <Route path="/inscription" element={<Inscription />} />
-      <Route path="/dashbord" element={<Dashbord />} />
-      <Route path="/customers" element={<Customers />} />
-      <Route path="/customers/create" element={<CustomersCreate />} />
-      <Route path="/categories" element={<Categories />} />
-      <Route path="/categories/create" element={<CategoriesCreate />} />
-      <Route path="/brands" element={<Brands />} />
-      <Route path="/brands/create" element={<BrandsCreate />} />
 
-      
-      <Route path="/exemple" element={<ExempleDashboard />} />
+      <Route path="/" element={<ExempleDashboard />}>
+        <Route path="/dashbord" element={<Dashbord />} />
+        <Route path="/customers" element={<Customers />} />
+        <Route path="/customers/create" element={<CustomersCreate />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/create" element={<CategoriesCreate />} />
+        <Route path="/brands" element={<Brands />} />
+        <Route path="/brands/create" element={<BrandsCreate />} />
+      </Route>
       <Route path="/teste" element={<Test />} />
     </Routes>
   );

@@ -1,9 +1,75 @@
-
+import React from "react";
+import { BiLogOut } from "react-icons/bi";
+import { FaBookOpen, FaGithub } from "react-icons/fa";
+import { BsGraphDownArrow,BsGraphUpArrow } from "react-icons/bs";
 
 function Dashbord() {
   return (
-    <div>
-      <h1>bonjour laravel</h1>
+    <div className="container">
+      <h1 className="text-2xl py-3 font-bold">Dashboard</h1>
+      <div className="md:columns-2 gap-5">
+        <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200 p-5">
+          <div className="columns-2">
+            <div className="columns-1 gap-3 flex  items-center justify-items-center">
+              <img
+                class="w-12 h-12 rounded-full"
+                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                alt="user photo"
+              />
+              <div>
+                <h3 className="font-bold">Welcome</h3>
+                <p className="text-gray-500">Demo User</p>
+              </div>
+            </div>
+            <div className="float-right">
+              <button className="flex rounded-lg px-3 border border-gray-200 py-2 gap-3 items-center justify-items-center hover:bg-gray-100">
+                <BiLogOut className="text-gray-400 w-5 h-5" />
+                <span className="text-sm text-gray-900 font-medium">
+                  Sign out
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white rounded-lg border border-gray-200 p-5">
+          <div className="columns-2">
+            <div className="columns-1 gap-3 flex items-center justify-items-center">
+              <div>
+                <h3 className="font-bold italic">filament</h3>
+                <p className="text-gray-500">v3.0.46</p>
+              </div>
+            </div>
+            <div className="float-right">
+              <div className="flex gap-3 items-center justify-items-center">
+                <FaBookOpen />
+                <span>Documentation</span>
+              </div>
+              <div className="flex gap-3 float-right items-center justify-items-center">
+                <FaGithub />
+                <span>Github</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="md:columns-3 my-5 gap-10">
+        <div className="bg-white columns-1 my-5 md:my-0 rounded-lg border border-gray-200 p-5">
+          <p className="text-gray-500">Revenue</p>
+          <h2 className="text-2xl font-bold">$192.1k</h2>
+          <p className="text-green-600 text-sm flex gap-2 items-center justify-items-center">32k increase <BsGraphUpArrow/></p>
+        </div>
+        <div className="bg-white columns-1 my-5 md:my-0 rounded-lg border border-gray-200 p-5">
+          <p className="text-gray-500">New customers</p>
+          <h2 className="text-2xl font-bold">1340</h2>
+          <p className="text-red-600 text-sm flex gap-2 items-center justify-items-center">3% decrease  <BsGraphDownArrow/></p>
+        </div>
+        <div className="bg-white columns-1 my-5 md:my-0 rounded-lg border border-gray-200 p-5">
+          <p className="text-gray-500">New orders</p>
+          <h2 className="text-2xl font-bold">3543</h2>
+          <p className="text-green-600 text-sm flex gap-2 items-center justify-items-center">7% increase <BsGraphUpArrow/></p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,8 +1,4 @@
 import React from "react";
-import Brands from "../Pages/Brands";
-import Customers from "../Pages/Customers";
-import Categories from "../Pages/Categories";
-import CategoriesCreate from "../Pages/CategoriesCreate";
 import { BiMenuAltLeft, BiArchive, BiSolidSun, BiLogOut } from "react-icons/bi";
 import {
   AiOutlineHome,
@@ -21,9 +17,10 @@ import {
 
 import { IoFlashOutline } from "react-icons/io5";
 
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import InputSearch from "./InputSearch";
 import IconNotification from "./IconNotification";
+import Dashbord from "../Pages/Dashbord";
 
 const ExempleDashboard = () => {
   return (
@@ -165,10 +162,10 @@ const ExempleDashboard = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="flex py-3 gap-3 items-center justify-items-center">
+                  <button className="flex py-3 gap-3 items-center justify-items-center">
                     <BiLogOut className="text-gray-400 w-5 h-5" />
                     <span className="text-sm text-gray-500">Sign out</span>
-                  </div>
+                  </button>
                 </div>
               </div>
             </div>
@@ -230,7 +227,7 @@ const ExempleDashboard = () => {
             data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
             data-inactive-classes="text-gray-500 dark:text-gray-400"
           >
-            <Link to={"/exemple"}>
+            <Link to={"/dashbord"}>
               <p className="flex items-center gap-3 my-5 mx-3 group/nav ">
                 <span>
                   <AiOutlineHome className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -277,7 +274,7 @@ const ExempleDashboard = () => {
                 <ul class="space-y-2 font-medium">
                   <li>
                     <Link
-                      to={"/"}
+                      to={"/customers"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <IoFlashOutline className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -291,7 +288,7 @@ const ExempleDashboard = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/"}
+                      to={"/customers"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <PiUsersThreeThin className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -302,7 +299,7 @@ const ExempleDashboard = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/"}
+                      to={"/customers"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <HiOutlineShoppingBag className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -316,7 +313,7 @@ const ExempleDashboard = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/"}
+                      to={"/categories"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <HiOutlineTag className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -327,7 +324,7 @@ const ExempleDashboard = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/"}
+                      to={"/brands"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <HiOutlineBookmarkSquare className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -418,10 +415,7 @@ const ExempleDashboard = () => {
       {/* Contenue */}
       <div class="p-4 sm:ml-64">
         <div class="p-4 border-2 border-gray-200 rounded-lg dark:border-gray-700 mt-14">
-          <Brands />
-          <Customers />
-          <Categories />
-          <CategoriesCreate />
+          <Outlet />
         </div>
       </div>
       {/* contenue */}
