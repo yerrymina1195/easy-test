@@ -16,6 +16,8 @@ import CreateProduits from "./Pages/CreateProduits";
 
 function App() {
   return (
+    <>
+    
     <Routes>
       <Route path="/" element={<Connexion />} />
       <Route path="/inscription" element={<Inscription />} />
@@ -33,6 +35,7 @@ function App() {
       </Route>
       <Route path="/teste" element={<Test />} />
     </Routes>
+    </>
   );
 }
 

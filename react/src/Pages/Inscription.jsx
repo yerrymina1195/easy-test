@@ -1,5 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axiosClient from "../axios.js";
 const Inscription = () => {
+  const navitage = useNavigate()
+
+    const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmation, setPasswordConfirmation] = useState("");
+  const [error, setError] = useState({ __html: "" });
+//   console.log({fullName});
+//   console.log({email});
+// console.log({password});
+// console.log({confirmation});
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setError({ __html: "" });
+
+
+    axiosClient
+      .post("/signup", {
+        name: fullName,
+        email,
+        password,
+        password_confirmation: confirmation,
+      })
+      .then(({ data }) => {
+      console.log(data)
+      alert('inscription faite')
+      navitage('/')
+      })
+      .catch((error) => {
+        
+        if (error.response) {
+            const finalErrors = Object.values(error.response.data.errors).reduce((accum, next) => [...accum, ...next], [])
+            console.log(finalErrors)
+            setError({__html: finalErrors.join('<br>')})
+          }
+          console.error(error)
+      });
+  };
+
   return (
     <>
       <div className="flex  flex-1 flex-col sm:mx-auto sm:w-full sm:max-w-md items-center mt-5  bg-white  justify-center px-6 py-12 lg:px-8 rounded-lg border-2 border-slate-100">
@@ -19,13 +61,15 @@ const Inscription = () => {
           Login with your account
         </Link>
       </p>
+      {error.__html && (<div className="bg-red-500 rounded py-2 px-3 text-white" dangerouslySetInnerHTML={error}>
+      </div>)}
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={onSubmit} action="#" method="POST">
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="full-name" className="block ">
+                <label htmlFor="fullname" className="block ">
                   <span className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-slate-700">
                     Full-name
                   </span>
@@ -33,10 +77,12 @@ const Inscription = () => {
               </div>
               <div className="mt-2">
                 <input
-                  id="full-name"
+                  id="fullname"
                   name="name"
                   type="text"
                   autoComplete="name"
+                  value={fullName}
+              onChange={e => setFullName(e.target.value)}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 outline-none shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
                 />
@@ -55,6 +101,8 @@ const Inscription = () => {
                   id="email"
                   name="email"
                   type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                   autoComplete="email"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 outline-none shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
@@ -75,6 +123,8 @@ const Inscription = () => {
                   id="password"
                   name="password"
                   type="password"
+                  value={password}
+              onChange={e => setPassword(e.target.value)}
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
@@ -95,6 +145,8 @@ const Inscription = () => {
                   id="confirmation"
                   name="confirmation"
                   type="password"
+                  value={confirmation}
+                  onChange={e => setPasswordConfirmation(e.target.value)}
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-amber-600 sm:text-sm sm:leading-6"
