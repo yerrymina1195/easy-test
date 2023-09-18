@@ -11,8 +11,7 @@ function Dashbord() {
   const logout = (e) => {
     e.preventDefault();
     axiosClient.post("/logout").then((res) => {
-      localStorage.removeItem('user')
-      setCurrentUser(null);
+      setCurrentUser({});
       setUserToken(null);
     });
   };

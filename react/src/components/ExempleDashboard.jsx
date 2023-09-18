@@ -32,6 +32,8 @@ const ExempleDashboard = () => {
     axiosClient.post("/logout").then((res) => {
       setCurrentUser({});
       setUserToken(null);
+      navtage('/',{ replace: true })
+      localStorage.removeItem("user");
     });
   };
 
