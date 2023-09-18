@@ -47,7 +47,7 @@ const Customers = () => {
         </div>
         <div className="grid justify-items-end">
           <Link to="/customers/create">
-            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
+            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
               New customer
             </button>
           </Link>
@@ -121,10 +121,10 @@ const Customers = () => {
                 <td class="px-6 py-4"></td>
                 <td class="px-6 py-4"></td>
               </tr>
-              {dataTable.map((data) => {
+              {dataTable.map((data, index) => {
                 return (
                   <tr
-                    key={data.id}
+                    key={index}
                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
                   >
                     <td class="w-4 p-4">

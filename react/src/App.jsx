@@ -27,6 +27,7 @@ function App() {
 
       
       <Route path="/exemple" element={<ExempleDashboard />} />
+      <Route path="/teste" element={<Test />} />
     </Routes>
   );
 }
