@@ -40,7 +40,7 @@ if (!userToken) {
 }
   // className={({ isActive }) => (isActive ? activeLink : normalLink)}
   const inactive='flex items-center group/nav p-2 text-gray-500 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group';
-  const active='flex items-center group/nav p-2 text-amber-600 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group';
+  const active='flex items-center group/nav p-2 text-amber-600 rounded-lg dark:text-white bg-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 group';
   return (
     <>{loading?(<div wire:loading class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
 	<div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
@@ -301,10 +301,10 @@ if (!userToken) {
                       to={"/produits"}
                       className={({ isActive }) => (isActive ? active : inactive)}                    >
                       <IoFlashOutline className="w-6 h-6 group-hover/nav:text-amber-600" />
-                      <span class="ml-3 flex-1  whitespace-nowrap text-gray-800  group-hover/nav:text-amber-600">
+                      <span class="ml-3 flex-1  whitespace-nowrap   group-hover/nav:text-amber-600">
                         Product
                       </span>
-                      <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-full dark:bg-amber-900 dark:text-amber-300">
+                      <span class="inline-flex items-center justify-center w-5 h-3 px-4 py-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-md dark:bg-amber-900 dark:text-amber-300">
                         19
                       </span>
                     </NavLink >
@@ -328,7 +328,7 @@ if (!userToken) {
                       <span class="flex-1 ml-3 whitespace-nowrap group-hover/nav:text-amber-600">
                         Orders
                       </span>
-                      <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-full dark:bg-amber-900 dark:text-amber-300">
+                      <span class="inline-flex items-center justify-center w-5 h-3 px-4 py-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-md dark:bg-amber-900 dark:text-amber-300">
                         194
                       </span>
                     </NavLink >
