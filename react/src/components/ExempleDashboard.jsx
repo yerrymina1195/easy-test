@@ -17,12 +17,16 @@ import {
 
 import { IoFlashOutline } from "react-icons/io5";
 
-import { Link, Outlet } from "react-router-dom";
+import {Link, NavLink , Outlet } from "react-router-dom";
 import InputSearch from "./InputSearch";
 import IconNotification from "./IconNotification";
 import Dashbord from "../Pages/Dashbord";
 
 const ExempleDashboard = () => {
+
+  // className={({ isActive }) => (isActive ? activeLink : normalLink)}
+  const inactive='flex items-center group/nav p-2 text-gray-500 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group';
+  const active='flex items-center group/nav p-2 text-amber-600 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group';
   return (
     <div>
       {/* Barre de navigation */}
@@ -40,11 +44,11 @@ const ExempleDashboard = () => {
                 {/* <span class="sl-only"></span> */}
                 <BiMenuAltLeft className="w-6 h-6" />
               </button>
-              <a href="https://flowbite.com" class="flex ml-2 md:mr-24">
+              <Link className="flex ml-2 md:mr-24" to={'/dashbord'}>
                 <span class="self-center hidden md:block text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                   Filament Demo
                 </span>
-              </a>
+              </Link>
             </div>
             <div class="flex items-center">
               <div class="flex items-center ml-3">
@@ -217,26 +221,26 @@ const ExempleDashboard = () => {
       {/* Side Barre */}
       <aside
         id="logo-sidebar"
-        class="fixed top-0 left-0 md:z-20 z-50 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white  sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 md:z-20 z-50 w-64 h-screen pt-20 transition-transform -translate-x-full  sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Sidebar"
       >
-        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+        <div class="h-full px-3 pb-4 overflow-y-auto  dark:bg-gray-800">
           <div
             id="accordion-flush"
             data-accordion="collapse"
-            data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+            data-active-classes="bg-transparent dark:bg-gray-900 text-gray-900 dark:text-white"
             data-inactive-classes="text-gray-500 dark:text-gray-400"
           >
-            <Link to={"/dashbord"}>
+            <NavLink  to={"/dashbord"} className={({ isActive }) => (isActive ? active : inactive)}>
               <p className="flex items-center gap-3 my-5 mx-3 group/nav ">
                 <span>
-                  <AiOutlineHome className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
+                  <AiOutlineHome className="w-6 h-6  group-hover/nav:text-amber-600" />
                 </span>
-                <span className="text-gray-800  group-hover/nav:text-amber-600">
+                <span className="  group-hover/nav:text-amber-600">
                   Dashboard
                 </span>
               </p>
-            </Link>
+            </NavLink >
             <h2 id="accordion-flush-heading-1">
               <button
                 type="button"
@@ -245,7 +249,7 @@ const ExempleDashboard = () => {
                 aria-expanded="true"
                 aria-controls="accordion-flush-body-1"
               >
-                <span className="mx-4 text-gray-600">Shop</span>
+                <span className="mx-4   text-gray-600">Shop</span>
                 {/* <IoIosArrowDown class="w-5 h-5 rotate-180 shrink-0" /> */}
                 <svg
                   data-accordion-icon
@@ -270,74 +274,70 @@ const ExempleDashboard = () => {
               class="hidden"
               aria-labelledby="accordion-flush-heading-1"
             >
-              <div class=" border-b border-gray-200 dark:border-gray-700">
+              <div class="  dark:border-gray-700">
                 <ul class="space-y-2 font-medium">
                   <li>
-                    <Link
+                    <NavLink 
                       to={"/produits"}
-                      class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                    >
-                      <IoFlashOutline className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
+                      className={({ isActive }) => (isActive ? active : inactive)}                    >
+                      <IoFlashOutline className="w-6 h-6 group-hover/nav:text-amber-600" />
                       <span class="ml-3 flex-1  whitespace-nowrap text-gray-800  group-hover/nav:text-amber-600">
                         Product
                       </span>
                       <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-full dark:bg-amber-900 dark:text-amber-300">
                         19
                       </span>
-                    </Link>
+                    </NavLink >
                   </li>
                   <li>
-                    <Link
+                    <NavLink 
                       to={"/customers"}
-                      class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                    >
-                      <PiUsersThreeThin className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
+                      className={({ isActive }) => (isActive ? active : inactive)}                    >
+                      <PiUsersThreeThin className="w-6 h-6  group-hover/nav:text-amber-600" />
                       <span class="flex-1 ml-3 whitespace-nowrap  group-hover/nav:text-amber-600">
                         Customers
                       </span>
-                    </Link>
+                    </NavLink >
                   </li>
                   <li>
-                    <Link
-                      to={"#"}
-                      class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                    <NavLink 
+                      to={"/categories"}
+                      className={({ isActive }) => (isActive ? active : inactive)}
                     >
-                      <HiOutlineShoppingBag className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
+                      <HiOutlineShoppingBag className="w-6 h-6  group-hover/nav:text-amber-600" />
                       <span class="flex-1 ml-3 whitespace-nowrap group-hover/nav:text-amber-600">
                         Orders
                       </span>
                       <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-full dark:bg-amber-900 dark:text-amber-300">
                         194
                       </span>
-                    </Link>
+                    </NavLink >
                   </li>
                   <li>
-                    <Link
+                    <NavLink 
                       to={"/categories"}
-                      class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                    >
-                      <HiOutlineTag className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
+                      className={({ isActive }) => (isActive ? active : inactive)}                    >
+                      <HiOutlineTag className="w-6 h-6  group-hover/nav:text-amber-600" />
                       <span class="flex-1 ml-3 whitespace-nowrap group-hover/nav:text-amber-600">
                         Categories
                       </span>
-                    </Link>
+                    </NavLink >
                   </li>
                   <li>
-                    <Link
+                    <NavLink 
                       to={"/brands"}
-                      class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                    >
-                      <HiOutlineBookmarkSquare className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
+                      className={({ isActive }) => (isActive ? active : inactive)}                    >
+                      <HiOutlineBookmarkSquare className="w-6 h-6  group-hover/nav:text-amber-600" />
                       <span class="flex-1 ml-3 whitespace-nowrap group-hover/nav:text-amber-600">
                         Brands
                       </span>
-                    </Link>
+                    </NavLink >
                   </li>
                 </ul>
               </div>
             </div>
 
-            <h2 id="accordion-flush-heading-2">
+            {/* <h2 id="accordion-flush-heading-2">
               <button
                 type="button"
                 class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500  dark:text-gray-400"
@@ -369,10 +369,10 @@ const ExempleDashboard = () => {
               class="hidden"
               aria-labelledby="accordion-flush-heading-2"
             >
-              <div class=" border-b border-gray-200 dark:border-gray-700">
+              <div class="  dark:border-gray-700">
                 <ul class="space-y-2 font-medium">
                   <li>
-                    <Link
+                    <NavLink 
                       to={"/"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
@@ -380,10 +380,10 @@ const ExempleDashboard = () => {
                       <span class="flex-1 ml-3 whitespace-nowrap group-hover/nav:text-amber-600">
                         Post
                       </span>
-                    </Link>
+                    </NavLink >
                   </li>
                   <li>
-                    <Link
+                    <NavLink 
                       to={"/"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
@@ -391,10 +391,10 @@ const ExempleDashboard = () => {
                       <span class="flex-1 ml-3 whitespace-nowrap group-hover/nav:text-amber-600">
                         Categories
                       </span>
-                    </Link>
+                    </NavLink >
                   </li>
                   <li>
-                    <Link
+                    <NavLink 
                       to={"/"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
@@ -402,11 +402,11 @@ const ExempleDashboard = () => {
                       <span class="flex-1 ml-3 whitespace-nowrap group-hover/nav:text-amber-600">
                         Authors
                       </span>
-                    </Link>
+                    </NavLink >
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </aside>
@@ -414,7 +414,7 @@ const ExempleDashboard = () => {
 
       {/* Contenue */}
       <div class="p-4 sm:ml-64">
-        <div class="p-4 border-2 border-gray-200 rounded-lg dark:border-gray-700 mt-14">
+        <div class="p-4  rounded-lg dark:border-gray-700 mt-14">
           <Outlet />
         </div>
       </div>
