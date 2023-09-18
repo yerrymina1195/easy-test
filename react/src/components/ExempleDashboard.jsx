@@ -13,7 +13,7 @@ import {
 
 import { IoFlashOutline } from "react-icons/io5";
 
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet,useNavigate } from "react-router-dom";
 import InputSearch from "./InputSearch";
 import IconNotification from "./IconNotification";
 import axiosClient from "../axios.js";
@@ -23,7 +23,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 const ExempleDashboard = () => {
   const { currentUser, userToken, setCurrentUser, setUserToken, loading } =
     useStateContext();
-
+const navtage=useNavigate()
   console.log(currentUser);
   const nameWords = currentUser.name.split(" ");
 
@@ -38,9 +38,10 @@ const ExempleDashboard = () => {
   const logout = (e) => {
     e.preventDefault();
     axiosClient.post("/logout").then((res) => {
-      localStorage.removeItem("user");
-      setCurrentUser(null);
+      setCurrentUser({});
       setUserToken(null);
+      navtage('/',{ replace: true })
+      localStorage.removeItem("user");
     });
   };
 
