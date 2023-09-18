@@ -11,6 +11,8 @@ import BrandsCreate from "./Pages/BrandsCreate";
 import CategoriesCreate from "./Pages/CategoriesCreate";
 import Test from "./components/Test";
 import ExempleDashboard from "./components/ExempleDashboard";
+import Produits from "./Pages/Produits";
+import CreateProduits from "./Pages/CreateProduits";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/dashbord" element={<Dashbord />} />
         <Route path="/customers" element={<Customers />} />
         <Route path="/customers/create" element={<CustomersCreate />} />
+        <Route path="/produits" element={<Produits />} />
+        <Route path="/produits/create" element={<CreateProduits />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/create" element={<CategoriesCreate />} />
         <Route path="/brands" element={<Brands />} />

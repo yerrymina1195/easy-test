@@ -56,9 +56,6 @@ const Customers = () => {
 
       <div class="relative border-2 bg-white overflow-x-auto rounded-2xl">
         <div class="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
-          {/* <label for="table-search" class="sr-only">
-            Search
-          </label> */}
           <InputSearch />
           <IconNotification icon={<FaFilter />} number={0} />
         </div>

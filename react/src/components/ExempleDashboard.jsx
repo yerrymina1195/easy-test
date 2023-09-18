@@ -274,7 +274,7 @@ const ExempleDashboard = () => {
                 <ul class="space-y-2 font-medium">
                   <li>
                     <Link
-                      to={"/customers"}
+                      to={"/produits"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <IoFlashOutline className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -299,7 +299,7 @@ const ExempleDashboard = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/customers"}
+                      to={"#"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <HiOutlineShoppingBag className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
