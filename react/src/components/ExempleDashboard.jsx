@@ -40,11 +40,11 @@ const ExempleDashboard = () => {
                 {/* <span class="sl-only"></span> */}
                 <BiMenuAltLeft className="w-6 h-6" />
               </button>
-              <a href="https://flowbite.com" class="flex ml-2 md:mr-24">
+              <Link className="flex ml-2 md:mr-24" to={'/dashbord'}>
                 <span class="self-center hidden md:block text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                   Filament Demo
                 </span>
-              </a>
+              </Link>
             </div>
             <div class="flex items-center">
               <div class="flex items-center ml-3">
@@ -224,7 +224,7 @@ const ExempleDashboard = () => {
           <div
             id="accordion-flush"
             data-accordion="collapse"
-            data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+            data-active-classes="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white"
             data-inactive-classes="text-gray-500 dark:text-gray-400"
           >
             <Link to={"/dashbord"}>
@@ -270,7 +270,7 @@ const ExempleDashboard = () => {
               class="hidden"
               aria-labelledby="accordion-flush-heading-1"
             >
-              <div class=" border-b border-gray-200 dark:border-gray-700">
+              <div class=" dark:border-gray-700">
                 <ul class="space-y-2 font-medium">
                   <li>
                     <Link
@@ -281,7 +281,7 @@ const ExempleDashboard = () => {
                       <span class="ml-3 flex-1  whitespace-nowrap text-gray-800  group-hover/nav:text-amber-600">
                         Product
                       </span>
-                      <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-full dark:bg-amber-900 dark:text-amber-300">
+                      <span class="inline-flex items-center justify-center w-5 h-3 px-4 py-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-md dark:bg-amber-900 dark:text-amber-300">
                         19
                       </span>
                     </Link>
@@ -306,7 +306,7 @@ const ExempleDashboard = () => {
                       <span class="flex-1 ml-3 whitespace-nowrap group-hover/nav:text-amber-600">
                         Orders
                       </span>
-                      <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-full dark:bg-amber-900 dark:text-amber-300">
+                      <span class="inline-flex items-center justify-center w-5 h-3 px-4 py-3 ml-3 text-sm font-medium text-amber-600 bg-amber-100 rounded-md dark:bg-amber-900 dark:text-amber-300">
                         194
                       </span>
                     </Link>
@@ -337,7 +337,7 @@ const ExempleDashboard = () => {
               </div>
             </div>
 
-            <h2 id="accordion-flush-heading-2">
+            {/* <h2 id="accordion-flush-heading-2">
               <button
                 type="button"
                 class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500  dark:text-gray-400"
@@ -373,7 +373,7 @@ const ExempleDashboard = () => {
                 <ul class="space-y-2 font-medium">
                   <li>
                     <Link
-                      to={"/"}
+                      to={"/dashbord"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <AiOutlineFileText className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -384,7 +384,7 @@ const ExempleDashboard = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/"}
+                      to={"/dashbord"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <BiArchive className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -395,7 +395,7 @@ const ExempleDashboard = () => {
                   </li>
                   <li>
                     <Link
-                      to={"/"}
+                      to={"/dashbord"}
                       class="flex items-center group/nav p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <PiUsersThin className="w-6 h-6 text-gray-500 group-hover/nav:text-amber-600" />
@@ -406,7 +406,7 @@ const ExempleDashboard = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </aside>
