@@ -10,7 +10,7 @@ const StateContext = createContext({
   });
 
   export const ContextProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState(() => JSON.parse(localStorage.getItem('user')) || null);
+    const [currentUser, setCurrentUser] = useState({});
     const [userToken, _setUserToken] = useState(localStorage.getItem('TOKEN') || '');
     const [loading, setLoading] = useState(false);
   
@@ -22,14 +22,6 @@ const StateContext = createContext({
       }
       _setUserToken(token);
     }
-
-    const updateUser = (userData) => {
-      if (typeof(userData) === 'undefined') {
-        return alert(`n'existe pas ce user`)
-      }
-      setCurrentUser(userData);
-      localStorage.setItem('user', JSON.stringify(userData));
-    };
   
    
   
@@ -41,8 +33,7 @@ const StateContext = createContext({
           userToken,
           setUserToken,
           loading,
-           setLoading,
-           updateUser
+           setLoading
         }}
       >
         {children}

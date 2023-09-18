@@ -5,7 +5,7 @@ import { BsGraphDownArrow,BsGraphUpArrow } from "react-icons/bs";
 import { useStateContext } from "../contexts/ContextProvider";
 import axiosClient from "../axios.js";
 function Dashbord() {
-  const { currentUser, setCurrentUser,setUserToken} =
+  const { setCurrentUser,setUserToken} =
   useStateContext();
   
   const logout = (e) => {
@@ -15,18 +15,7 @@ function Dashbord() {
       setCurrentUser(null);
       setUserToken(null);
     });
-  
   };
-    const nameWords = currentUser.name.split(' ');
-
-
-const firstLetterOfFirstName = nameWords[0].charAt(0);
-
-
-const lastWordIndex = nameWords.length - 1;
-const lastWord = nameWords[lastWordIndex];
-const firstLetterOfLastName = lastWord.charAt(0);
-
   return (
     <div className="container">
       <h1 className="text-2xl py-3 font-bold">Dashboard</h1>
@@ -34,13 +23,14 @@ const firstLetterOfLastName = lastWord.charAt(0);
         <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200 p-5">
           <div className="columns-2">
             <div className="columns-1 gap-3 flex  items-center justify-items-center">
-             <div className="w-10 h-10 rounded-full uppercase font-bold flex items-center justify-center bg-black text-white">
-              <span>{firstLetterOfFirstName}</span>
-              <span>{firstLetterOfLastName}</span>
-             </div>
+              <img
+                class="w-12 h-12 rounded-full"
+                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                alt="user photo"
+              />
               <div>
                 <h3 className="font-bold">Welcome</h3>
-                <p className="text-gray-500">{currentUser.name}</p>
+                <p className="text-gray-500">Demo User</p>
               </div>
             </div>
             <div className="float-right">
