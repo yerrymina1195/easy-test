@@ -1,6 +1,38 @@
-import React from "react";
-
+import React, { useState } from "react";
+import axiosClient from "../axios.js";
 const CustomersCreate = () => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [date, setDate] = useState('');
+  const [error, setError] = useState({ __html: "" });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setError({ __html: "" });
+
+
+    axiosClient
+      .post("/clients", {
+        nom: fullName,
+         email,
+         telephone:phone,
+         date_de_naissance: date
+      })
+      .then(({ data }) => {
+      console.log(data)
+      alert('donnée bien entrée')
+     
+      })
+      .catch((error) => {
+        
+        if (error.response) {
+            const finalErrors = Object.values(error.response.data.errors).reduce((accum, next) => [...accum, ...next], [])
+            console.log(finalErrors)
+            setError({__html: finalErrors.join('<br>')})
+          }
+          console.error(error)
+      });
+  };
   return (
     <div className="container m-10 mx-auto">
       <div className="columns-1">
@@ -10,20 +42,22 @@ const CustomersCreate = () => {
         </div>
       </div>
       <div>
-        <form>
+        <form onSubmit={onSubmit} action="#" method="POST">
           <div className="bg-white p-5 my-5 rounded-2xl">
             <div class="grid md:grid-cols-2 md:gap-6">
               <div class="relative z-0 w-full mb-6 group">
                 <input
                   type="text"
-                  name="floating_first_name"
-                  id="floating_first_name"
+                  name="name"
+                  id="name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                   placeholder=" "
                   required
                 />
                 <label
-                  for="floating_first_name"
+                  for="name"
                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Name
@@ -32,14 +66,16 @@ const CustomersCreate = () => {
               <div class="relative z-0 w-full mb-6 group">
                 <input
                   type="email"
-                  name="Email"
-                  id="Email"
+                  name="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                   placeholder=" "
                   required
                 />
                 <label
-                  for="Email"
+                  for="email"
                   class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
                   Email address
@@ -51,8 +87,10 @@ const CustomersCreate = () => {
                 <input
                   type="tel"
                   pattern="[0-9]{9}"
-                  name="floating_phone"
-                  id="floating_phone"
+                  name="phone"
+                  id="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                   placeholder=" "
                   required
@@ -67,8 +105,10 @@ const CustomersCreate = () => {
               <div class="relative z-0 w-full mb-6 group">
                 <input
                   type="date"
-                  name="floating_company"
-                  id="floating_company"
+                  id="date"
+                  name="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                   placeholder=" "
                   required
@@ -104,6 +144,8 @@ const CustomersCreate = () => {
           </div>
         </form>
       </div>
+      {error.__html && (<div className="bg-red-500 rounded py-2 px-3 text-white" dangerouslySetInnerHTML={error}>
+      </div>)}
     </div>
   );
 };
