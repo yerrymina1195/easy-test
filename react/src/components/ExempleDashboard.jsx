@@ -23,13 +23,22 @@ import axiosClient from "../axios.js";
 import { Navigate} from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 
+
 const ExempleDashboard = () => {
-  const { userToken,currentUser,setCurrentUser,setUserToken,loading} =
+  const { userToken,currentUser,setCurrentUser,setUserToken,loading,updatecategorie} =
   useStateContext();
   const [firstName, setFirstName]=useState(null)
   const [lastName, setLastName]=useState(null)
   console.log(currentUser);
+  useEffect(() => {
+    fetchCategory();
+  }, []);
 
+  const fetchCategory = async () => {
+    await axiosClient.get(`/categorie`).then(({ data }) => {
+      updatecategorie(data);
+    });
+  };
 useEffect(() => {
   if (currentUser) {
     const nameWords = currentUser?.name?.split(" ");
@@ -257,7 +266,7 @@ if (!userToken) {
       {/* Side Barre */}
       <aside
         id="logo-sidebar"
-        className="fixed top-0 left-0 md:z-20 z-50 w-64 h-screen pt-20 transition-transform -translate-x-full  sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        className="fixed bg-[#F9FAFB] top-0 left-0 md:z-20 z-50 w-64 h-screen pt-20 transition-transform -translate-x-full  sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 pb-4 overflow-y-auto  dark:bg-gray-800">
@@ -337,7 +346,7 @@ if (!userToken) {
                   </li>
                   <li>
                     <NavLink 
-                      to={"/categories"}
+                      to={"/order"}
                       className={({ isActive }) => (isActive ? active : inactive)}
                     >
                       <HiOutlineShoppingBag className="w-6 h-6  group-hover/nav:text-amber-600" />

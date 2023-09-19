@@ -186,6 +186,7 @@ useEffect(() => {
         {
           name: "New users",
           data: [1500, 1418, 1456, 1526, 1356, 1256,1500, 1418, 1456, 1526, 1356, 1256],
+
           color: "#d97706",
         },
       ],
@@ -313,6 +314,7 @@ useEffect(() => {
       chart.render();
     }
   });
+  
   return (
     <div className="container">
       <h1 className="text-2xl py-3 font-bold">Dashboard</h1>
@@ -388,29 +390,26 @@ useEffect(() => {
       <div className="md:grid md:grid-cols-2 my-5 gap-5">
         <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200">
           <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800">
-            <div className="flex justify-start">
-              <div className="p-5">
+            <div className="flex p-5 justify-start">
                 <h5 className="leading-none text-xl font-bold text-gray-900 dark:text-white pb-2">
                   Orders per month
                 </h5>
-              </div>
             </div>
             <div id="area-chart"></div>
           </div>
         </div>
         <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200 ">
           <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800 ">
-            <div className="flex justify-start">
-              <div className="p-5">
+            <div className="flex p-5 justify-start">
                 <h5 className="leading-none text-xl font-bold text-gray-900 dark:text-white pb-2">
                   Total customers
                 </h5>
-              </div>
             </div>
             <div id="data-series-chart"></div>
           </div>
         </div>
       </div>
+
       <div className="grid grid-cols-1">
         <div className="relative border-2 bg-white overflow-x-auto rounded-2xl">
           <div className="flex items-center border-b-2 gap-5 justify-start p-4  dark:bg-gray-800">
@@ -421,23 +420,11 @@ useEffect(() => {
           </div>
           <div className="overflow-auto">
             <table className="md:w-full text-sm text-left  text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">  
                 <tr>
-                  {/* <th scope="col" className="p-4">
-                    <div className="flex items-center">
-                      <input
-                        id="checkbox-all-search"
-                        type="checkbox"
-                        className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      />
-                      <label for="checkbox-all-search" className="sr-only">
-                        checkbox
-                      </label>
-                    </div>
-                  </th> */}
                   <th scope="col" className="px-6 py-3">
                     <div className="flex gap-2">
-                      Name{" "}
+                      Name
                       <span>
                         <IoMdArrowRoundDown />
                       </span>
@@ -445,7 +432,7 @@ useEffect(() => {
                   </th>
                   <th scope="col" className="px-6 py-3">
                     <div className="flex gap-2">
-                      Email address{" "}
+                      Email address
                       <span>
                         <IoMdArrowRoundDown />
                       </span>
@@ -470,7 +457,6 @@ useEffect(() => {
                       </span>
                     </div>
                   </th>
-                  {/* <th scope="col" className="px-6 py-3"></th> */}
                 </tr>
               </thead>
               <tbody>
@@ -480,33 +466,11 @@ useEffect(() => {
                       key={index}
                       className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
                     >
-                      {/* <td className="w-4 p-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label for="checkbox-table-search-1" className="sr-only">
-                            checkbox
-                          </label>
-                        </div>
-                      </td> */}
                       <td className="px-6 py-4">{data.name}</td>
                       <td className="px-6 py-4">{data.email}</td>
                       <td className="px-6 py-4">{data.contry}</td>
                       <td className="px-6 py-4">{data.icon}</td>
                       <td className="px-6 py-4">{data.phone}</td>
-                      {/* <td className="px-6 py-4">
-                        <a
-                          href="#"
-                          type="button"
-                          className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
-                        >
-                          <FaRegPenToSquare />
-                          Edit
-                        </a>
-                      </td> */}
                     </tr>
                   );
                 })}

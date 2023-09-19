@@ -71,7 +71,6 @@ class CategoryController extends Controller
             'category'=>$category
             
         ]);
-        console.log($category);
     }
 
     /**

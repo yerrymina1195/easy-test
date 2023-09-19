@@ -13,6 +13,7 @@ const StateContext = createContext({
     const [currentUser, setCurrentUser] = useState(() => JSON.parse(localStorage.getItem('user')) || null);
     const [userToken, _setUserToken] = useState(localStorage.getItem('TOKEN') || '');
     const [loading, setLoading] = useState(false);
+    const [category, SetCategory] = useState([]);
   
     const setUserToken = (token,userr) => {
       if (token) {
@@ -24,6 +25,9 @@ const StateContext = createContext({
       localStorage.setItem('user', JSON.stringify(userr)) 
     }
   
+    const updatecategorie=(donnee)=>{
+      SetCategory(donnee)
+    }
    
   
     return (
@@ -34,7 +38,9 @@ const StateContext = createContext({
           userToken,
           setUserToken,
           loading,
-           setLoading
+           setLoading,
+           updatecategorie,
+           category
         }}
       >
         {children}

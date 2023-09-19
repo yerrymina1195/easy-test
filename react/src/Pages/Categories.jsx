@@ -4,20 +4,22 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useStateContext } from "../contexts/ContextProvider";
+import axiosClient from "../axios.js";
 
 const Categories = () => {
-  const [category, SetCategory] = useState([]);
+  const {updatecategorie,category} =
+  useStateContext();
   useEffect(() => {
     fetchCategory();
   }, []);
 
   const fetchCategory = async () => {
-    await axios.get(`http://localhost:8000/api/categorie`).then(({ data }) => {
-      SetCategory(data);
+    await axiosClient.get(`/categorie`).then(({ data }) => {
+      updatecategorie(data);
     });
   };
-  console.log(category);
+
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">
