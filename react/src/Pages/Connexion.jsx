@@ -22,7 +22,7 @@ function Connexion() {
       })
       .then(({ data }) => {
         setCurrentUser(data.user);
-        setUserToken(data.token);
+        setUserToken(data.token,data.user);
          setLoading(true)
       console.log(data)
       alert(`Bienvenu ${data.user.name}`)

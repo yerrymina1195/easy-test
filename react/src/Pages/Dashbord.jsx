@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { BiLogOut } from "react-icons/bi";
 import { FaBookOpen, FaGithub } from "react-icons/fa";
 import { BsGraphDownArrow,BsGraphUpArrow } from "react-icons/bs";
@@ -9,15 +9,32 @@ import { IoMdArrowRoundDown } from "react-icons/io";
 
 
 function Dashbord() {
-  const { setCurrentUser,setUserToken} =
+  const {currentUser, setCurrentUser,setUserToken} =
   useStateContext();
+  const [firstName, setFirstName]=useState(null)
+  const [lastName, setLastName]=useState(null)
+  console.log(currentUser);
+
+useEffect(() => {
+  if (currentUser) {
+    const nameWords = currentUser?.name?.split(" ");
   
+    const firstLetterOfFirstName = nameWords[0].charAt(0);
+    setFirstName(firstLetterOfFirstName)
+    console.log({ firstLetterOfFirstName });
+  
+    const lastWordIndex = nameWords.length - 1;
+    const lastWord = nameWords[lastWordIndex];
+    const firstLetterOfLastName = lastWord.charAt(0);
+    setLastName(firstLetterOfLastName)
+   }
+}, [currentUser]);
   const logout = (e) => {
     e.preventDefault();
     axiosClient.post("/logout").then((res) => {
-      localStorage.removeItem('user')
       setCurrentUser(null);
-      setUserToken(null);
+      setUserToken(null,null);
+      localStorage.clear()
     });
   };
   const dataTable = [
@@ -27,7 +44,7 @@ function Dashbord() {
       contry: "Sénégal",
       phone: "+221 77 124 10 31",
       icon: (
-        <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
           cancelled
         </span>
       ),
@@ -38,7 +55,7 @@ function Dashbord() {
       contry: "Gambie",
       phone: "+221 77 251 85 31",
       icon: (
-        <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
           shipped
         </span>
       ),
@@ -49,7 +66,7 @@ function Dashbord() {
       contry: "Mali",
       phone: "+221 77 754 10 54",
       icon: (
-        <span class="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
+        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
           processing
         </span>
       ),
@@ -60,7 +77,7 @@ function Dashbord() {
       contry: "Guinée",
       phone: "+221 77 125 10 31",
       icon: (
-        <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
           delivered
         </span>
       ),
@@ -71,7 +88,7 @@ function Dashbord() {
       contry: "Sénégal",
       phone: "+221 77 124 10 31",
       icon: (
-        <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
           cancelled
         </span>
       ),
@@ -303,14 +320,13 @@ function Dashbord() {
         <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200 p-5">
           <div className="columns-2">
             <div className="columns-1 gap-3 flex  items-center justify-items-center">
-              <img
-                class="w-12 h-12 rounded-full"
-                src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                alt="user photo"
-              />
+            {currentUser?.name ? (<div className="w-7 h-7 rounded-full text-sm uppercase font-bold flex items-center justify-center bg-black text-white">
+                          <span>{firstName}</span>
+                          <span>{lastName}</span>
+                        </div>):""}
               <div>
                 <h3 className="font-bold">Welcome</h3>
-                <p className="text-gray-500">Demo User</p>
+                <p className="text-gray-500">{currentUser?.name}</p>
               </div>
             </div>
             <div className="float-right">
@@ -372,9 +388,9 @@ function Dashbord() {
       <div className="md:grid md:grid-cols-2 my-5 gap-5">
         <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200">
           <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800">
-            <div class="flex justify-start">
+            <div className="flex justify-start">
               <div className="p-5">
-                <h5 class="leading-none text-xl font-bold text-gray-900 dark:text-white pb-2">
+                <h5 className="leading-none text-xl font-bold text-gray-900 dark:text-white pb-2">
                   Orders per month
                 </h5>
               </div>
@@ -384,9 +400,9 @@ function Dashbord() {
         </div>
         <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200 ">
           <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800 ">
-            <div class="flex justify-start">
+            <div className="flex justify-start">
               <div className="p-5">
-                <h5 class="leading-none text-xl font-bold text-gray-900 dark:text-white pb-2">
+                <h5 className="leading-none text-xl font-bold text-gray-900 dark:text-white pb-2">
                   Total customers
                 </h5>
               </div>
@@ -396,30 +412,30 @@ function Dashbord() {
         </div>
       </div>
       <div className="grid grid-cols-1">
-        <div class="relative border-2 bg-white overflow-x-auto rounded-2xl">
-          <div class="flex items-center border-b-2 gap-5 justify-start p-4  dark:bg-gray-800">
+        <div className="relative border-2 bg-white overflow-x-auto rounded-2xl">
+          <div className="flex items-center border-b-2 gap-5 justify-start p-4  dark:bg-gray-800">
             <h3 className="font-bold">Latest Orders</h3>
           </div>
-          <div class="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
+          <div className="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
             <InputSearch />
           </div>
           <div className="overflow-auto">
-            <table class="md:w-full text-sm text-left  text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table className="md:w-full text-sm text-left  text-gray-500 dark:text-gray-400">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  {/* <th scope="col" class="p-4">
-                    <div class="flex items-center">
+                  {/* <th scope="col" className="p-4">
+                    <div className="flex items-center">
                       <input
                         id="checkbox-all-search"
                         type="checkbox"
-                        class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                       />
-                      <label for="checkbox-all-search" class="sr-only">
+                      <label for="checkbox-all-search" className="sr-only">
                         checkbox
                       </label>
                     </div>
                   </th> */}
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     <div className="flex gap-2">
                       Name{" "}
                       <span>
@@ -427,7 +443,7 @@ function Dashbord() {
                       </span>
                     </div>
                   </th>
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     <div className="flex gap-2">
                       Email address{" "}
                       <span>
@@ -435,10 +451,10 @@ function Dashbord() {
                       </span>
                     </div>
                   </th>
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     Country
                   </th>
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     <div className="flex gap-2">
                       Status{" "}
                       <span>
@@ -446,7 +462,7 @@ function Dashbord() {
                       </span>
                     </div>
                   </th>
-                  <th scope="col" class="px-6 py-3">
+                  <th scope="col" className="px-6 py-3">
                     <div className="flex gap-2">
                       Phone{" "}
                       <span>
@@ -454,7 +470,7 @@ function Dashbord() {
                       </span>
                     </div>
                   </th>
-                  {/* <th scope="col" class="px-6 py-3"></th> */}
+                  {/* <th scope="col" className="px-6 py-3"></th> */}
                 </tr>
               </thead>
               <tbody>
@@ -462,30 +478,30 @@ function Dashbord() {
                   return (
                     <tr
                       key={index}
-                      class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
+                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
                     >
-                      {/* <td class="w-4 p-4">
-                        <div class="flex items-center">
+                      {/* <td className="w-4 p-4">
+                        <div className="flex items-center">
                           <input
                             id="checkbox-table-search-1"
                             type="checkbox"
-                            class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
-                          <label for="checkbox-table-search-1" class="sr-only">
+                          <label for="checkbox-table-search-1" className="sr-only">
                             checkbox
                           </label>
                         </div>
                       </td> */}
-                      <td class="px-6 py-4">{data.name}</td>
-                      <td class="px-6 py-4">{data.email}</td>
-                      <td class="px-6 py-4">{data.contry}</td>
-                      <td class="px-6 py-4">{data.icon}</td>
-                      <td class="px-6 py-4">{data.phone}</td>
-                      {/* <td class="px-6 py-4">
+                      <td className="px-6 py-4">{data.name}</td>
+                      <td className="px-6 py-4">{data.email}</td>
+                      <td className="px-6 py-4">{data.contry}</td>
+                      <td className="px-6 py-4">{data.icon}</td>
+                      <td className="px-6 py-4">{data.phone}</td>
+                      {/* <td className="px-6 py-4">
                         <a
                           href="#"
                           type="button"
-                          class="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
+                          className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                         >
                           <FaRegPenToSquare />
                           Edit
@@ -498,24 +514,24 @@ function Dashbord() {
             </table>
           </div>
           <nav
-            class="flex items-center justify-between p-5"
+            className="flex items-center justify-between p-5"
             aria-label="Table navigation"
           >
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
               Showing{" "}
-              <span class="font-semibold text-gray-900 dark:text-white">
+              <span className="font-semibold text-gray-900 dark:text-white">
                 1-10
               </span>{" "}
               of{" "}
-              <span class="font-semibold text-gray-900 dark:text-white">
+              <span className="font-semibold text-gray-900 dark:text-white">
                 1000
               </span>
             </span>
-            <ul class="inline-flex -space-x-px text-sm h-8">
+            <ul className="inline-flex -space-x-px text-sm h-8">
               <li>
                 <a
                   href="#"
-                  class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   Previous
                 </a>
@@ -523,7 +539,7 @@ function Dashbord() {
               <li>
                 <a
                   href="#"
-                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   1
                 </a>
@@ -531,7 +547,7 @@ function Dashbord() {
               <li>
                 <a
                   href="#"
-                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   2
                 </a>
@@ -540,7 +556,7 @@ function Dashbord() {
                 <a
                   href="#"
                   aria-current="page"
-                  class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                  className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
                 >
                   3
                 </a>
@@ -548,7 +564,7 @@ function Dashbord() {
               <li>
                 <a
                   href="#"
-                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   4
                 </a>
@@ -556,7 +572,7 @@ function Dashbord() {
               <li>
                 <a
                   href="#"
-                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   5
                 </a>
@@ -564,7 +580,7 @@ function Dashbord() {
               <li>
                 <a
                   href="#"
-                  class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   Next
                 </a>
