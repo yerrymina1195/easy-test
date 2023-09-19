@@ -20,16 +20,16 @@ HiViewColumns;
 const Order = () => {
   const cart = [
     {
-      title: "Total Products",
-      number: 50,
+      title: "Orders",
+      number: 1000,
     },
     {
-      title: "Product Inventory",
-      number: 252,
+      title: "Open Orders",
+      number: 205,
     },
     {
       title: "Average price",
-      number: 248.63,
+      number: 1.05607,
     },
   ];
   const dataTable = [
@@ -37,7 +37,11 @@ const Order = () => {
       name: "Lorem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Jav 12, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          delivered
+        </span>
+      ),
       image: example,
       price: 452,
       sKU: 123456,
@@ -48,7 +52,11 @@ const Order = () => {
       name: "Lorem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Nov 22, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
+      icon: (
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          cancelled
+        </span>
+      ),
       image: example1,
       price: 415,
       sKU: 123456,
@@ -59,7 +67,11 @@ const Order = () => {
       name: "Lorem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Avr 5, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          delivered
+        </span>
+      ),
       image: example2,
       price: 157,
       sKU: 123456,
@@ -70,7 +82,11 @@ const Order = () => {
       name: "Lorem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Dec 6, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
+      icon: (
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          cancelled
+        </span>
+      ),
       image: example3,
       price: 568,
       sKU: 123456,
@@ -81,7 +97,11 @@ const Order = () => {
       name: "Lorem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Mai 7, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
+      icon: (
+        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
+          processing
+        </span>
+      ),
       image: example5,
       price: 345,
       sKU: 123456,
@@ -92,7 +112,11 @@ const Order = () => {
       name: "Lorem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Jav 17, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
+      icon: (
+        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
+          processing
+        </span>
+      ),
       image: example4,
       price: 451,
       sKU: 123456,
@@ -103,7 +127,11 @@ const Order = () => {
       name: "Lorem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Dec 6, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
+      icon: (
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          cancelled
+        </span>
+      ),
       image: example6,
       price: 956,
       sKU: 123456,
@@ -114,7 +142,11 @@ const Order = () => {
       name: "Lorem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Mai 7, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          shipped
+        </span>
+      ),
       image: example7,
       price: 653,
       sKU: 123456,
@@ -125,7 +157,11 @@ const Order = () => {
       name: "Lorem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Jav 17, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          shipped
+        </span>
+      ),
       image: example10,
       price: 230,
       sKU: 123456,
