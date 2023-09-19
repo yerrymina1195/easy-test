@@ -17,7 +17,7 @@ const Categories = () => {
       SetCategory(data);
     });
   };
-  console.log(category);
+ 
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">

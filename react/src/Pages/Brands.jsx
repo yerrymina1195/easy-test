@@ -7,44 +7,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 const Brands = () => {
-  const dataTable = [
-    {
-      name: "Abdoulaye SENE",
-      website: "http://localhost/dashboard/",
-      date: "Jav 12, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Latyr SENE",
-      website: "http://localhost/dashboard/",
-      date: "Nov 22, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Maina SOW",
-      website: "http://localhost/dashboard/",
-      date: "Avr 5, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-    {
-      name: "Mariéme DIOP",
-      website: "http://localhost/dashboard/",
-      date: "Dec 6, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Rakhma BIAYE",
-      website: "http://localhost/dashboard/",
-      date: "Mai 7, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-    {
-      name: "Moussa FALL",
-      website: "http://localhost/dashboard/",
-      date: "Jav 17, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-  ];
+  
   const [brand, SetBrand] = useState([]);
   useEffect(() => {
     fetchCategory();

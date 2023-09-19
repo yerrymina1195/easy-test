@@ -31,7 +31,7 @@ const BrandsCreate = () => {
           text: data.message,
         });
         setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
-        navigate("/brand");
+        navigate("/brands");
       })
       .catch(({ response }) => {
         if (response.status === 422) {
@@ -49,6 +49,10 @@ const BrandsCreate = () => {
     setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
     navigate("/categories");
   };
+  const handleToggle =  (e) => {
+    setVisibility(!visibility)
+  };
+ console.log(visibility);
   return (
     <div className="container m-10 mx-auto">
       <div className="columns-1 m-5">
@@ -124,15 +128,18 @@ const BrandsCreate = () => {
                   parent
                 </label>
               </div>
-              <div class="relative z-0 mb-6 group">
-                <BtnToggle name={"Visible to customers."}/>
+              <div class="relative z-0 mb-6 group"  onClick={handleToggle} >
+              <BtnToggle  value={visibility } onChange={(event) => {
+                    setVisibility(event.target.value);
+                  }}
+                         name={"Visible to Brand."} />
               </div>
             </div>
             <div class="grid md:grid-cols-1">
-              <div  value={description}
+              <div class ="relative z-0 w-full mb-12 group"   value={description}
                   onChange={(event) => {
                     setDescrition(event.target.value);
-                  }}class ="relative z-0 w-full mb-12 group">     
+                  }}>     
                 <Editor  />
               </div>
             </div>

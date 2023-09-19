@@ -153,7 +153,8 @@ const CategoriesCreate = () => {
                 </label>
               </div>
               <div class="relative z-0 mb-6 group">
-                <BtnToggle name={"Visible to customers."} />
+                <BtnToggle   value={visibility} onChange={(event) => { setVisibility(event.target.value);}}
+                         name={"Visible to customers."} />
               </div>
             </div>
             <div class="grid md:grid-cols-1">
