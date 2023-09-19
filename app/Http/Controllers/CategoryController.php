@@ -13,11 +13,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // return response()->json(Category::get());
         $category = Category::all();
         return response()->json($category);
-        // return Category::select('id','title','nom', 'slug', 'url','visibility','description')->get();
-    }
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +45,7 @@ class CategoryController extends Controller
     // return redirect('/cars')->with('success', 'Voiture créer avec succèss');
 
 
-     $category =  Category::create([
+     $brand =  Category::create([
             "nom"=>$request->nom,
             'url'=>$request->url,
             'slug'=>$request->slug,
