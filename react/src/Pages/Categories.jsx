@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Categories = () => {
-  const [visibility,setVisibility]=useState(false);
   const [category, SetCategory] = useState([]);
   useEffect(() => {
     fetchCategory();

@@ -3,7 +3,7 @@ import BtnToggle from "../components/BtnToggle";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 const CategoriesCreate = () => {
   const [nom, setNom] = useState("");
   const [slug, setSlug] = useState("");
@@ -12,14 +12,14 @@ const CategoriesCreate = () => {
   const [visibility, setVisibility] = useState(false);
   const [validationError, setValidationError] = useState({});
   const navigate = useNavigate();
-
+  const {id} = useParams()
   const create = async (e) => {
     e.preventDefault();
 
     await axios
       .post(`http://localhost:8000/api/categorie`, {
         nom: nom,
-        url: url,
+        url: url,      
         slug: slug,
         visibility: visibility,
         description: description,
@@ -29,6 +29,37 @@ const CategoriesCreate = () => {
           icon: "success",
           text: data.message,
         });
+        setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
+        navigate("/categories");
+      })
+      .catch(({ response }) => {
+        if (response.status === 422) {
+          setValidationError(response.data.errors);
+        } else {
+          Swal.fire({
+            text: response.data.message,
+            icon: "error",
+          });
+        }
+      });
+  };
+  const update = async (e) => {
+    e.preventDefault();
+
+    await axios
+      .post(`http://localhost:8000/api/categorie/${id}`, {
+        nom: nom,
+        url: url,      
+        slug: slug,
+        visibility: visibility,
+        description: description,
+      })
+      .then(({ data }) => {
+        Swal.fire({
+          icon: "success",
+          text: data.message,
+        });
+        setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
         navigate("/categories");
       })
       .catch(({ response }) => {
@@ -118,7 +149,7 @@ const CategoriesCreate = () => {
                   for="parent"
                   class="peer-focus:font-medium absolute text-sm text-gray-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                 >
-                  Website
+                  parent
                 </label>
               </div>
               <div class="relative z-0 mb-6 group">
@@ -133,10 +164,12 @@ const CategoriesCreate = () => {
                   setDescrition(event.target.value);
                 }}
               >
-                <Editor  value={description}
-                onChange={(event) => {
-                  setDescrition(event.target.value);
-                }} />
+                <Editor
+                  value={description}
+                  onChange={(event) => {
+                    setDescrition(event.target.value);
+                  }}
+                />
               </div>
             </div>
           </div>
