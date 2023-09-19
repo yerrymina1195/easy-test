@@ -45,7 +45,7 @@ class CategoryController extends Controller
     // return redirect('/cars')->with('success', 'Voiture créer avec succèss');
 
 
-     $brand =  Category::create([
+     $category =  Category::create([
             "nom"=>$request->nom,
             'url'=>$request->url,
             'slug'=>$request->slug,

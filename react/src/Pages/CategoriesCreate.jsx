@@ -159,10 +159,7 @@ const CategoriesCreate = () => {
             <div class="grid md:grid-cols-1">
               <div
                 class="relative z-0 w-full mb-12 group"
-                value={description}
-                onChange={(event) => {
-                  setDescrition(event.target.value);
-                }}
+               
               >
                 <Editor
                   value={description}

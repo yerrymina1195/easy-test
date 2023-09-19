@@ -4,7 +4,8 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
+import { useState, useEffect } from "react";
 const Brands = () => {
   const dataTable = [
     {
@@ -44,6 +45,16 @@ const Brands = () => {
       icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
     },
   ];
+  const [brand, SetBrand] = useState([]);
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    await axios.get(`http://localhost:8000/api/brand`).then(({ data }) => {
+      SetBrand(data);
+    });
+  };
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">
@@ -116,7 +127,7 @@ const Brands = () => {
               </tr>
             </thead>
             <tbody>
-              {dataTable.map((data) => {
+              {brand.map((data) => {
                 return (
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
                     <td class="w-4 p-4">
@@ -131,10 +142,17 @@ const Brands = () => {
                         </label>
                       </div>
                     </td>
-                    <td class="px-6 py-4">{data.name}</td>
-                    <td class="px-6 py-4">{data.website}</td>
-                    <td class="px-6 py-4">{data.icon}</td>
-                    <td class="px-6 py-4">{data.date}</td>
+                    <td class="px-6 py-4">{data.nom}</td>
+                    <td class="px-6 py-4">{data.slug}</td>
+                    <td class="px-6 py-4">
+                       { data.visibility? (<AiOutlineCheckCircle className="w-5 h-5 text-green-700" />) 
+                       : (
+                     <AiOutlineCloseCircle className="w-5 h-5 text-red-700" /> 
+                      )}
+
+                      
+                    </td>
+                    <td class="px-6 py-4">{data.updated_at}</td>
                     <td class="px-6 py-4">
                       <a
                         href="#"

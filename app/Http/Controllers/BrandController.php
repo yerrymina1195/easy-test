@@ -38,18 +38,15 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         //
-        
-     $category =  Category::create([
-        "nom"=>$request->nom,
-        'url'=>$request->url,
-        'slug'=>$request->slug,
-        'visibility'=>$request->visibility, 
-        'description'=>$request-> description
-    ]);
-     return response()->json(['message' =>'Category Created Successfully!!',
-    'category'=> $category]);
-}
-
+          $brand = Brand::create([
+            "nom"=>$request->nom,
+            'url'=>$request->url,
+            'slug'=>$request->slug,
+            'visibility'=>$request->visibility, 
+            'description'=>$request-> description
+        ]);
+         return response()->json(['message' =>'Brand Created Successfully!!',
+        'category'=> $brand]);
     }
 
     /**
@@ -61,6 +58,11 @@ class BrandController extends Controller
     public function show(Brand $brand)
     {
         //
+        return response()->json([
+            'category'=>$brand
+            
+        ]);
+        console.log($brand);
     }
 
     /**
