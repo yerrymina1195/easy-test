@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Router } from "react-router-dom";
 const axiosClient = axios.create({
-    baseURL: `http://localhost:8000/api`,
+    baseURL: `http://localhost:8000/api`,  
   });
 
   axiosClient.interceptors.request.use((config) => {
@@ -22,9 +22,15 @@ const axiosClient = axios.create({
     throw error;
   })
 
-  
+   export const axiosCategorie= axios.create({
+    baseURL: `http://localhost:8000/api`,
+    headers:{
+      'content-type':' application/json'
+    }
+   })
   
   
  
   
-  export default axiosClient;
+   export default axiosClient;
+

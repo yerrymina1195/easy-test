@@ -8,6 +8,9 @@ import CustomersCreate from "./Pages/CustomersCreate";
 import Categories from "./Pages/Categories";
 import Brands from "./Pages/Brands";
 import BrandsCreate from "./Pages/BrandsCreate";
+import CategoriesCreate from "./Pages/CategoriesCreate";
+import Test from "./components/Test";
+import ExempleDashboard from "./components/ExempleDashboard";
 
 function App() {
   return (
@@ -18,8 +21,12 @@ function App() {
       <Route path="/customers" element={<Customers />} />
       <Route path="/customers/create" element={<CustomersCreate />} />
       <Route path="/categories" element={<Categories />} />
+      <Route path="/categories/create" element={<CategoriesCreate />} />
       <Route path="/brands" element={<Brands />} />
       <Route path="/brands/create" element={<BrandsCreate />} />
+
+      
+      <Route path="/exemple" element={<ExempleDashboard />} />
     </Routes>
   );
 }

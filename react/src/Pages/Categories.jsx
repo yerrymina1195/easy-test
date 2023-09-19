@@ -1,48 +1,24 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import InputSearch from "../components/InputSearch";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Categories = () => {
-  const dataTable = [
-    {
-      name: "Abdoulaye SENE",
-      parent: "Lorem ipsum dolor sit",
-      date: "Jav 12, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Latyr SENE",
-      parent: "Lorem ipsum dolor sit",
-      date: "Nov 22, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Maina SOW",
-      parent: "Lorem ipsum dolor sit",
-      date: "Avr 5, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-    {
-      name: "Mariéme DIOP",
-      parent: "Lorem ipsum dolor sit",
-      date: "Dec 6, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Rakhma BIAYE",
-      parent: "Lorem ipsum dolor sit",
-      date: "Mai 7, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-    {
-      name: "Moussa FALL",
-      parent: "Lorem ipsum dolor sit",
-      date: "Jav 17, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-  ];
+  const [visibility,setVisibility]=useState(false);
+  const [category, SetCategory] = useState([]);
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    await axios.get(`http://localhost:8000/api/categorie`).then(({ data }) => {
+      SetCategory(data);
+    });
+  };
+  console.log(category);
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">
@@ -51,9 +27,11 @@ const Categories = () => {
           <h2 className="text-2xl py-3 font-bold">Categories</h2>
         </div>
         <div className="grid justify-items-end">
-          <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-            New Categories
-          </button>
+          <Link to="/categories/create">
+            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
+              New Categories
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -113,9 +91,13 @@ const Categories = () => {
               </tr>
             </thead>
             <tbody>
-              {dataTable.map((data) => {
+              {category.map((data) => {
                 return (
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
+                  <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700
+                   hover:bg-gray-50 dark:hover:bg-amber-600"
+                    key={data.id}
+                  >
                     <td class="w-4 p-4">
                       <div class="flex items-center">
                         <input
@@ -128,10 +110,17 @@ const Categories = () => {
                         </label>
                       </div>
                     </td>
-                    <td class="px-6 py-4">{data.name}</td>
-                    <td class="px-6 py-4">{data.parent}</td>
-                    <td class="px-6 py-4">{data.icon}</td>
-                    <td class="px-6 py-4">{data.date}</td>
+                    <td class="px-6 py-4">{data.nom}</td>
+                    <td class="px-6 py-4">{data.slug}</td>
+                    <td class="px-6 py-4">
+                       { data.visibility? (<AiOutlineCheckCircle className="w-5 h-5 text-green-700" />) 
+                       : (
+                     <AiOutlineCloseCircle className="w-5 h-5 text-red-700" /> 
+                      )}
+
+                      
+                    </td>
+                    <td class="px-6 py-4">{data.updated_at}</td>
                     <td class="px-6 py-4">
                       <a
                         href="#"
