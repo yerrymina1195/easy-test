@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const Editor = () => {
+const Editor = ({valeur,change}) => {
   const [value, setValue] = useState("");
   var toolbarOptions = [
     ["bold", "italic", "strike", "link", "image"], // toggled buttons

@@ -1,49 +1,25 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import InputSearch from "../components/InputSearch";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useStateContext } from "../contexts/ContextProvider";
+import axiosClient from "../axios.js";
 
 const Categories = () => {
-  const dataTable = [
-    {
-      name: "Abdoulaye SENE",
-      parent: "Lorem ipsum dolor sit",
-      date: "Jav 12, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Latyr SENE",
-      parent: "Lorem ipsum dolor sit",
-      date: "Nov 22, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Maina SOW",
-      parent: "Lorem ipsum dolor sit",
-      date: "Avr 5, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-    {
-      name: "Mariéme DIOP",
-      parent: "Lorem ipsum dolor sit",
-      date: "Dec 6, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Rakhma BIAYE",
-      parent: "Lorem ipsum dolor sit",
-      date: "Mai 7, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-    {
-      name: "Moussa FALL",
-      parent: "Lorem ipsum dolor sit",
-      date: "Jav 17, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-  ];
+  const {updatecategorie,category} =
+  useStateContext();
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    await axiosClient.get(`/categorie`).then(({ data }) => {
+      updatecategorie(data);
+    });
+  };
+
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">
@@ -116,10 +92,11 @@ const Categories = () => {
               </tr>
             </thead>
             <tbody>
-              {dataTable.map((data) => {
+              {category.map((data) => {
                 return (
                   <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700
+                   hover:bg-gray-50 dark:hover:bg-amber-600"
                     key={data.id}
                   >
                     <td class="w-4 p-4">
@@ -134,10 +111,17 @@ const Categories = () => {
                         </label>
                       </div>
                     </td>
-                    <td class="px-6 py-4">{data.name}</td>
-                    <td class="px-6 py-4">{data.parent}</td>
-                    <td class="px-6 py-4">{data.icon}</td>
-                    <td class="px-6 py-4">{data.date}</td>
+                    <td class="px-6 py-4">{data.nom}</td>
+                    <td class="px-6 py-4">{data.slug}</td>
+                    <td class="px-6 py-4">
+                       { data.visibility? (<AiOutlineCheckCircle className="w-5 h-5 text-green-700" />) 
+                       : (
+                     <AiOutlineCloseCircle className="w-5 h-5 text-red-700" /> 
+                      )}
+
+                      
+                    </td>
+                    <td class="px-6 py-4">{data.updated_at}</td>
                     <td class="px-6 py-4">
                       <a
                         href="#"
