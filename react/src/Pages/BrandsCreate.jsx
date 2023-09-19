@@ -13,14 +13,14 @@ const BrandsCreate = () => {
   const [visibility, setVisibility] = useState(false);
   const [validationError, setValidationError] = useState({});
   const navigate = useNavigate();
-  const {id} = useParams()
+  const { id } = useParams();
   const create = async (e) => {
     e.preventDefault();
 
     await axios
       .post(`http://localhost:8000/api/brand`, {
         nom: nom,
-        url: url,      
+        url: url,
         slug: slug,
         visibility: visibility,
         description: description,
@@ -30,7 +30,11 @@ const BrandsCreate = () => {
           icon: "success",
           text: data.message,
         });
-        setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
+        setNom(""),
+          setUrl(""),
+          setSlug(" "),
+          setVisibility(""),
+          setDescrition("");
         navigate("/brands");
       })
       .catch(({ response }) => {
@@ -49,10 +53,9 @@ const BrandsCreate = () => {
     setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
     navigate("/categories");
   };
-  const handleToggle =  (e) => {
-    setVisibility(!visibility)
+  const handleToggle = (e) => {
+    setVisibility(!visibility);
   };
- console.log(visibility);
   return (
     <div className="container m-10 mx-auto">
       <div className="columns-1 m-5">
@@ -88,7 +91,6 @@ const BrandsCreate = () => {
               <div class="relative z-0 w-full mb-6 group">
                 <input
                   type="text"
-                  
                   name="slug"
                   id="slug"
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
@@ -97,7 +99,6 @@ const BrandsCreate = () => {
                   onChange={(event) => {
                     setSlug(event.target.value);
                   }}
-                  
                 />
                 <label
                   for="slug"
@@ -128,19 +129,26 @@ const BrandsCreate = () => {
                   parent
                 </label>
               </div>
-              <div class="relative z-0 mb-6 group"  onClick={handleToggle} >
-              <BtnToggle  value={visibility } onChange={(event) => {
+              <div class="relative z-0 mb-6 group">
+                <BtnToggle
+                  checked={visibility}
+                  value={visibility}
+                  handleClick={handleToggle}
+                  onChange={(event) => {
                     setVisibility(event.target.value);
                   }}
-                         name={"Visible to Brand."} />
+                  name={"Visible to Brand."}
+                />
               </div>
             </div>
             <div class="grid md:grid-cols-1">
-              <div class ="relative z-0 w-full mb-12 group"   value={description}
-                  onChange={(event) => {
-                    setDescrition(event.target.value);
-                  }}>     
-                <Editor  />
+              <div
+                class="relative z-0 w-full mb-12 group">
+                 <Editor
+                  value={description}
+                  onChange={
+                    setDescrition}
+                />
               </div>
             </div>
           </div>
