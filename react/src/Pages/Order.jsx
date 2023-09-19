@@ -17,7 +17,7 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { FaFilter } from "react-icons/fa";
 import { HiViewColumns } from "react-icons/hi2";
 HiViewColumns;
-const Produits = () => {
+const Order = () => {
   const cart = [
     {
       title: "Total Products",
@@ -137,13 +137,13 @@ const Produits = () => {
     <div class="mt-5">
       <div className="columns-2">
         <div className="grid justify-items-start">
-          <p className="">Products &#62; List</p>
-          <h2 className="text-2xl py-3 font-bold">Products</h2>
+          <p className="">Orders &#62; List</p>
+          <h2 className="text-2xl py-3 font-bold">Orders</h2>
         </div>
         <div className="grid justify-items-end ">
           <Link to="/customers/create">
             <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-              New Products
+              New Orders
             </button>
           </Link>
         </div>
@@ -473,4 +473,4 @@ const Produits = () => {
   );
 };
 
-export default Produits;
+export default Order;

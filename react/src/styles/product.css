@@ -18,10 +18,10 @@ tr{
     border-bottom: 1px solid #ccc;
     width: 100%;
 }
-.recherche{
+/* .recherche{
     display: flex;
     justify-content: end;
-}
+} */
 
 .cadre{
     background-color: white;
