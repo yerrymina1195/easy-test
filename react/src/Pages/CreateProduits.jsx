@@ -14,14 +14,14 @@ const CreateProduits = () => {
         </div>
       </div>
 
-      <div class="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2">
           {/* premier cadre */}
-          <div class="cadre">
+          <div className="cadre">
             <form action="">
-              <div class="grid gap-x-1 grid-cols-2 px-2">
-                <div class="">
-                  <label class="font-bold">
+              <div className="grid gap-x-1 grid-cols-2 px-2">
+                <div className="">
+                  <label className="font-bold">
                     Name <span className="text-red-600">*</span>
                   </label>
                   <input
@@ -30,7 +30,7 @@ const CreateProduits = () => {
                   />
                 </div>
                 <div className="pl-5">
-                  <label class="font-bold">Limace</label>
+                  <label className="font-bold">Limace</label>
                   <input
                     type="text"
                     className="block px-2 w-full text border-gray-300  dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer rounded-xl"
@@ -38,26 +38,26 @@ const CreateProduits = () => {
                 </div>
               </div>
               <div className="px-2 py-5">
-                <label class="font-bold">Description</label>
+                <label className="font-bold">Description</label>
                 <Editor className="text-red-600 rounded-md" />
               </div>
             </form>
           </div>
           {/* images */}
-          <div class="cadre-milieu w-auto my-5 px-5 border-md flex">
+          <div className="cadre-milieu w-auto my-5 px-5 border-md flex">
             images
             <FiChevronDown className="mt-1 ms-auto text-2xl" />
           </div>
           {/* deuxieme cadre */}
           <div className="cadre my-5 py-7">
             <div className="border-b-2 w-100 py-1 border-gray-600 ">
-              <p class="font-bold">Pricing</p>
+              <p className="font-bold">Pricing</p>
             </div>
-            <div class="py-5">
+            <div className="py-5">
               <form action="">
-                <div class="grid gap-x-1 grid-cols-2 px-2 py-5">
-                  <div class="">
-                    <label class="font-bold">
+                <div className="grid gap-x-1 grid-cols-2 px-2 py-5">
+                  <div className="">
+                    <label className="font-bold">
                       Price <span className="text-red-600">*</span>
                     </label>
                     <input
@@ -66,7 +66,7 @@ const CreateProduits = () => {
                     />
                   </div>
                   <div className="pl-5">
-                    <label class="font-bold">
+                    <label className="font-bold">
                       Compare at price <span className="text-red-600">*</span>
                     </label>
                     <input
@@ -75,8 +75,8 @@ const CreateProduits = () => {
                     />
                   </div>
                 </div>
-                <div class="grid-cols-1 px-2">
-                  <label class="font-bold">
+                <div className="grid-cols-1 px-2">
+                  <label className="font-bold">
                     Cost per item <span className="text-red-600">*</span>
                   </label>
                   <input
@@ -95,13 +95,13 @@ const CreateProduits = () => {
 
           <div className="cadre my-5">
             <div className="border-b-2 w-100 py-1 border-gray-600 ">
-              <p class="font-bold">Inventory</p>
+              <p className="font-bold">Inventory</p>
             </div>
-            <div class="px-4 py-5">
+            <div className="px-4 py-5">
               <form action="">
-                <div class="grid gap-x-1 grid-cols-2 px-2 py-5">
-                  <div class="">
-                    <label class="font-bold">
+                <div className="grid gap-x-1 grid-cols-2 px-2 py-5">
+                  <div className="">
+                    <label className="font-bold">
                       SKU (Stock Keeping Unit){" "}
                       <span className="text-red-600">*</span>
                     </label>
@@ -111,7 +111,7 @@ const CreateProduits = () => {
                     />
                   </div>
                   <div className="pl-5">
-                    <label class="font-bold">
+                    <label className="font-bold">
                       Barcode (ISBN, UPC, GTIN, etc.){" "}
                       <span className="text-red-600">*</span>
                     </label>
@@ -121,9 +121,9 @@ const CreateProduits = () => {
                     />
                   </div>
                 </div>
-                <div class="grid gap-x-1 grid-cols-2 px-2 py-5">
-                  <div class="">
-                    <label class="font-bold">
+                <div className="grid gap-x-1 grid-cols-2 px-2 py-5">
+                  <div className="">
+                    <label className="font-bold">
                       Quantity <span className="text-red-600">*</span>
                     </label>
                     <input
@@ -132,7 +132,7 @@ const CreateProduits = () => {
                     />
                   </div>
                   <div className="pl-5">
-                    <label class="font-bold">
+                    <label className="font-bold">
                       Security stock <span className="text-red-600">*</span>
                     </label>
                     <input
@@ -154,17 +154,17 @@ const CreateProduits = () => {
 
           <div className="cadremoins my-5">
             <div className="border-b-2 w-100 py-1 border-gray-600 ">
-              <p class="font-bold">Inventory</p>
+              <p className="font-bold">Inventory</p>
             </div>
-            <div class="px-4 py-5">
+            <div className="px-4 py-5">
               <form action="">
-                <div class="grid gap-x-1 grid-cols-2 px-2 py-5">
-                  <div class="">
+                <div className="grid gap-x-1 grid-cols-2 px-2 py-5">
+                  <div className="">
                     <input
                       type="checkbox"
                       className="px-2 text-amber-600 mb-1 text border-gray-300  dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600"
                     />
-                    <label class="ml-2 mt-4">
+                    <label className="ml-2 mt-4">
                       SKU (Stock Keeping Unit){" "}
                       <span className="text-red-600">*</span>
                     </label>
@@ -174,7 +174,7 @@ const CreateProduits = () => {
                       type="checkbox"
                       className="px-2 mb-1 border-gray-300 text-amber-600 dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600"
                     />
-                    <label class="ml-2 mt-4">
+                    <label className="ml-2 mt-4">
                       Barcode (ISBN, UPC, GTIN, etc.){" "}
                       <span className="text-red-600">*</span>
                     </label>
@@ -189,10 +189,10 @@ const CreateProduits = () => {
             <button className="bg-amber-600 rounded-md py-2 px-4 text-white font-bold">
               Create
             </button>
-            <button class="bg-white ml-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-md shadow">
+            <button className="bg-white ml-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-md shadow">
               Create & create another
             </button>
-            <button class="bg-white ml-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-md shadow">
+            <button className="bg-white ml-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-md shadow">
               Cancel
             </button>
           </div>
@@ -204,7 +204,7 @@ const CreateProduits = () => {
               status
             </div>
             <div className="px-4">
-              <div class="flex mt-3">
+              <div className="flex mt-3">
                 <BtnToggle name={"Visible"} />
               </div>
               <div>
@@ -214,7 +214,7 @@ const CreateProduits = () => {
                 </p>
               </div>
               <div className="mt-4 mb-3">
-                <label class="font-bold">
+                <label className="font-bold">
                   Avaibility <span className="text-red-600">*</span>
                 </label>
                 <input
@@ -228,7 +228,7 @@ const CreateProduits = () => {
             <div className="border-b-2 w-100 py-3 font-bold border-gray-600 ">
               Associations
             </div>
-            <div class="px-4">
+            <div className="px-4">
               <div className="mt-10">
                 <label className="mt-2">Brand</label>
                 <select

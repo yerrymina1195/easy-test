@@ -20,7 +20,7 @@ const Editor = ({valeur,change}) => {
         theme="snow"
         value={value}
         onChange={setValue}
-      
+        style={{height:"150px"}}
         className="h-auto"
       />
 

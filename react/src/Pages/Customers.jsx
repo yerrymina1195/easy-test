@@ -57,28 +57,28 @@ const Customers = () => {
         </div>
       </div>
 
-      <div class="relative border-2 bg-white overflow-x-auto rounded-2xl">
-        <div class="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
+      <div className="relative border-2 bg-white overflow-x-auto rounded-2xl">
+        <div className="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
           <InputSearch />
           <IconNotification icon={<FaFilter />} number={0} />
         </div>
         <div className="overflow-auto">
-          <table class="md:w-full text-sm text-left  text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <table className="md:w-full text-sm text-left  text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="p-4">
-                  <div class="flex items-center">
+                <th scope="col" className="p-4">
+                  <div className="flex items-center">
                     <input
                       id="checkbox-all-search"
                       type="checkbox"
-                      class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
-                    <label for="checkbox-all-search" class="sr-only">
+                    <label htmlFor="checkbox-all-search" className="sr-only">
                       checkbox
                     </label>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Name{" "}
                     <span>
@@ -86,7 +86,7 @@ const Customers = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Email address{" "}
                     <span>
@@ -94,10 +94,10 @@ const Customers = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   Country
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Phone{" "}
                     <span>
@@ -105,49 +105,49 @@ const Customers = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3"></th>
+                <th scope="col" className="px-6 py-3"></th>
               </tr>
             </thead>
             <tbody>
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
-                <td class="w-4 p-4"></td>
-                <td class="px-6 py-4">
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
+                <td className="w-4 p-4"></td>
+                <td className="px-6 py-4">
                   <InputSearch />
                 </td>
-                <td class="px-6 py-4">
+                <td className="px-6 py-4">
                   <InputSearch />
                 </td>
-                <td class="px-6 py-4"></td>
-                <td class="px-6 py-4"></td>
-                <td class="px-6 py-4"></td>
+                <td className="px-6 py-4"></td>
+                <td className="px-6 py-4"></td>
+                <td className="px-6 py-4"></td>
               </tr>
               {dataTable.map((data, index) => {
                 return (
                   <tr
                     key={index}
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
                   >
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
+                    <td className="w-4 p-4">
+                      <div className="flex items-center">
                         <input
                           id="checkbox-table-search-1"
                           type="checkbox"
-                          class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label for="checkbox-table-search-1" class="sr-only">
+                        <label htmlFor="checkbox-table-search-1" className="sr-only">
                           checkbox
                         </label>
                       </div>
                     </td>
-                    <td class="px-6 py-4">{data.name}</td>
-                    <td class="px-6 py-4">{data.email}</td>
-                    <td class="px-6 py-4">{data.contry}</td>
-                    <td class="px-6 py-4">{data.phone}</td>
-                    <td class="px-6 py-4">
+                    <td className="px-6 py-4">{data.name}</td>
+                    <td className="px-6 py-4">{data.email}</td>
+                    <td className="px-6 py-4">{data.contry}</td>
+                    <td className="px-6 py-4">{data.phone}</td>
+                    <td className="px-6 py-4">
                       <a
                         href="#"
                         type="button"
-                        class="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
+                        className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                       >
                         <FaRegPenToSquare />
                         Edit
