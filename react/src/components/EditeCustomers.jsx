@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BtnToggle from "./BtnToggle";
-import Editor from "./Editor";
 
 const EditeCustomers = () => {
   return (
