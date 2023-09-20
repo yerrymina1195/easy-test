@@ -6,10 +6,10 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 import axiosClient from "../axios.js";
+import FilAriane from "../components/FilAriane";
 
 const Categories = () => {
-  const {updatecategorie,category} =
-  useStateContext();
+  const { updatecategorie, category } = useStateContext();
   useEffect(() => {
     fetchCategory();
   }, []);
@@ -20,28 +20,20 @@ const Categories = () => {
     });
   };
 
- 
   return (
     <div className="container overflow-auto m-10 mx-auto">
-      <div className="columns-2">
-        <div className="grid justify-items-start">
-          <p className="text-gray-500">Categories &#62; List</p>
-          <h2 className="text-xl py-3 font-bold">Categories</h2>
-        </div>
-        <div className="grid justify-items-end">
-          <Link to="/categories/create">
-            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-              New Categories
-            </button>
-          </Link>
-        </div>
-      </div>
-
+      <FilAriane
+        linkOne={"/categories"}
+        nameOne={"Categories"}
+        nameTwo={"Categories"}
+        linkTwo={"/categories/create"}
+        button={"New Categories"}
+      />
       <div className="relative border-2 bg-white rounded-2xl">
-        <div className="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
+        <div className="flex items-center justify-center border-b-2 gap-5 md:justify-end p-4  dark:bg-gray-800">
           <InputSearch />
         </div>
-        <div className="overflow-auto ">
+        <div className="relative overflow-x-auto">
           <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -98,8 +90,8 @@ const Categories = () => {
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700
                    hover:bg-gray-50 dark:hover:bg-amber-600"
-                   key={index}
-                   >
+                    key={index}
+                  >
                     <td className="w-4 p-4">
                       <div className="flex items-center">
                         <input
@@ -107,22 +99,24 @@ const Categories = () => {
                           type="checkbox"
                           className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label htmlFor="checkbox-table-search-1" className="sr-only">
+                        <label
+                          htmlFor="checkbox-table-search-1"
+                          className="sr-only"
+                        >
                           checkbox
                         </label>
                       </div>
                     </td>
-                    <td className="px-6 py-4">{data.nom}</td>
-                    <td className="px-6 py-4">{data.slug}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.nom}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.slug}</td>
                     <td className="px-6 py-4">
-                       { data.visibility? (<AiOutlineCheckCircle className="w-5 h-5 text-green-700" />) 
-                       : (
-                     <AiOutlineCloseCircle className="w-5 h-5 text-red-700" /> 
+                      {data.visibility ? (
+                        <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />
+                      ) : (
+                        <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />
                       )}
-
-                      
                     </td>
-                    <td className="px-6 py-4">{data.updated_at}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.updated_at}</td>
                     <td className="px-6 py-4">
                       <a
                         href="#"
@@ -153,63 +147,63 @@ const Categories = () => {
               1000
             </span>
           </span>
-          <ul className="inline-flex -space-x-px text-sm h-8">
+          <ul className=" md:inline-flex hidden -space-x-px text-sm h-8">
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Previous
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 1
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 2
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 aria-current="page"
                 className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
               >
                 3
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 4
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 5
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Next
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

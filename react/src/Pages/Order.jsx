@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import IconNotification from "../components/IconNotification";
-import example from "../images/cooffe.jpeg";
 import example1 from "../images/code.jpeg";
 import example2 from "../images/in.jpeg";
 import example3 from "../images/inf.jpeg";
@@ -16,6 +15,7 @@ import { IoMdArrowRoundDown } from "react-icons/io";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { FaFilter } from "react-icons/fa";
 import { HiViewColumns } from "react-icons/hi2";
+import FilAriane from "../components/FilAriane";
 HiViewColumns;
 const Order = () => {
   const cart = [
@@ -34,156 +34,89 @@ const Order = () => {
   ];
   const dataTable = [
     {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
       date: "Jav 12, 2023",
-      icon: (
+      status: (
         <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
           delivered
         </span>
       ),
-      image: example,
-      price: 452,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
+      currency: 452,
+      total: 123456,
+      shipping: 9,
     },
     {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Nov 22, 2023",
-      icon: (
-        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
-          cancelled
-        </span>
-      ),
-      image: example1,
-      price: 415,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Avr 5, 2023",
-      icon: (
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
         <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
           delivered
         </span>
       ),
-      image: example2,
-      price: 157,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
+      currency: 452,
+      total: 123456,
+      shipping: 9,
     },
     {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Dec 6, 2023",
-      icon: (
-        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
-          cancelled
-        </span>
-      ),
-      image: example3,
-      price: 568,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Mai 7, 2023",
-      icon: (
-        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
-          processing
-        </span>
-      ),
-      image: example5,
-      price: 345,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Jav 17, 2023",
-      icon: (
-        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
-          processing
-        </span>
-      ),
-      image: example4,
-      price: 451,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Dec 6, 2023",
-      icon: (
-        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
-          cancelled
-        </span>
-      ),
-      image: example6,
-      price: 956,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Mai 7, 2023",
-      icon: (
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
         <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
-          shipped
+          delivered
         </span>
       ),
-      image: example7,
-      price: 653,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
+      currency: 452,
+      total: 123456,
+      shipping: 9,
     },
     {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Jav 17, 2023",
-      icon: (
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
         <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
-          shipped
+          delivered
         </span>
       ),
-      image: example10,
-      price: 230,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
+      currency: 452,
+      total: 123456,
+      shipping: 9,
     },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+
   ];
+  const [boutonClique, setBoutonClique] = useState(false);
+  const handleBoutonClick = () => {
+    setBoutonClique(true);
+  };
+  const handleReinitialiser = () => {
+    setBoutonClique(false);
+  };
+
   return (
-    <div className="mt-5">
-      <div className="columns-2">
-        <div className="grid justify-items-start">
-          <p className="">Orders &#62; List</p>
-          <h2 className="text-2xl py-3 font-bold">Orders</h2>
-        </div>
-        <div className="grid justify-items-end ">
-          <Link to="/customers/create">
-            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-              New Orders
-            </button>
-          </Link>
-        </div>
-      </div>
+    <div className="container overflow-auto m-10 mx-auto">
+      <FilAriane
+        linkOne={"/brands"}
+        nameOne={"Orders"}
+        nameTwo={"Orders"}
+        linkTwo={"/orders/create"}
+        button={"New Orders"}
+      />
       <div className="grid md:grid-cols-3 my-5 gap-5">
         {cart.map((carte, index) => (
           <div
@@ -195,12 +128,146 @@ const Order = () => {
           </div>
         ))}
       </div>
+      <div className="relative overflow-x-auto grid md:grid-cols-4">
+        <ul className=" cursor-pointer col-start-2 p-1 border border-gray-200 text-gray-500 flex gap-1 justify-center items-center rounded-xl my-5 col-span-2 bg-white">
+          <li className="hover:text-gray-800 hover:bg-gray-100 p-2 rounded-lg active:text-amber-600">
+            All
+          </li>
+          <li className="hover:text-gray-800 hover:bg-gray-100 p-2 rounded-lg active:text-amber-600">
+            New
+          </li>
+          <li className="hover:text-gray-800 hover:bg-gray-100 p-2 rounded-lg active:text-amber-600">
+            Processing
+          </li>
+          <li className="hover:text-gray-800 hover:bg-gray-100 p-2 rounded-lg active:text-amber-600">
+            Shipped
+          </li>
+          <li className="hover:text-gray-800 hover:bg-gray-100 p-2 rounded-lg active:text-amber-600">
+            Delivered
+          </li>
+          <li className="hover:text-gray-800 hover:bg-gray-100 p-2 rounded-lg active:text-amber-600">
+            Cancelled
+          </li>
+        </ul>
+      </div>
+
       {/* tableau */}
       <div className="relative border-2 my-5 bg-white rounded-2xl">
-        <div className="flex items-center border-b-2 gap-3 justify-end p-4  dark:bg-gray-800">
-          <InputSearch />
-          <IconNotification icon={<FaFilter />} number={0} />
-          <HiViewColumns className="text-gray-400 w-6 h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
+        <div className="flex items-center border-b-2 md:justify-between p-4 dark:bg-gray-800">
+          <div className="md:inline-flex hidden gap-3">
+            {/* <!-- Dropdown menu One--> */}
+            <div className="">
+              <button
+                id="dropdownDefaultButton"
+                data-dropdown-toggle="dropdown"
+                data-dropdown-offset-skidding="20"
+                className="text-gray-600 border border-gray-300 focus:ring-2 focus:outline-inherit focus:ring-amber-500 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                type="button"
+              >
+                Group by
+                <svg
+                  className="w-2.5 h-2.5 ml-2.5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 1 4 4 4-4"
+                  />
+                </svg>
+              </button>
+              {/* <!-- Dropdown menu --> */}
+              <div
+                id="dropdown"
+                className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+              >
+                <ul
+                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                  aria-labelledby="dropdownDefaultButton"
+                >
+                  <li
+                    onClick={handleReinitialiser}
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Group by
+                  </li>
+                  <li
+                    onClick={handleBoutonClick}
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    Order Date
+                  </li>
+                </ul>
+              </div>
+            </div>
+            {/* <!-- Dropdown menu One--> */}
+            <div
+              id="dropdownDefaultButton"
+              data-dropdown-toggle="dropdownTwo"
+              data-dropdown-offset-skidding="20"
+            >
+              {boutonClique && (
+                <button
+                  className="text-gray-600 border border-gray-300 focus:ring-2 focus:outline-inherit focus:ring-amber-500 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  type="button"
+                >
+                  Ascending
+                  <svg
+                    className="w-2.5 h-2.5 ml-2.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 1 4 4 4-4"
+                    />
+                  </svg>
+                </button>
+              )}
+              {/* <!-- Dropdown menu two --> */}
+              <div
+                id="dropdownTwo"
+                className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+              >
+                <ul
+                  className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                  aria-labelledby="dropdownDefaultButton"
+                >
+                  <li>
+                    <Link
+                      to={"#"}
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Ascending
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to={"#"}
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Descending
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-3 mr-3">
+            <InputSearch />
+            <IconNotification icon={<FaFilter />} number={0} />
+            <HiViewColumns className="text-gray-400 w-6 h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
+          </div>
         </div>
         <div className="relative overflow-x-auto ">
           <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
@@ -220,7 +287,7 @@ const Order = () => {
                 </th>
                 <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
-                    Image
+                    Number
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
@@ -228,7 +295,7 @@ const Order = () => {
                 </th>
                 <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
-                    Name{" "}
+                    Customer
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
@@ -236,7 +303,7 @@ const Order = () => {
                 </th>
                 <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
-                    Brand{" "}
+                    Status
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
@@ -244,47 +311,31 @@ const Order = () => {
                 </th>
                 <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
-                    Visibility{" "}
+                    Currency
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
                   </div>
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-6 py-3 whitespace-nowrap">
                   <div className="flex gap-2">
-                    Price
+                    Total price
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
                   </div>
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-6 py-3 whitespace-nowrap">
                   <div className="flex gap-2">
-                    SKU
+                    Shipping cost
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
                   </div>
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="px-6 py-3 whitespace-nowrap">
                   <div className="flex gap-2">
-                    Quantity
-                    <span>
-                      <IoMdArrowRoundDown />
-                    </span>
-                  </div>
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  <div className="flex gap-2">
-                    Security stock
-                    <span>
-                      <IoMdArrowRoundDown />
-                    </span>
-                  </div>
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  <div className="flex gap-2">
-                    Updated Date{" "}
+                    Order Date
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
@@ -307,31 +358,34 @@ const Order = () => {
                           type="checkbox"
                           className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label htmlFor="checkbox-table-search-1" className="sr-only">
+                        <label
+                          htmlFor="checkbox-table-search-1"
+                          className="sr-only"
+                        >
                           checkbox
                         </label>
                       </div>
                     </td>
-                    <td className="w-4 p-4">
-                      <img src={data.image} alt={data.name} />
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.number}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.brand}</td>
-                    <td className="px-6 py-4">{data.icon}</td>
-                    <td className="px-6 py-4">{data.price}</td>
-                    <td className="px-6 py-4">{data.sKU}</td>
-                    <td className="px-6 py-4">{data.quantity}</td>
-                    <td className="px-6 py-4">{data.securityStock}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.customer}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.status}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.currency}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.total}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.shipping}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.date}</td>
                     <td className="px-6 py-4">
-                      <a
-                        href="#"
+                      <Link
+                        to={"#"}
                         type="button"
                         className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                       >
                         <FaRegPenToSquare />
                         Edit
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                 );
@@ -339,83 +393,6 @@ const Order = () => {
             </tbody>
           </table>
         </div>
-        {/* <nav
-          className="flex items-center justify-between p-5"
-          aria-label="Table navigation"
-        >
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1-10
-            </span>{" "}
-            of{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1000
-            </span>
-          </span>
-          <ul className="inline-flex -space-x-px text-sm h-8">
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                1
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                2
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                aria-current="page"
-                className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >
-                3
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                4
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                5
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav> */}
-      </div>
-
-      {/* <div className="px-20">
         <nav
           className="flex items-center justify-between p-5"
           aria-label="Table navigation"
@@ -430,81 +407,67 @@ const Order = () => {
               1000
             </span>
           </span>
-          <div className="flex focus:ring-amber-500 dark:focus:ring-amber-600">
-            <p className="mt-2">Per Page </p>
-            <select
-              name=""
-              id=""
-              vlaue="Per Page"
-              className="rounded-sm ml-2 border-opacity-0 focus:ring-amber-500 dark:focus:ring-amber-600"
-            >
-              <option value="20">5</option>
-              <option value="2">10</option>
-              <option value="3">15</option>
-              <option value="4">20</option>
-            </select>
-          </div>
-          <ul className="inline-flex -space-x-px text-sm h-8">
+          <ul className=" md:inline-flex hidden -space-x-px text-sm h-8">
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Previous
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 1
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 2
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 aria-current="page"
                 className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
               >
                 3
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 4
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 5
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to={"#"}
                 className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Next
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
-      </div> */}
+      </div>
     </div>
   );
 };

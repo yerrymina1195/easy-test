@@ -122,17 +122,18 @@ const EditeBrand = (props) => {
     },
   ];
   return (
-    <div className="md:m-5">
-      <div className="grid grid-cols-2">
+    <div className="container overflow-auto m-10 mx-auto">
+      <div className="md:columns-2">
         <div className="">
           <p className="text-gray-500 md:text-base text-sm">
-            Categories &#62; {"props.name"} &#62; Edit
+            <Link to={"/brands"}>Brands</Link>
+            &#62; {"props.name"} &#62; Edit
           </p>
           <h2 className="text-3xl pt-2 font-bold">{"props.name"}</h2>
         </div>
-        <div className="grid justify-items-end">
+        <div className="grid md:justify-items-end">
           <Link to="/categories/create">
-            <button className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
+            <button className="rounded-md my-5 bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
               Delete
             </button>
           </Link>
@@ -207,10 +208,11 @@ const EditeBrand = (props) => {
             <div className="flex gap-5">
               <button
                 type="submit"
-                className="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-auto px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+                className="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-auto px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
               >
                 Save changes
               </button>
+              
               <button
                 type="submit"
                 className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
@@ -235,7 +237,7 @@ const EditeBrand = (props) => {
       <div className="relative border-2 my-5 bg-white rounded-2xl">
         <div className="flex items-center border-b-2 gap-3 justify-between p-4  dark:bg-gray-800">
           <h2 className="font-medium">Products</h2>
-          <Link to="/customers/create">
+          <Link to="# ">
             <button className="rounded-md bg-amber-600 md:px-3 px-2 py-1 md:py-1.5 text-sm font-semibold  text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
               New Products
             </button>
@@ -353,7 +355,10 @@ const EditeBrand = (props) => {
                           type="checkbox"
                           className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label htmlFor="checkbox-table-search-1" className="sr-only">
+                        <label
+                          htmlFor="checkbox-table-search-1"
+                          className="sr-only"
+                        >
                           checkbox
                         </label>
                       </div>
@@ -362,7 +367,9 @@ const EditeBrand = (props) => {
                       <img src={data.image} alt={data.name} />
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.brand}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.brand}
+                    </td>
                     <td className="px-6 py-4">{data.icon}</td>
                     <td className="px-6 py-4">{data.price}</td>
                     <td className="px-6 py-4">{data.sKU}</td>
