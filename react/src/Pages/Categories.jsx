@@ -4,26 +4,29 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useStateContext } from "../contexts/ContextProvider";
+import axiosClient from "../axios.js";
 
 const Categories = () => {
-  const [category, SetCategory] = useState([]);
+  const {updatecategorie,category} =
+  useStateContext();
   useEffect(() => {
     fetchCategory();
   }, []);
 
   const fetchCategory = async () => {
-    await axios.get(`http://localhost:8000/api/categorie`).then(({ data }) => {
-      SetCategory(data);
+    await axiosClient.get(`/categorie`).then(({ data }) => {
+      updatecategorie(data);
     });
   };
  
+
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">
         <div className="grid justify-items-start">
-          <p className="">Categories &#62; List</p>
-          <h2 className="text-2xl py-3 font-bold">Categories</h2>
+          <p className="text-gray-500">Categories &#62; List</p>
+          <h2 className="text-3xl py-3 font-bold">Categories</h2>
         </div>
         <div className="grid justify-items-end">
           <Link to="/categories/create">
@@ -93,7 +96,8 @@ const Categories = () => {
               {category.map((data) => {
                 return (
                   <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700
+                   hover:bg-gray-50 dark:hover:bg-amber-600"
                     key={data.id}
                   >
                     <td class="w-4 p-4">

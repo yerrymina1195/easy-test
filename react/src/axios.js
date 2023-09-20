@@ -22,12 +22,7 @@ const axiosClient = axios.create({
     throw error;
   })
 
-   export const axiosCategorie= axios.create({
-    baseURL: `http://localhost:8000/api`,
-    headers:{
-      'content-type':' application/json'
-    }
-   })
+  
   
   
  

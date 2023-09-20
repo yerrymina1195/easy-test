@@ -23,13 +23,22 @@ import axiosClient from "../axios.js";
 import { Navigate} from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 
+
 const ExempleDashboard = () => {
-  const { userToken,currentUser,setCurrentUser,setUserToken,loading} =
+  const { userToken,currentUser,setCurrentUser,setUserToken,loading,updatecategorie} =
   useStateContext();
   const [firstName, setFirstName]=useState(null)
   const [lastName, setLastName]=useState(null)
   console.log(currentUser);
+  useEffect(() => {
+    fetchCategory();
+  }, []);
 
+  const fetchCategory = async () => {
+    await axiosClient.get(`/categorie`).then(({ data }) => {
+      updatecategorie(data);
+    });
+  };
 useEffect(() => {
   if (currentUser) {
     const nameWords = currentUser?.name?.split(" ");
@@ -450,7 +459,7 @@ if (!userToken) {
 
       {/* Contenue */}
       <div className="p-4 sm:ml-64">
-        <div className="p-4  rounded-lg dark:border-gray-700 mt-14">
+        <div className="py-4 rounded-lg dark:border-gray-700 mt-14">
           <Outlet />
         </div>
       </div>

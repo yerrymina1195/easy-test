@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BtnToggle from "./BtnToggle";
+import Editor from "./Editor";
 import IconNotification from "../components/IconNotification";
 import example from "../images/cooffe.jpeg";
 import example1 from "../images/code.jpeg";
@@ -11,26 +13,13 @@ import example6 from "../images/startup.jpeg";
 import example7 from "../images/team.jpeg";
 import example10 from "../images/wifi.jpeg";
 import InputSearch from "../components/InputSearch";
-import { HiViewColumns } from "react-icons/hi2";
+import { HiViewColumns, HiTrash } from "react-icons/hi2";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
-import { FaRegPenToSquare } from "react-icons/fa6";
-import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
-const Produits = () => {
-  const cart = [
-    {
-      title: "Total Products",
-      number: 50,
-    },
-    {
-      title: "Product Inventory",
-      number: 252,
-    },
-    {
-      title: "Average price",
-      number: 248.63,
-    },
-  ];
+import { IoMdArrowRoundDown } from "react-icons/io";
+import { FaRegPenToSquare } from "react-icons/fa6";
+
+const Edite = (props) => {
   const dataTable = [
     {
       name: "Lorem ipsum dolor sit amet",
@@ -133,37 +122,131 @@ const Produits = () => {
     },
   ];
   return (
-    <div class="mt-5">
-      <div className="columns-2">
-        <div className="grid justify-items-start">
-          <p className="">Products &#62; List</p>
-          <h2 className="text-2xl py-3 font-bold">Products</h2>
+    <div className="md:m-5">
+      <div className="grid grid-cols-2">
+        <div className="">
+          <p className="text-gray-500 md:text-base text-sm">
+            Categories &#62; {"props.name"} &#62; Edit
+          </p>
+          <h2 className="text-3xl pt-2 font-bold">{"props.name"}</h2>
         </div>
-        <div className="grid justify-items-end ">
-          <Link to="/produits/create">
-            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-              New Products
+        <div className="grid justify-items-end">
+          <Link to="/categories/create">
+            <button className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
+              Delete
             </button>
           </Link>
         </div>
       </div>
-      <div className="grid md:grid-cols-3 my-5 gap-5">
-        {cart.map((carte, index) => (
-          <div
-            className="bg-white border rounded-xl border-gray-200 p-5"
-            key={index}
-          >
-            <p className="text-gray-500">{carte.title}</p>
-            <h2 className="text-4xl font-medium">{carte.number}</h2>
+      <div className="grid md:grid-cols-3 md:gap-5">
+        <div className="md:col-span-2">
+          <form>
+            <div className="bg-white my-5 md:p-5 p-2.5 rounded-2xl">
+              <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-6 group">
+                  <input
+                    type="text"
+                    name="floating_first_name"
+                    id="floating_first_name"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    for="floating_first_name"
+                    class="peer-focus:font-medium absolute text-sm text-gray-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Name
+                  </label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                  <input
+                    type="text"
+                    readOnly
+                    name="slug"
+                    id="slug"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    placeholder=" "
+                    disabled
+                  />
+                  <label
+                    for="slug"
+                    class="peer-focus:font-medium absolute text-sm text-gray-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Slug
+                  </label>
+                </div>
+              </div>
+              <div class="grid md:grid-cols-1">
+                <div class="relative z-0 w-full mb-6 group">
+                  <input
+                    type="text"
+                    name="parent"
+                    id="parent"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    for="parent"
+                    class="peer-focus:font-medium absolute text-sm text-gray-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Parent
+                  </label>
+                </div>
+                <div class="relative z-0 mb-6 group">
+                  <BtnToggle name={"Visible to customers."} />
+                </div>
+              </div>
+              <div class="grid md:grid-cols-1">
+                <div class="relative z-0 w-full mb-12 group">
+                  <Editor />
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5">
+              <button
+                type="submit"
+                class="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-auto px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              >
+                Save changes
+              </button>
+              <button
+                type="submit"
+                class=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className="bg-white p-5 my-5 rounded-xl h-40">
+          <div>
+            <p className="font-medium">Created at</p>
+            <p className="text-gray-600">{"props.dateCreate"}</p>
           </div>
-        ))}
+          <div className="mt-5">
+            <p className="font-medium">Last modified at</p>
+            <p className="text-gray-600">{"props.dateEdite"}</p>
+          </div>
+        </div>
       </div>
       {/* tableau */}
       <div class="relative border-2 my-5 bg-white rounded-2xl">
-        <div class="flex items-center border-b-2 gap-3 justify-end p-4  dark:bg-gray-800">
+        <div class="flex items-center border-b-2 gap-3 justify-between p-4  dark:bg-gray-800">
+          <h2 className="font-medium">Products</h2>
+          <Link to="/customers/create">
+            <button className="rounded-md bg-amber-600 md:px-3 px-2 py-1 md:py-1.5 text-sm font-semibold  text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
+              New Products
+            </button>
+          </Link>
+        </div>
+        <div class="flex items-center border-b-2 gap-2 justify-end p-4  dark:bg-gray-800">
           <InputSearch />
           <IconNotification icon={<FaFilter />} number={0} />
-          <HiViewColumns className="text-gray-400 w-6 h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
+          <button>
+            <HiViewColumns className="text-gray-400 md:w-6 md:h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
+          </button>
         </div>
         <div className="overflow-auto ">
           <table class="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
@@ -287,14 +370,10 @@ const Produits = () => {
                     <td class="px-6 py-4">{data.securityStock}</td>
                     <td class="px-6 py-4">{data.date}</td>
                     <td class="px-6 py-4">
-                      <a
-                        href="#"
-                        type="button"
-                        class="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
-                      >
-                        <FaRegPenToSquare />
-                        Edit
-                      </a>
+                      <button className=" text-red-600 hover:text-red-800 justify-center items-center flex font-medium">
+                        <HiTrash />
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
@@ -377,99 +456,8 @@ const Produits = () => {
           </ul>
         </nav> */}
       </div>
-
-      {/* <div class="px-20">
-        <nav
-          class="flex items-center justify-between p-5"
-          aria-label="Table navigation"
-        >
-          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{" "}
-            <span class="font-semibold text-gray-900 dark:text-white">
-              1-10
-            </span>{" "}
-            of{" "}
-            <span class="font-semibold text-gray-900 dark:text-white">
-              1000
-            </span>
-          </span>
-          <div class="flex focus:ring-amber-500 dark:focus:ring-amber-600">
-            <p className="mt-2">Per Page </p>
-            <select
-              name=""
-              id=""
-              vlaue="Per Page"
-              class="rounded-sm ml-2 border-opacity-0 focus:ring-amber-500 dark:focus:ring-amber-600"
-            >
-              <option value="20">5</option>
-              <option value="2">10</option>
-              <option value="3">15</option>
-              <option value="4">20</option>
-            </select>
-          </div>
-          <ul class="inline-flex -space-x-px text-sm h-8">
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                1
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                2
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                aria-current="page"
-                class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >
-                3
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                4
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                5
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div> */}
     </div>
   );
 };
 
-export default Produits;
+export default Edite;
