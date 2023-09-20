@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 const Brands = () => {
-  
   const [brand, SetBrand] = useState([]);
   useEffect(() => {
     fetchCategory();
@@ -38,7 +37,7 @@ const Brands = () => {
         <div className="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
           <InputSearch />
         </div>
-        <div className="overflow-auto ">
+        <div className="relative overflow-x-auto">
           <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -90,7 +89,7 @@ const Brands = () => {
               </tr>
             </thead>
             <tbody>
-              {dataTable.map((data, index) => {
+              {brand.map((data, index) => {
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
@@ -103,7 +102,10 @@ const Brands = () => {
                           type="checkbox"
                           className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label htmlFor="checkbox-table-search-1" className="sr-only">
+                        <label
+                          htmlFor="checkbox-table-search-1"
+                          className="sr-only"
+                        >
                           checkbox
                         </label>
                       </div>
@@ -111,23 +113,21 @@ const Brands = () => {
                     <td className="px-6 py-4">{data.nom}</td>
                     <td className="px-6 py-4">{data.slug}</td>
                     <td className="px-6 py-4">
-                       { data.visibility? (<AiOutlineCheckCircle className="w-5 h-5 text-green-700" />) 
-                       : (
-                     <AiOutlineCloseCircle className="w-5 h-5 text-red-700" /> 
+                      {data.visibility ? (
+                        <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />
+                      ) : (
+                        <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />
                       )}
-
-                      
                     </td>
                     <td className="px-6 py-4">{data.updated_at}</td>
                     <td className="px-6 py-4">
-                      <a
-                        href="#"
-                        type="button"
+                      <Link
+                        to={`/brands/${data.id}/edit`}
                         className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                       >
                         <FaRegPenToSquare />
                         Edit
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                 );

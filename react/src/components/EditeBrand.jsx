@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BtnToggle from "./BtnToggle";
 import Editor from "./Editor";
-import IconNotification from "../components/IconNotification";
+import IconNotification from "./IconNotification";
 import example from "../images/cooffe.jpeg";
 import example1 from "../images/code.jpeg";
 import example2 from "../images/in.jpeg";
@@ -12,14 +12,14 @@ import example5 from "../images/machine.jpeg";
 import example6 from "../images/startup.jpeg";
 import example7 from "../images/team.jpeg";
 import example10 from "../images/wifi.jpeg";
-import InputSearch from "../components/InputSearch";
+import InputSearch from "./InputSearch";
 import { HiViewColumns, HiTrash } from "react-icons/hi2";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { FaFilter } from "react-icons/fa";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaRegPenToSquare } from "react-icons/fa6";
 
-const Edite = (props) => {
+const EditeBrand = (props) => {
   const dataTable = [
     {
       name: "Lorem ipsum dolor sit amet",
@@ -141,7 +141,7 @@ const Edite = (props) => {
       <div className="grid md:grid-cols-3 md:gap-5">
         <div className="md:col-span-2">
           <form>
-            <div className="bg-white my-5 md:p-5 p-2.5 rounded-2xl">
+            <div className="bg-white border border-gray-200 my-5 md:p-5 p-2.5 rounded-2xl">
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-6 group">
                   <input
@@ -220,7 +220,7 @@ const Edite = (props) => {
             </div>
           </form>
         </div>
-        <div className="bg-white p-5 my-5 rounded-xl h-40">
+        <div className="bg-white border border-gray-200 p-5 my-5 rounded-xl h-40">
           <div>
             <p className="font-medium">Created at</p>
             <p className="text-gray-600">{"props.dateCreate"}</p>
@@ -248,8 +248,8 @@ const Edite = (props) => {
             <HiViewColumns className="text-gray-400 md:w-6 md:h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
           </button>
         </div>
-        <div className="overflow-auto ">
-          <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
+        <div className="overflow-x-auto relative ">
+          <table className="w-full text-sm text-left table-auto text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="p-4">
@@ -361,16 +361,16 @@ const Edite = (props) => {
                     <td className="w-4 p-4">
                       <img src={data.image} alt={data.name} />
                     </td>
-                    <td className="px-6 py-4 w-10">{data.name}</td>
-                    <td className="px-6 py-4">{data.brand}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.brand}</td>
                     <td className="px-6 py-4">{data.icon}</td>
                     <td className="px-6 py-4">{data.price}</td>
                     <td className="px-6 py-4">{data.sKU}</td>
                     <td className="px-6 py-4">{data.quantity}</td>
                     <td className="px-6 py-4">{data.securityStock}</td>
-                    <td className="px-6 py-4">{data.date}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.date}</td>
                     <td className="px-6 py-4">
-                      <button className=" text-red-600 hover:text-red-800 justify-center items-center flex font-medium">
+                      <button className=" gap-1 text-red-600 hover:text-red-800 justify-center items-center flex font-medium">
                         <HiTrash />
                         Delete
                       </button>
@@ -460,4 +460,4 @@ const Edite = (props) => {
   );
 };
 
-export default Edite;
+export default EditeBrand;

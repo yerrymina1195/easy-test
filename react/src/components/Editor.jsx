@@ -19,7 +19,6 @@ const Editor = ({value,onChange}) => {
         theme="snow"
         value={value}
         onChange={onChange}
-        style={{height:"150px"}}
         className="h-auto"
       />
 

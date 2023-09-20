@@ -165,7 +165,7 @@ const Produits = () => {
           <IconNotification icon={<FaFilter />} number={0} />
           <HiViewColumns className="text-gray-400 w-6 h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
         </div>
-        <div className="overflow-auto ">
+        <div className="relative overflow-x-auto">
           <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -278,14 +278,14 @@ const Produits = () => {
                     <td className="w-4 p-4">
                       <img src={data.image} alt={data.name} />
                     </td>
-                    <td className="px-6 py-4 w-10">{data.name}</td>
-                    <td className="px-6 py-4">{data.brand}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.brand}</td>
                     <td className="px-6 py-4">{data.icon}</td>
                     <td className="px-6 py-4">{data.price}</td>
                     <td className="px-6 py-4">{data.sKU}</td>
                     <td className="px-6 py-4">{data.quantity}</td>
                     <td className="px-6 py-4">{data.securityStock}</td>
-                    <td className="px-6 py-4">{data.date}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.date}</td>
                     <td className="px-6 py-4">
                       <a
                         href="#"
