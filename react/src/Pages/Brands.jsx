@@ -4,8 +4,8 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import axiosClient from "../axios";
 const Brands = () => {
   const [brand, SetBrand] = useState([]);
   useEffect(() => {
@@ -13,7 +13,7 @@ const Brands = () => {
   }, []);
 
   const fetchCategory = async () => {
-    await axios.get(`http://localhost:8000/api/brand`).then(({ data }) => {
+    await axiosClient.get(`/brand`).then(({ data }) => {
       SetBrand(data);
     });
   };

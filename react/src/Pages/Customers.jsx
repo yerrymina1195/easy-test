@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InputSearch from "../components/InputSearch";
 
 import { FaFilter } from "react-icons/fa";
@@ -6,41 +6,18 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import IconNotification from "../components/IconNotification";
 import { Link } from "react-router-dom";
+import axiosClient from "../axios";
 const Customers = () => {
+  const [client, SetClient] = useState([]);
+  useEffect(() => {
+    fetchCategory();
+  }, []);
 
- 
-  const dataTable = [
-    {
-      name: "Abdoulaye SENE",
-      email: "latyr0503@gmail.com",
-      contry: "Sénégal",
-      phone: "+221 77 124 10 31",
-    },
-    {
-      name: "Latyr SENE",
-      email: "latyr@gmail.com",
-      contry: "Gambie",
-      phone: "+221 77 251 85 31",
-    },
-    {
-      name: "Maina SOW",
-      email: "maina@gmail.com",
-      contry: "Mali",
-      phone: "+221 77 754 10 54",
-    },
-    {
-      name: "Mariéme DIOP",
-      email: "diop@gmail.com",
-      contry: "Guinée",
-      phone: "+221 77 125 10 31",
-    },
-    {
-      name: "Rakhma biaye",
-      email: "rakhma@gmail.com",
-      contry: "Sénégal",
-      phone: "+221 77 124 10 31",
-    },
-  ];
+  const fetchCategory = async () => {
+    await axiosClient.get(`/clients`).then(({ data }) => {
+      SetClient(data);
+    });
+  };
   return (
     <div className="container m-10  mx-auto">
       <div className="columns-2">
@@ -49,8 +26,11 @@ const Customers = () => {
           <h2 className="text-2xl py-3 font-bold">Customers</h2>
         </div>
         <div className="grid justify-items-end">
-          <Link to='/customers/create'>
-            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400" onClick={(e) => logout(e)}>
+          <Link to="/customers/create">
+            <button
+              className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400"
+              onClick={(e) => logout(e)}
+            >
               New customer
             </button>
           </Link>
@@ -121,7 +101,7 @@ const Customers = () => {
                 <td className="px-6 py-4"></td>
                 <td className="px-6 py-4"></td>
               </tr>
-              {dataTable.map((data, index) => {
+              {client.map((data, index) => {
                 return (
                   <tr
                     key={index}
@@ -134,24 +114,26 @@ const Customers = () => {
                           type="checkbox"
                           className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label htmlFor="checkbox-table-search-1" className="sr-only">
+                        <label
+                          htmlFor="checkbox-table-search-1"
+                          className="sr-only"
+                        >
                           checkbox
                         </label>
                       </div>
                     </td>
-                    <td className="px-6 py-4">{data.name}</td>
+                    <td className="px-6 py-4">{data.nom}</td>
                     <td className="px-6 py-4">{data.email}</td>
-                    <td className="px-6 py-4">{data.contry}</td>
-                    <td className="px-6 py-4">{data.phone}</td>
+                    <td className="px-6 py-4">{data.date_de_naissance}</td>
+                    <td className="px-6 py-4">{data.telephone}</td>
                     <td className="px-6 py-4">
-                      <a
-                        href="#"
-                        type="button"
+                      <Link
+                        to={`/customers/${data.id}/edit`}
                         className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                       >
                         <FaRegPenToSquare />
                         Edit
-                      </a>
+                      </Link>
                     </td>
                   </tr>
                 );

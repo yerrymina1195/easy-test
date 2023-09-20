@@ -15,6 +15,7 @@ import CreateProduits from "./Pages/CreateProduits";
 import Test from "./components/Test"
 import Order from "./Pages/Order";
 import EditeBrand from "./components/EditeBrand";
+import EditeCustomers from "./components/EditeCustomers";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/dashbord" element={<Dashbord />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/customers/create" element={<CustomersCreate />} />
+          <Route path="/customers/:id/edit" element={<EditeCustomers />} />
           <Route path="/produits" element={<Produits />} />
           <Route path="/order" element={<Order />} />
           <Route path="/produits/create" element={<CreateProduits />} />
