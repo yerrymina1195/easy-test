@@ -133,7 +133,7 @@ const Produits = () => {
     },
   ];
   return (
-    <div class="mt-5">
+    <div className="mt-5">
       <div className="columns-2">
         <div className="grid justify-items-start">
           <p className="">Products &#62; List</p>
@@ -159,29 +159,29 @@ const Produits = () => {
         ))}
       </div>
       {/* tableau */}
-      <div class="relative border-2 my-5 bg-white rounded-2xl">
-        <div class="flex items-center border-b-2 gap-3 justify-end p-4  dark:bg-gray-800">
+      <div className="relative border-2 my-5 bg-white rounded-2xl">
+        <div className="flex items-center border-b-2 gap-3 justify-end p-4  dark:bg-gray-800">
           <InputSearch />
           <IconNotification icon={<FaFilter />} number={0} />
           <HiViewColumns className="text-gray-400 w-6 h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
         </div>
-        <div className="overflow-auto ">
-          <table class="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <div className="relative overflow-x-auto">
+          <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="p-4">
-                  <div class="flex items-center">
+                <th scope="col" className="p-4">
+                  <div className="flex items-center">
                     <input
                       id="checkbox-all-search"
                       type="checkbox"
-                      class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
-                    <label for="checkbox-all-search" class="sr-only">
+                    <label htmlFor="checkbox-all-search" className="sr-only">
                       checkbox
                     </label>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Image
                     <span>
@@ -189,7 +189,7 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Name{" "}
                     <span>
@@ -197,7 +197,7 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Brand{" "}
                     <span>
@@ -205,7 +205,7 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Visibility{" "}
                     <span>
@@ -213,7 +213,7 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Price
                     <span>
@@ -221,7 +221,7 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     SKU
                     <span>
@@ -229,7 +229,7 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Quantity
                     <span>
@@ -237,7 +237,7 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Security stock
                     <span>
@@ -245,7 +245,7 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
                     Updated Date{" "}
                     <span>
@@ -253,44 +253,44 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" class="px-6 py-3"></th>
+                <th scope="col" className="px-6 py-3"></th>
               </tr>
             </thead>
             <tbody>
-              {dataTable.map((data) => {
+              {dataTable.map((data, index) => {
                 return (
                   <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
-                    key={data.id}
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
+                    key={index}
                   >
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
+                    <td className="w-4 p-4">
+                      <div className="flex items-center">
                         <input
                           id="checkbox-table-search-1"
                           type="checkbox"
-                          class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                          className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label for="checkbox-table-search-1" class="sr-only">
+                        <label htmlFor="checkbox-table-search-1" className="sr-only">
                           checkbox
                         </label>
                       </div>
                     </td>
-                    <td class="w-4 p-4">
+                    <td className="w-4 p-4">
                       <img src={data.image} alt={data.name} />
                     </td>
-                    <td class="px-6 py-4 w-10">{data.name}</td>
-                    <td class="px-6 py-4">{data.brand}</td>
-                    <td class="px-6 py-4">{data.icon}</td>
-                    <td class="px-6 py-4">{data.price}</td>
-                    <td class="px-6 py-4">{data.sKU}</td>
-                    <td class="px-6 py-4">{data.quantity}</td>
-                    <td class="px-6 py-4">{data.securityStock}</td>
-                    <td class="px-6 py-4">{data.date}</td>
-                    <td class="px-6 py-4">
+                    <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.brand}</td>
+                    <td className="px-6 py-4">{data.icon}</td>
+                    <td className="px-6 py-4">{data.price}</td>
+                    <td className="px-6 py-4">{data.sKU}</td>
+                    <td className="px-6 py-4">{data.quantity}</td>
+                    <td className="px-6 py-4">{data.securityStock}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.date}</td>
+                    <td className="px-6 py-4">
                       <a
                         href="#"
                         type="button"
-                        class="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
+                        className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
                       >
                         <FaRegPenToSquare />
                         Edit
@@ -303,24 +303,24 @@ const Produits = () => {
           </table>
         </div>
         {/* <nav
-          class="flex items-center justify-between p-5"
+          className="flex items-center justify-between p-5"
           aria-label="Table navigation"
         >
-          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
             Showing{" "}
-            <span class="font-semibold text-gray-900 dark:text-white">
+            <span className="font-semibold text-gray-900 dark:text-white">
               1-10
             </span>{" "}
             of{" "}
-            <span class="font-semibold text-gray-900 dark:text-white">
+            <span className="font-semibold text-gray-900 dark:text-white">
               1000
             </span>
           </span>
-          <ul class="inline-flex -space-x-px text-sm h-8">
+          <ul className="inline-flex -space-x-px text-sm h-8">
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Previous
               </a>
@@ -328,7 +328,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 1
               </a>
@@ -336,7 +336,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 2
               </a>
@@ -345,7 +345,7 @@ const Produits = () => {
               <a
                 href="#"
                 aria-current="page"
-                class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
               >
                 3
               </a>
@@ -353,7 +353,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 4
               </a>
@@ -361,7 +361,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 5
               </a>
@@ -369,7 +369,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Next
               </a>
@@ -378,28 +378,28 @@ const Produits = () => {
         </nav> */}
       </div>
 
-      {/* <div class="px-20">
+      {/* <div className="px-20">
         <nav
-          class="flex items-center justify-between p-5"
+          className="flex items-center justify-between p-5"
           aria-label="Table navigation"
         >
-          <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
+          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
             Showing{" "}
-            <span class="font-semibold text-gray-900 dark:text-white">
+            <span className="font-semibold text-gray-900 dark:text-white">
               1-10
             </span>{" "}
             of{" "}
-            <span class="font-semibold text-gray-900 dark:text-white">
+            <span className="font-semibold text-gray-900 dark:text-white">
               1000
             </span>
           </span>
-          <div class="flex focus:ring-amber-500 dark:focus:ring-amber-600">
+          <div className="flex focus:ring-amber-500 dark:focus:ring-amber-600">
             <p className="mt-2">Per Page </p>
             <select
               name=""
               id=""
               vlaue="Per Page"
-              class="rounded-sm ml-2 border-opacity-0 focus:ring-amber-500 dark:focus:ring-amber-600"
+              className="rounded-sm ml-2 border-opacity-0 focus:ring-amber-500 dark:focus:ring-amber-600"
             >
               <option value="20">5</option>
               <option value="2">10</option>
@@ -407,11 +407,11 @@ const Produits = () => {
               <option value="4">20</option>
             </select>
           </div>
-          <ul class="inline-flex -space-x-px text-sm h-8">
+          <ul className="inline-flex -space-x-px text-sm h-8">
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Previous
               </a>
@@ -419,7 +419,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 1
               </a>
@@ -427,7 +427,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 2
               </a>
@@ -436,7 +436,7 @@ const Produits = () => {
               <a
                 href="#"
                 aria-current="page"
-                class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
               >
                 3
               </a>
@@ -444,7 +444,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 4
               </a>
@@ -452,7 +452,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 5
               </a>
@@ -460,7 +460,7 @@ const Produits = () => {
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 Next
               </a>

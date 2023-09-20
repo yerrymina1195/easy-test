@@ -12,9 +12,12 @@ import CategoriesCreate from "./Pages/CategoriesCreate";
 import ExempleDashboard from "./components/ExempleDashboard";
 import Produits from "./Pages/Produits";
 import CreateProduits from "./Pages/CreateProduits";
+import Test from "./components/Test"
 import Order from "./Pages/Order";
 import Test from "./components/Test"
 import EditeBrand from "./components/EditeBrand";
+import EditeCustomers from "./components/EditeCustomers";
+
 function App() {
   return (
     <>
@@ -26,6 +29,7 @@ function App() {
           <Route path="/dashbord" element={<Dashbord />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/customers/create" element={<CustomersCreate />} />
+          <Route path="/customers/:id/edit" element={<EditeCustomers />} />
           <Route path="/produits" element={<Produits />} />
           <Route path="/order" element={<Order />} />
           <Route path="/produits/create" element={<CreateProduits />} />
@@ -33,7 +37,7 @@ function App() {
           <Route path="/categories/create" element={<CategoriesCreate />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/brands/create" element={<BrandsCreate />} />
-          <Route path="/edit" element={<EditeBrand />} />
+          <Route path="/brands/:id/edit" element={<EditeBrand />} />
           {/* route pour les teste */}
           <Route path="/teste" element={<Test />} />
           {/* route pour les teste */}
