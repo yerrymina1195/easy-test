@@ -4,7 +4,7 @@ import BtnToggle from "../components/BtnToggle";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 const BrandsCreate = () => {
   const [nom, setNom] = useState("");
   const [slug, setSlug] = useState("");
@@ -13,7 +13,7 @@ const BrandsCreate = () => {
   const [visibility, setVisibility] = useState(false);
   const [validationError, setValidationError] = useState({});
   const navigate = useNavigate();
-  const { id } = useParams();
+
   const create = async (e) => {
     e.preventDefault();
 

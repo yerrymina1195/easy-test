@@ -14,7 +14,7 @@ import Produits from "./Pages/Produits";
 import CreateProduits from "./Pages/CreateProduits";
 import Test from "./components/Test"
 import Order from "./Pages/Order";
-import Test from "./components/Test"
+
 import EditeBrand from "./components/EditeBrand";
 import EditeCustomers from "./components/EditeCustomers";
 

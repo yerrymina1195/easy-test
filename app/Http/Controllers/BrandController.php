@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
@@ -46,7 +45,7 @@ class BrandController extends Controller
             'description'=>$request-> description
         ]);
          return response()->json(['message' =>'Brand Created Successfully!!',
-        'category'=> $brand]);
+        'brand'=> $brand]);
     }
 
     /**
@@ -59,7 +58,7 @@ class BrandController extends Controller
     {
         //
         return response()->json([
-            'category'=>$brand
+            'brand'=>$brand
             
         ]);
         console.log($brand);
@@ -86,6 +85,30 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         //
+
+            // Validez les données du formulaire
+            $request->validate([
+                'nom' => 'required|string',
+                'slug' => 'required|string',
+                'url' => 'nullable|string',
+                'visibility' => 'boolean',
+                'description' => 'nullable|string',
+            ]);
+        
+            // Récupérez la catégorie à mettre à jour
+            $category = Category::findOrFail($id);
+        
+            // Mettez à jour les données de la catégorie
+            $category->update([
+                'nom' => $request->input('nom'),
+                'slug' => $request->input('slug'),
+                'url' => $request->input('url'),
+                'visibility' => $request->input('visibility', false),
+                'description' => $request->input('description'),
+            ]);
+        
+            return response()->json(['message' => 'Catégorie mise à jour avec succès'], 200);
+        
     }
 
     /**

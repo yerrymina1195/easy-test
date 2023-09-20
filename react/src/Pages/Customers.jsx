@@ -7,11 +7,7 @@ import { IoMdArrowRoundDown } from "react-icons/io";
 import IconNotification from "../components/IconNotification";
 import axiosClient from "../axios.js";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 
-=======
-import axiosClient from "../axios";
->>>>>>> 49de62e2497e2e796298a930d3dbae1037c0296e
 const Customers = () => {
   const [client, SetClient] = useState([]);
   useEffect(() => {
@@ -32,14 +28,7 @@ const Customers = () => {
         </div>
         <div className="grid justify-items-end">
           <Link to="/customers/create">
-<<<<<<< HEAD
             <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-=======
-            <button
-              className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400"
-              onClick={(e) => logout(e)}
-            >
->>>>>>> 49de62e2497e2e796298a930d3dbae1037c0296e
               New customer
             </button>
           </Link>

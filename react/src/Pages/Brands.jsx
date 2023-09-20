@@ -6,15 +6,17 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosClient from "../axios";
+import axios from "axios";
+import { useStateContext } from "../contexts/ContextProvider";
 const Brands = () => {
-  const [brand, SetBrand] = useState([]);
+  const { updatebrand, brand } = useStateContext();
   useEffect(() => {
-    fetchCategory();
+    fetchBrand();
   }, []);
 
-  const fetchCategory = async () => {
-    await axiosClient.get(`/brand`).then(({ data }) => {
-      SetBrand(data);
+  const fetchBrand = async () => {
+    await axios.get(`http://localhost:8000/api/brand`).then(({ data }) => {
+      updatebrand(data);
     });
   };
   return (
@@ -113,9 +115,10 @@ const Brands = () => {
                     <td class="px-6 py-4">{data.nom}</td>
                     <td class="px-6 py-4">{data.url}</td>
                     <td class="px-6 py-4">
-                       { data.visibility? (<AiOutlineCheckCircle className="w-5 h-5 text-green-700" />) 
-                       : (
-                     <AiOutlineCloseCircle className="w-5 h-5 text-red-700" /> 
+                      {data.visibility ? (
+                        <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />
+                      ) : (
+                        <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />
                       )}
                     </td>
                     <td className="px-6 py-4">{data.updated_at}</td>
