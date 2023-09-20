@@ -9,10 +9,10 @@ import Categories from "./Pages/Categories";
 import Brands from "./Pages/Brands";
 import BrandsCreate from "./Pages/BrandsCreate";
 import CategoriesCreate from "./Pages/CategoriesCreate";
-import Test from "./components/Test";
 import ExempleDashboard from "./components/ExempleDashboard";
 import Produits from "./Pages/Produits";
 import CreateProduits from "./Pages/CreateProduits";
+import Test from "./components/Test"
 import Order from "./Pages/Order";
 
 function App() {

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const Editor = ({valeur,change}) => {
-  const [value, setValue] = useState("");
+const Editor = ({value,onChange}) => {
   var toolbarOptions = [
     ["bold", "italic", "strike", "link", "image"], // toggled buttons
     ["blockquote", "code-block"],
@@ -19,7 +18,7 @@ const Editor = ({valeur,change}) => {
         modules={module}
         theme="snow"
         value={value}
-        onChange={setValue}
+        onChange={onChange}
       
         className="h-auto"
       />

@@ -77,6 +77,9 @@ const CategoriesCreate = () => {
     setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
     navigate("/categories");
   };
+  const handleToggle = (e) => {
+    setVisibility(!visibility);
+  };
 
   return (
     <div className="container m-10 mx-auto">
@@ -153,22 +156,26 @@ const CategoriesCreate = () => {
                 </label>
               </div>
               <div class="relative z-0 mb-6 group">
-                <BtnToggle name={"Visible to customers."} />
+              <BtnToggle
+                  checked={visibility}
+                  value={visibility}
+                  handleClick={handleToggle}
+                  onChange={(event) => {
+                    setVisibility(event.target.value);
+                  }}
+                  name={"Visible to Brand."}
+                />
               </div>
             </div>
             <div class="grid md:grid-cols-1">
               <div
                 class="relative z-0 w-full mb-12 group"
-                value={description}
-                onChange={(event) => {
-                  setDescrition(event.target.value);
-                }}
+               
               >
                 <Editor
                   value={description}
-                  onChange={(event) => {
-                    setDescrition(event.target.value);
-                  }}
+                  onChange={
+                    setDescrition}
                 />
               </div>
             </div>
