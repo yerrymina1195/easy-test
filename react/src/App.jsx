@@ -1,13 +1,8 @@
 import "./App.css";
 import Connexion from "./Pages/Connexion";
 import { Route, Routes } from "react-router-dom";
-<<<<<<< HEAD
-
-import Inscription from "./Pages/Inscription";
-=======
 import Dashbord from "./Pages/Dashbord";
 import { Inscription } from "./Pages/Inscription";
->>>>>>> c7d1562443efd78cca1d0b2925582ea7e05a55fd
 import Customers from "./Pages/Customers";
 import CustomersCreate from "./Pages/CustomersCreate";
 import Categories from "./Pages/Categories";
@@ -18,8 +13,8 @@ import ExempleDashboard from "./components/ExempleDashboard";
 import Produits from "./Pages/Produits";
 import CreateProduits from "./Pages/CreateProduits";
 import Order from "./Pages/Order";
-import Dashbord from "./Pages/Dashbord";
 import Test from "./components/Test"
+import EditeBrand from "./components/EditeBrand";
 function App() {
   return (
     <>
@@ -38,7 +33,7 @@ function App() {
           <Route path="/categories/create" element={<CategoriesCreate />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/brands/create" element={<BrandsCreate />} />
-          <Route path="/edit" element={<Edite />} />
+          <Route path="/edit" element={<EditeBrand />} />
           {/* route pour les teste */}
           <Route path="/teste" element={<Test />} />
           {/* route pour les teste */}

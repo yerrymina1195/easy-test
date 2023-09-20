@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BtnToggle from "./BtnToggle";
 import Editor from "./Editor";
-import IconNotification from "../components/IconNotification";
+import IconNotification from "./IconNotification";
 import example from "../images/cooffe.jpeg";
 import example1 from "../images/code.jpeg";
 import example2 from "../images/in.jpeg";
@@ -12,14 +12,14 @@ import example5 from "../images/machine.jpeg";
 import example6 from "../images/startup.jpeg";
 import example7 from "../images/team.jpeg";
 import example10 from "../images/wifi.jpeg";
-import InputSearch from "../components/InputSearch";
+import InputSearch from "./InputSearch";
 import { HiViewColumns, HiTrash } from "react-icons/hi2";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { FaFilter } from "react-icons/fa";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaRegPenToSquare } from "react-icons/fa6";
 
-const Edite = (props) => {
+const EditeBrand = (props) => {
   const dataTable = [
     {
       name: "Lorem ipsum dolor sit amet",
@@ -460,4 +460,4 @@ const Edite = (props) => {
   );
 };
 
-export default Edite;
+export default EditeBrand;
