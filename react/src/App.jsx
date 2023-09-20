@@ -9,13 +9,14 @@ import Categories from "./Pages/Categories";
 import Brands from "./Pages/Brands";
 import BrandsCreate from "./Pages/BrandsCreate";
 import CategoriesCreate from "./Pages/CategoriesCreate";
-
+import ExempleDashboard from "./components/ExempleDashboard";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Connexion />} />
       <Route path="/inscription" element={<Inscription />} />
+      <Route path="/exemple" element={<ExempleDashboard />} />
       <Route path="/customers" element={<Customers />} />
       <Route path="/customers/create" element={<CustomersCreate />} />
       <Route path="/categories" element={<Categories />} />
