@@ -4,46 +4,20 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
+import { useState, useEffect } from "react";
 const Brands = () => {
-  const dataTable = [
-    {
-      name: "Abdoulaye SENE",
-      website: "http://localhost/dashboard/",
-      date: "Jav 12, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Latyr SENE",
-      website: "http://localhost/dashboard/",
-      date: "Nov 22, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Maina SOW",
-      website: "http://localhost/dashboard/",
-      date: "Avr 5, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-    {
-      name: "Mariéme DIOP",
-      website: "http://localhost/dashboard/",
-      date: "Dec 6, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-    },
-    {
-      name: "Rakhma BIAYE",
-      website: "http://localhost/dashboard/",
-      date: "Mai 7, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-    {
-      name: "Moussa FALL",
-      website: "http://localhost/dashboard/",
-      date: "Jav 17, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-    },
-  ];
+  
+  const [brand, SetBrand] = useState([]);
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    await axios.get(`http://localhost:8000/api/brand`).then(({ data }) => {
+      SetBrand(data);
+    });
+  };
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">
@@ -134,10 +108,17 @@ const Brands = () => {
                         </label>
                       </div>
                     </td>
-                    <td className="px-6 py-4">{data.name}</td>
-                    <td className="px-6 py-4">{data.website}</td>
-                    <td className="px-6 py-4">{data.icon}</td>
-                    <td className="px-6 py-4">{data.date}</td>
+                    <td className="px-6 py-4">{data.nom}</td>
+                    <td className="px-6 py-4">{data.slug}</td>
+                    <td className="px-6 py-4">
+                       { data.visibility? (<AiOutlineCheckCircle className="w-5 h-5 text-green-700" />) 
+                       : (
+                     <AiOutlineCloseCircle className="w-5 h-5 text-red-700" /> 
+                      )}
+
+                      
+                    </td>
+                    <td className="px-6 py-4">{data.updated_at}</td>
                     <td className="px-6 py-4">
                       <a
                         href="#"

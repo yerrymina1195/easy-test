@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use Illuminate\Http\Request;
-use App\Models\Category;
 
-class CategoryController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return response()->json($category);
-   }
+        //
+        $brand = Brand::all();
+        return response()->json($brand);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,51 +35,43 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request )
+    public function store(Request $request)
     {
-        //    $validatedData = $request->validate([
-    //     'marque' => 'required|max:255',
-    //     'prix' => 'required',
-    // ]);
-
-    // $car = Car::create($validatedData);
-
-    // return redirect('/cars')->with('success', 'Voiture créer avec succèss');
-
-
-     $category =  Category::create([
+        //
+          $brand = Brand::create([
             "nom"=>$request->nom,
             'url'=>$request->url,
             'slug'=>$request->slug,
             'visibility'=>$request->visibility, 
             'description'=>$request-> description
         ]);
-         return response()->json(['message' =>'Category Created Successfully!!',
-        'category'=> $category]);
+         return response()->json(['message' =>'Brand Created Successfully!!',
+        'category'=> $brand]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Brand $brand)
     {
-        
+        //
         return response()->json([
-            'category'=>$category
+            'category'=>$brand
             
         ]);
+        console.log($brand);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Brand $brand)
     {
         //
     }
@@ -86,10 +80,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Brand $brand)
     {
         //
     }
@@ -97,10 +91,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Brand $brand)
     {
         //
     }

@@ -20,6 +20,7 @@ const Categories = () => {
     });
   };
 
+ 
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">

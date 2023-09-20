@@ -12,14 +12,14 @@ const CategoriesCreate = () => {
   const [visibility, setVisibility] = useState(false);
   const [validationError, setValidationError] = useState({});
   const navigate = useNavigate();
-  const {id} = useParams()
+  const { id } = useParams();
   const create = async (e) => {
     e.preventDefault();
 
     await axios
       .post(`http://localhost:8000/api/categorie`, {
         nom: nom,
-        url: url,      
+        url: url,
         slug: slug,
         visibility: visibility,
         description: description,
@@ -29,7 +29,11 @@ const CategoriesCreate = () => {
           icon: "success",
           text: data.message,
         });
-        setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
+        setNom(""),
+          setUrl(""),
+          setSlug(" "),
+          setVisibility(""),
+          setDescrition("");
         navigate("/categories");
       })
       .catch(({ response }) => {
@@ -49,7 +53,7 @@ const CategoriesCreate = () => {
     await axios
       .post(`http://localhost:8000/api/categorie/${id}`, {
         nom: nom,
-        url: url,      
+        url: url,
         slug: slug,
         visibility: visibility,
         description: description,
@@ -59,7 +63,11 @@ const CategoriesCreate = () => {
           icon: "success",
           text: data.message,
         });
-        setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
+        setNom(""),
+          setUrl(""),
+          setSlug(" "),
+          setVisibility(""),
+          setDescrition("");
         navigate("/categories");
       })
       .catch(({ response }) => {
@@ -76,6 +84,9 @@ const CategoriesCreate = () => {
   const cancel = async (e) => {
     setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
     navigate("/categories");
+  };
+  const handleToggle = (e) => {
+    setVisibility(!visibility);
   };
 
   return (
@@ -152,24 +163,21 @@ const CategoriesCreate = () => {
                   parent
                 </label>
               </div>
-              <div className="relative z-0 mb-6 group">
-                <BtnToggle name={"Visible to customers."} />
+              <div class="relative z-0 mb-6 group">
+                <BtnToggle
+                  checked={visibility}
+                  value={visibility}
+                  handleClick={handleToggle}
+                  onChange={(event) => {
+                    setVisibility(event.target.value);
+                  }}
+                  name={"Visible to Brand."}
+                />
               </div>
             </div>
             <div className="grid md:grid-cols-1">
-              <div
-                className="relative z-0 w-full mb-12 group"
-                value={description}
-                onChange={(event) => {
-                  setDescrition(event.target.value);
-                }}
-              >
-                <Editor
-                  value={description}
-                  onChange={(event) => {
-                    setDescrition(event.target.value);
-                  }}
-                />
+              <div class="relative z-0 w-full mb-12 group">
+                <Editor value={description} onChange={setDescrition} />
               </div>
             </div>
           </div>
