@@ -459,7 +459,7 @@ if (!userToken) {
 
       {/* Contenue */}
       <div className="p-4 sm:ml-64">
-        <div className="p-4  rounded-lg dark:border-gray-700 mt-14">
+        <div className="py-4 rounded-lg dark:border-gray-700 mt-14">
           <Outlet />
         </div>
       </div>

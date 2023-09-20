@@ -24,8 +24,8 @@ const Categories = () => {
     <div className="container overflow-auto m-10 mx-auto">
       <div className="columns-2">
         <div className="grid justify-items-start">
-          <p className="">Categories &#62; List</p>
-          <h2 className="text-2xl py-3 font-bold">Categories</h2>
+          <p className="text-gray-500">Categories &#62; List</p>
+          <h2 className="text-3xl py-3 font-bold">Categories</h2>
         </div>
         <div className="grid justify-items-end">
           <Link to="/categories/create">
