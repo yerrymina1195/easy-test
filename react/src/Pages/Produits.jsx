@@ -141,7 +141,7 @@ const Produits = () => {
           <h2 className="text-2xl py-3 font-bold">Products</h2>
         </div>
         <div className="grid justify-items-end ">
-          <Link to="/customers/create">
+          <Link to="/produits/create">
             <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
               New Products
             </button>

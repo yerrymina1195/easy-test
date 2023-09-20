@@ -13,7 +13,8 @@ import ExempleDashboard from "./components/ExempleDashboard";
 import Produits from "./Pages/Produits";
 import CreateProduits from "./Pages/CreateProduits";
 import Order from "./Pages/Order";
-
+import Dashbord from "./Pages/Dashbord";
+import Test from "./components/Test"
 function App() {
   return (
     <>

@@ -20,7 +20,7 @@ const CategoriesCreate = () => {
       .post(`http://localhost:8000/api/categorie`, {
         nom: nom,
         url: url,      
-        slug: slug,
+        slug: nom,
         visibility: visibility,
         description: description,
       })
@@ -43,36 +43,7 @@ const CategoriesCreate = () => {
         }
       });
   };
-  const update = async (e) => {
-    e.preventDefault();
 
-    await axios
-      .post(`http://localhost:8000/api/categorie/${id}`, {
-        nom: nom,
-        url: url,      
-        slug: slug,
-        visibility: visibility,
-        description: description,
-      })
-      .then(({ data }) => {
-        Swal.fire({
-          icon: "success",
-          text: data.message,
-        });
-        setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
-        navigate("/categories");
-      })
-      .catch(({ response }) => {
-        if (response.status === 422) {
-          setValidationError(response.data.errors);
-        } else {
-          Swal.fire({
-            text: response.data.message,
-            icon: "error",
-          });
-        }
-      });
-  };
   const cancel = async (e) => {
     setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
     navigate("/categories");
@@ -121,10 +92,9 @@ const CategoriesCreate = () => {
                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                   placeholder=" "
                   required
-                  value={slug}
-                  onChange={(event) => {
-                    setSlug(event.target.value);
-                  }}
+                  disabled
+                  value={nom}
+              
                 />
                 <label
                   for="slug"

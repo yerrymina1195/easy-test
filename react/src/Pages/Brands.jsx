@@ -109,7 +109,7 @@ const Brands = () => {
                       </div>
                     </td>
                     <td class="px-6 py-4">{data.nom}</td>
-                    <td class="px-6 py-4">{data.slug}</td>
+                    <td class="px-6 py-4">{data.url}</td>
                     <td class="px-6 py-4">
                        { data.visibility? (<AiOutlineCheckCircle className="w-5 h-5 text-green-700" />) 
                        : (
