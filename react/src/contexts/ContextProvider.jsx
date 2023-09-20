@@ -10,17 +10,18 @@ const StateContext = createContext({
   });
 
   export const ContextProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState({});
+    const [currentUser, setCurrentUser] = useState(() => JSON.parse(localStorage.getItem('user')) || null);
     const [userToken, _setUserToken] = useState(localStorage.getItem('TOKEN') || '');
-    
+    const [loading, setLoading] = useState(false);
   
-    const setUserToken = (token) => {
+    const setUserToken = (token,userr) => {
       if (token) {
         localStorage.setItem('TOKEN', token)
       } else {
         localStorage.removeItem('TOKEN')
       }
       _setUserToken(token);
+      localStorage.setItem('user', JSON.stringify(userr)) 
     }
   
    
@@ -32,7 +33,8 @@ const StateContext = createContext({
           setCurrentUser,
           userToken,
           setUserToken,
-        
+          loading,
+           setLoading
         }}
       >
         {children}

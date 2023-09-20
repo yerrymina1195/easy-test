@@ -1,28 +1,16 @@
 import React from "react";
 import InputSearch from "../components/InputSearch";
-import { Navigate} from "react-router-dom";
-import { useStateContext } from "../contexts/ContextProvider";
+
 import { FaFilter } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import IconNotification from "../components/IconNotification";
 import axiosClient from "../axios.js";
+import { Link } from "react-router-dom";
+
 const Customers = () => {
 
-  const { userToken,setCurrentUser,setUserToken} =
-  useStateContext();
-
-  const logout = (e) => {
-    e.preventDefault();
-    axiosClient.post("/logout").then((res) => {
-      setCurrentUser({});
-      setUserToken(null);
-    });
-  };
-
-if (!userToken) {
-  return <Navigate to="/" />;
-}
+ 
   const dataTable = [
     {
       name: "Abdoulaye SENE",
@@ -63,8 +51,8 @@ if (!userToken) {
           <h2 className="text-2xl py-3 font-bold">Customers</h2>
         </div>
         <div className="grid justify-items-end">
-          <Link to='/customers/create'>
-            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400" onClick={(e) => logout(e)}>
+          <Link to="/customers/create">
+            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
               New customer
             </button>
           </Link>
@@ -73,9 +61,6 @@ if (!userToken) {
 
       <div class="relative border-2 bg-white overflow-x-auto rounded-2xl">
         <div class="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
-          {/* <label for="table-search" class="sr-only">
-            Search
-          </label> */}
           <InputSearch />
           <IconNotification icon={<FaFilter />} number={0} />
         </div>
@@ -138,9 +123,12 @@ if (!userToken) {
                 <td class="px-6 py-4"></td>
                 <td class="px-6 py-4"></td>
               </tr>
-              {dataTable.map((data) => {
+              {dataTable.map((data, index) => {
                 return (
-                  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
+                  <tr
+                    key={index}
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
+                  >
                     <td class="w-4 p-4">
                       <div class="flex items-center">
                         <input

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useStateContext } from "../contexts/ContextProvider";
 import axiosClient from "../axios.js";
 function Connexion() {
-  const { setCurrentUser, setUserToken } = useStateContext();
+  const { setCurrentUser, setUserToken, setLoading } = useStateContext();
   const navitage = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,10 +22,12 @@ function Connexion() {
       })
       .then(({ data }) => {
         setCurrentUser(data.user);
-        setUserToken(data.token);
+        setUserToken(data.token,data.user);
+         setLoading(true)
       console.log(data)
       alert(`Bienvenu ${data.user.name}`)
-      navitage('/customers', { replace: true })
+      navitage('/dashbord', { replace: true })
+      window.location.reload();
       })
       .catch((error) => {
         

@@ -93,8 +93,7 @@ const Categories = () => {
               {category.map((data) => {
                 return (
                   <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700
-                   hover:bg-gray-50 dark:hover:bg-amber-600"
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
                     key={data.id}
                   >
                     <td class="w-4 p-4">
