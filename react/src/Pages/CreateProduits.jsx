@@ -21,7 +21,7 @@ const CreateProduits = () => {
   };
   return (
     <div className="container m-10 mx-auto">
-      <h2 className="text-3xl py-3 font-bold">Create Brand</h2>
+      <h2 className="text-3xl py-3 font-bold">Create Produit</h2>
       <div className="grid grid-cols-3 gap-5">
         <div className="col-span-2">
           <form>
