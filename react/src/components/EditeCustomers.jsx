@@ -69,9 +69,19 @@ const handleUpdate = async (e) => {
     console.error(error);
   }
 };
+const delateClient= async(e)=>{
+  e.preventDefault();
+  try {
+
+    await axiosClient.delete(`/clients/${id}`);
+
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
-    <div>
+    <div className="container m-10  mx-auto">
       <div className="grid grid-cols-2">
         <div className="">
           <p className="text-gray-500 md:text-base text-sm">
@@ -82,7 +92,7 @@ const handleUpdate = async (e) => {
         </div>
         <div className="grid justify-items-end">
           <Link to="/categories/create">
-            <button className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
+            <button className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400" onClick={delateClient}>
               Delete
             </button>
           </Link>
