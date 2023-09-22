@@ -45,10 +45,10 @@ const ExempleDashboard = () => {
         >
           <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
           <h2 className="text-center text-white text-xl font-semibold">
-            Loading...
+            Chargement...
           </h2>
           <p className="w-1/3 text-center text-white">
-            This may take a few seconds, please don't close this page.
+            Cela peut prendre quelques secondes, veuillez ne pas fermer cette page.
           </p>
         </div>
       ) : (
@@ -60,7 +60,7 @@ const ExempleDashboard = () => {
           {/* Side Barre */}
           <aside
             id="logo-sidebar"
-            className="fixed bg-[#F9FAFB] top-0 left-0 md:z-20 z-50 w-64 h-screen pt-20 transition-transform -translate-x-full  sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+            className="fixed bg-[#F9FAFB] top-0 left-0 md:z-20 z-50 w-56 md:w-80 h-screen pt-20 transition-transform -translate-x-full  sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Sidebar"
           >
             <div className="h-full px-3 pb-4 overflow-y-auto  dark:bg-gray-800">

@@ -1,48 +1,42 @@
 import React, { useState } from "react";
 import axiosClient from "../axios.js";
 
-
 const CustomersCreate = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState("");
   const [error, setError] = useState({ __html: "" });
   const onSubmit = (e) => {
     e.preventDefault();
     setError({ __html: "" });
 
-
     axiosClient
       .post("/clients", {
         nom: fullName,
-         email,
-         telephone:phone,
-         date_de_naissance: date
+        email,
+        telephone: phone,
+        date_de_naissance: date,
       })
       .then(({ data }) => {
-      console.log(data)
-      alert('donnée bien entrée')
-     
+        console.log(data);
+        alert("donnée bien entrée");
       })
       .catch((error) => {
-        
         if (error.response) {
-            const finalErrors = Object.values(error.response.data.errors).reduce((accum, next) => [...accum, ...next], [])
-            console.log(finalErrors)
-            setError({__html: finalErrors.join('<br>')})
-          }
-          console.error(error)
+          const finalErrors = Object.values(error.response.data.errors).reduce(
+            (accum, next) => [...accum, ...next],
+            []
+          );
+          console.log(finalErrors);
+          setError({ __html: finalErrors.join("<br>") });
+        }
+        console.error(error);
       });
   };
   return (
     <div className="container m-10 mx-auto">
-      <div className="columns-1">
-        <div className="grid justify-items-start">
-          <p className="">Customers &#62; Create</p>
-          <h2 className="text-2xl py-3 font-bold">Create Customer</h2>
-        </div>
-      </div>
+      <h2 className="text-3xl py-3 font-bold">Create Brand</h2>
       <div>
         <form onSubmit={onSubmit} action="#" method="POST">
           <div className="bg-white p-5 my-5 rounded-2xl">
@@ -57,7 +51,6 @@ const CustomersCreate = () => {
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                   placeholder=" "
                   required
-               
                 />
                 <label
                   htmlFor="name"
@@ -125,30 +118,34 @@ const CustomersCreate = () => {
               </div>
             </div>
           </div>
-          <div className="flex gap-5">
+          <div className="md:flex grid grid-cols-3 gap-4">
             <button
               type="submit"
-              className="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-            >
+              className="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg md:text-sm text-xs w-full sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              >
               Create
             </button>
             <button
               type="submit"
-              className=" border-2 bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-            >
+              className="col-span-2 border-2 bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              >
               Create & create another
             </button>
             <button
               type="submit"
-              className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-            >
+              className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              >
               Cancel
             </button>
           </div>
         </form>
       </div>
-      {error.__html && (<div className="bg-red-500 rounded py-2 px-3 text-white" dangerouslySetInnerHTML={error}>
-      </div>)}
+      {error.__html && (
+        <div
+          className="bg-red-500 rounded py-2 px-3 text-white"
+          dangerouslySetInnerHTML={error}
+        ></div>
+      )}
     </div>
   );
 };

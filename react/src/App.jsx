@@ -14,7 +14,7 @@ import Produits from "./Pages/Produits";
 import CreateProduits from "./Pages/CreateProduits";
 import Test from "./components/Test"
 import Order from "./Pages/Order";
-
+import EditeCategory from "./components/EditeCategory";
 import EditeBrand from "./components/EditeBrand";
 import EditeCustomers from "./components/EditeCustomers";
 
@@ -31,13 +31,14 @@ function App() {
           <Route path="/customers/create" element={<CustomersCreate />} />
           <Route path="/customers/:id/edit" element={<EditeCustomers />} />
           <Route path="/produits" element={<Produits />} />
-          <Route path="/order" element={<Order />} />
           <Route path="/produits/create" element={<CreateProduits />} />
+          <Route path="/order" element={<Order />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/create" element={<CategoriesCreate />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/brands/create" element={<BrandsCreate />} />
           <Route path="/brands/:id/edit" element={<EditeBrand />} />
+          <Route path="/categories/:id/edit" element={<EditeCategory/>} />
           {/* route pour les teste */}
           <Route path="/teste" element={<Test />} />
           {/* route pour les teste */}

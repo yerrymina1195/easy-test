@@ -25,8 +25,16 @@ Route::post('/signup',[AuthController::class, 'signup']);
 Route::post('/login',[AuthController::class, 'login']);
 Route::post('/clients', [ClientController::class, 'store']);
 Route::get('/clients', [ClientController::class, 'index']);
-Route::resource('/categorie',CategoryController::class);
-Route::resource('/brand',BrandController::class);
+Route::get('/clients/{id}', [ClientController::class, 'show']);
+Route::delete('/clients/{id}', [ClientController::class, 'destroy']);
+Route::put('/clients/{id}', [ClientController::class, 'update']);
+Route::put('categorie/{id}',[CategoryController::class,'update']);
+Route::get('categorie/{id}',[CategoryController::class,'show']);
+Route::delete('categorie/{id}',[CategoryController::class,'destroy']);
+Route::resource('categorie',CategoryController::class);
+Route::put('brand/{id}',[BrandController::class,'update']);
+Route::delete('brand/{id}',[BrandController::class,'destroy']);
+Route::resource('brand',BrandController::class);
 
 
 

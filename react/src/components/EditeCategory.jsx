@@ -19,9 +19,9 @@ import { FaFilter } from "react-icons/fa";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosClient from "../axios";
+import axios from 'axios'
 import Swal from "sweetalert2";
-import axios from "axios";
-const EditeBrand = (props) => {
+const EditeCategory = (props) => {
   const dataTable = [
     {
       name: "Lorem ipsum dolor sit amet",
@@ -125,66 +125,88 @@ const EditeBrand = (props) => {
   ];
   const navigate = useNavigate();
   const { id } = useParams();
+  console.log(id);
   const [nom, setNom] = useState("");
   const [slug, setSlug] = useState("");
   const [url, setUrl] = useState("");
   const [description, setDescrition] = useState("");
   const [visibility, setVisibility] = useState(false);
-  const [validationError, setValidationError] = useState({});
+  const [data, setData] = useState([]);
   useEffect(() => {
-    fetchBrand();
+    fetchCategory();
   }, []);
-  const fetchBrand = async () => {
-    await axiosClient
-      .get(`/brand/${id}`)
-      .then(({ data }) => {
-        const { nom, slug, url, description, visibility } = data.brand;
-        setNom(nom),
-          setUrl(url),
-          setSlug(slug),
-          setVisibility(visibility),
-          setDescrition(description);
-      })
-      .catch(({ response: { data } }) => {
-        Swal.fire({
-          text: data.message,
-          icon: "error",
-        });
-      });
-  };
-  const updateBrand = async (e) => {
+  const fetchCategory = async () => {
+
+    await axios.get(`http://localhost:8000/api/categorie/${id}`)
+    .then(( { data } ) => {
+      const { nom, slug, url, description, visibility }= data.category;
+      setNom(nom),
+      setUrl(url),
+      setSlug(slug),
+      setVisibility(visibility),
+      setDescrition(description);
+      setData(data.category)
+    })
+  }
+  const updateCategory = async (e) => {
     e.preventDefault();
-    await axiosClient
-      .put(`/brand/${id}`, {
+
+    try {
+      const response = await axiosClient.put(`/categorie/${id}`, {
         nom: nom,
         url: url,
         slug: nom,
         visibility: visibility,
         description: description,
-      })
-      .then(({ data }) => {
-        Swal.fire({
-          icon: "success",
-          text: data.message,
-        });
-        navigate("/brands");
-      })
-      .catch(({ response }) => {
-        if (response.status === 422) {
-          setValidationError(response.data.errors);
-        } else {
-          Swal.fire({
-            text: response.data.message,
-            icon: "error",
-          });
-        }
       });
+      Swal.fire({
+        icon: "success",
+        text: response.data.message,
+      });
+      console.log(data);
+      navigate("/categories");
+    } catch (error) {
+      console.log(error);
+      console.log(error.response.data);
+    }
   };
+  const deleteProduct = async (e) => {
+    e.preventDefault()
+    const isConfirm = await Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        return result.isConfirmed
+      });
+
+      if(!isConfirm){
+        return;
+      }
+
+      await axios.delete(`http://localhost:8000/api/categorie/${id}`).then(({data})=>{
+        Swal.fire({
+            icon:"success",
+            text:data.message
+        })
+       navigate('/categories')
+      }).catch(({response:{data}})=>{
+        Swal.fire({
+            text:data.message,
+            icon:"error"
+        })
+      })
+}
   const cancel = async (e) => {
     setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
     navigate("/categories");
   };
   const handleToggle = (e) => {
+    e.preventDefault()
     setVisibility(!visibility);
   };
   return (
@@ -192,21 +214,21 @@ const EditeBrand = (props) => {
       <div className="grid grid-cols-2">
         <div className="">
           <p className="text-gray-500 md:text-base text-sm">
-            Categories &#62; {"props.name"} &#62; Edit
+            Brand &#62; {data?.nom} &#62; Edit
           </p>
-          <h2 className="text-3xl pt-2 font-bold">{"props.name"}</h2>
+          <h2 className="text-3xl pt-2 font-bold">{data?.nom}</h2>
         </div>
         <div className="grid justify-items-end">
-          <Link to="/categories/create">
-            <button className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
+          
+            <button  onClick={deleteProduct} className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
               Delete
             </button>
-          </Link>
+         
         </div>
       </div>
       <div className="grid md:grid-cols-3 md:gap-5">
         <div className="md:col-span-2">
-          <form onSubmit={updateBrand}>
+          <form onSubmit={updateCategory}>
             <div className="bg-white border border-gray-200 my-5 md:p-5 p-2.5 rounded-2xl">
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-6 group">
@@ -549,4 +571,4 @@ const EditeBrand = (props) => {
   );
 };
 
-export default EditeBrand;
+export default EditeCategory;

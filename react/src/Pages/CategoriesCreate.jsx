@@ -34,7 +34,8 @@ const CategoriesCreate = () => {
           setSlug(" "),
           setVisibility(""),
           setDescrition("");
-        navigate("/categories");
+          navigate("/categories");
+          console.log(data.category);
       })
       .catch(({ response }) => {
         if (response.status === 422) {
@@ -57,13 +58,8 @@ const CategoriesCreate = () => {
 
   return (
     <div className="container m-10 mx-auto">
-      <div className="columns-1 m-5">
-        <div className="grid justify-items-start">
-          <p className="">Category &#62; create</p>
-          <h2 className="text-2xl py-3 font-bold">Create Category</h2>
-        </div>
-      </div>
-      <div className="m-5">
+      <h2 className="text-3xl py-3 font-bold">Create Categories</h2>
+
         <form onSubmit={create}>
           <div className="bg-white p-5 my-5 rounded-2xl">
             <div className="grid md:grid-cols-2 md:gap-6">
@@ -141,34 +137,33 @@ const CategoriesCreate = () => {
               </div>
             </div>
             <div className="grid md:grid-cols-1">
-              <div class="relative z-0 w-full mb-12 group">
+              <div class="relative z-0 w-full group">
                 <Editor value={description} onChange={setDescrition} />
               </div>
             </div>
           </div>
-          <div className="flex gap-5">
+          <div className="md:flex grid grid-cols-3 gap-4">
             <button
               type="submit"
-              className="text-white bg-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-            >
+              className="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg md:text-sm text-xs w-full sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              >
               Create
             </button>
             <button
               type="submit"
-              className=" border-2 bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-            >
+              className="col-span-2 border-2 bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              >
               Create & create another
             </button>
             <button
               type="submit"
-              className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
               onClick={cancel}
             >
               Cancel
             </button>
           </div>
         </form>
-      </div>
     </div>
   );
 };
