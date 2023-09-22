@@ -20,7 +20,7 @@ const Customers = () => {
     });
   };
   return (
-    <div className="container m-10  mx-auto">
+    <div className="container m-10 mx-auto">
       <FilAriane
         linkOne={"/brands"}
         nameOne={"Customers"}

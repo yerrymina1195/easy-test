@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import IconNotification from "../components/IconNotification";
-import example1 from "../images/code.jpeg";
-import example2 from "../images/in.jpeg";
-import example3 from "../images/inf.jpeg";
-import example4 from "../images/hijab.jpeg";
-import example5 from "../images/machine.jpeg";
-import example6 from "../images/startup.jpeg";
-import example7 from "../images/team.jpeg";
-import example10 from "../images/wifi.jpeg";
+
 import InputSearch from "../components/InputSearch";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
-import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { FaFilter } from "react-icons/fa";
 import { HiViewColumns } from "react-icons/hi2";
 import FilAriane from "../components/FilAriane";
@@ -98,7 +90,6 @@ const Order = () => {
       total: 123456,
       shipping: 9,
     },
-
   ];
   const [boutonClique, setBoutonClique] = useState(false);
   const handleBoutonClick = () => {
@@ -213,7 +204,7 @@ const Order = () => {
             >
               {boutonClique && (
                 <button
-                  className="text-gray-600 border border-gray-300 focus:ring-2 focus:outline-inherit focus:ring-amber-500 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="text-gray-600 border border-gray-300 focus:ring-2 focus:outline-inherit focus:ring-amber-500 font-medium rounded-lg text-sm px-5 py-2 text-center inline-flex items-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
                   type="button"
                 >
                   Ascending
@@ -372,10 +363,18 @@ const Order = () => {
                     <td className="px-6 py-4 whitespace-nowrap">
                       {data.customer}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.status}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.currency}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.total}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.shipping}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.status}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.currency}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.total}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.shipping}
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.date}</td>
                     <td className="px-6 py-4">
                       <Link

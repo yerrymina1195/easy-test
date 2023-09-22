@@ -16,6 +16,7 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
+import FilAriane from "../components/FilAriane";
 const Produits = () => {
   const cart = [
     {
@@ -133,20 +134,14 @@ const Produits = () => {
     },
   ];
   return (
-    <div className="mt-5">
-      <div className="columns-2">
-        <div className="grid justify-items-start">
-          <p className="">Products &#62; List</p>
-          <h2 className="text-2xl py-3 font-bold">Products</h2>
-        </div>
-        <div className="grid justify-items-end ">
-          <Link to="/produits/create">
-            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-              New Products
-            </button>
-          </Link>
-        </div>
-      </div>
+    <div className="container overflow-auto m-10 mx-auto">
+      <FilAriane
+        linkOne={"/produits"}
+        nameOne={"Products"}
+        nameTwo={"Products"}
+        linkTwo={"/produits/create"}
+        button={"New Products"}
+      />
       <div className="grid md:grid-cols-3 my-5 gap-5">
         {cart.map((carte, index) => (
           <div
@@ -270,7 +265,10 @@ const Produits = () => {
                           type="checkbox"
                           className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label htmlFor="checkbox-table-search-1" className="sr-only">
+                        <label
+                          htmlFor="checkbox-table-search-1"
+                          className="sr-only"
+                        >
                           checkbox
                         </label>
                       </div>
@@ -279,7 +277,9 @@ const Produits = () => {
                       <img src={data.image} alt={data.name} />
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.brand}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.brand}
+                    </td>
                     <td className="px-6 py-4">{data.icon}</td>
                     <td className="px-6 py-4">{data.price}</td>
                     <td className="px-6 py-4">{data.sKU}</td>

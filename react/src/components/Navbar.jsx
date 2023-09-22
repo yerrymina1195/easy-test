@@ -8,13 +8,12 @@ import { HiBellSlash, HiComputerDesktop, HiMoon } from "react-icons/hi2";
 import { useStateContext } from "../contexts/ContextProvider";
 import axiosClient from "../axios.js";
 
-
-const Navbar = () => {
+const Navbar = (props) => {
   const { currentUser, setCurrentUser, setUserToken, updatecategorie } =
     useStateContext();
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
-  console.log(currentUser);
+  // console.log(currentUser);
   useEffect(() => {
     fetchCategory();
   }, []);
@@ -30,7 +29,7 @@ const Navbar = () => {
 
       const firstLetterOfFirstName = nameWords[0].charAt(0);
       setFirstName(firstLetterOfFirstName);
-      console.log({ firstLetterOfFirstName });
+      // console.log({ firstLetterOfFirstName });
 
       const lastWordIndex = nameWords.length - 1;
       const lastWord = nameWords[lastWordIndex];
@@ -46,24 +45,33 @@ const Navbar = () => {
       localStorage.clear();
     });
   };
+
   return (
     <div>
-      <nav className="fixed top-0 z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+      <nav
+        className="fixed top-0 z-30 w-full bg-white border-b border-gray-200 
+      dark:bg-gray-800 dark:border-gray-700"
+      >
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
               <button
-                data-drawer-target="logo-sidebar"
-                data-drawer-toggle="logo-sidebar"
-                aria-controls="logo-sidebar"
+                className="text-black border lg:hidden border-black font-medium
+          rounded-lg text-sm px-1 py-1 mr-2 mb-2 hover:bg-gray-100 
+          dark:text-gray-400 dark:hover:bg-gray-700
+          dark:focus:ring-gray-600"
                 type="button"
-                className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                data-drawer-target="drawer-Side"
+                data-drawer-show="drawer-Side"
+                aria-controls="drawer-Side"
               >
-                {/* <span className="sl-only"></span> */}
                 <BiMenuAltLeft className="w-6 h-6" />
               </button>
-              <Link className="flex ml-2 md:mr-24" to={"/dashbord"}>
-                <span className="self-center hidden md:block text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+              <Link className="flex ml-2" to={"/dashbord"}>
+                <span
+                  className="self-center hidden md:hidden lg:block text-lg font-bold 
+                whitespace-nowrap dark:text-white"
+                >
                   Filament Demo
                 </span>
               </Link>
@@ -207,7 +215,7 @@ const Navbar = () => {
       {/* OFF canva */}
       <div
         id="drawer-right-example"
-        className="fixed top-0 right-0 z-50 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800"
+        className="fixed bottom-0 right-0 z-50 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800"
         tabIndex="-1"
         aria-labelledby="drawer-right-label"
       >
