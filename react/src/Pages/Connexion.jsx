@@ -30,13 +30,19 @@ function Connexion() {
       window.location.reload();
       })
       .catch((error) => {
+        // const response= error.response;
+
+        // if (response && response.status == 422) {
+        //   alert(response.data.message)
+        //   console.log(response);
+        // }
         
         if (error.response) {
-            const finalErrors = Object.values(error.response.data.errors).reduce((accum, next) => [...accum, ...next], [])
+            const finalErrors = Object.values(error.response.data.message).reduce((accum, next) => [...accum, ...next], [])
             console.log(finalErrors)
-            setError({__html: finalErrors.join('<br>')})
+            setError({__html: finalErrors.join('')})
           }
-          console.error(error)
+          // console.error(error)
       });
   };
 
