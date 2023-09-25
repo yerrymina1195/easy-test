@@ -16,7 +16,7 @@ import Test from "./components/Test"
 import Order from "./Pages/Order";
 import EditeBrand from "./components/EditeBrand";
 import EditeCustomers from "./components/EditeCustomers";
-import OrderCreate from "./Pages/OrderCreate";
+import {OrderCreate} from "./Pages/OrderCreate";
 
 function App() {
   return (

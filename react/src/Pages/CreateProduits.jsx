@@ -30,36 +30,36 @@ const CreateProduits = () => {
             <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="name"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Name
+                  </label>
                   <input
                     type="text"
                     name="name"
                     id="name"
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
                   />
-                  <label
-                    htmlFor="name"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    Name
-                  </label>
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="email"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Email address
+                  </label>
                   <input
                     type="email"
                     name="email"
                     id="email"
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
                   />
-                  <label
-                    htmlFor="email"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    Email address
-                  </label>
                 </div>
               </div>
               <div className="">
@@ -94,7 +94,7 @@ const CreateProduits = () => {
                       />
                     </svg>
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span className="font-semibold">Click to upload</span> 
+                      <span className="font-semibold">Click to upload</span>
                       {/* or drag and drop */}
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -125,52 +125,53 @@ const CreateProduits = () => {
               </h3>
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="price"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Price
+                  </label>
                   <input
                     type="number"
                     name="price"
                     id="price"
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
                   />
-                  <label
-                    htmlFor="price"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    Price
-                  </label>
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="Compare"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Compare at price
+                  </label>
                   <input
                     type="number"
                     name="Compare"
                     id="Compare"
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
                   />
-                  <label
-                    htmlFor="Compare"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    Compare at price
-                  </label>
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="Cost"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Cost per item
+                  </label>
                   <input
                     type="number"
                     name="Cost"
                     id="Cost"
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
                   />
-                  <label
-                    htmlFor="Cost"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    Cost per item
-                  </label>
+
                   <p className="text-gray-400 text-sm pt-5">
                     Customers won't see this price.
                   </p>
@@ -184,68 +185,69 @@ const CreateProduits = () => {
               </h3>
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="SKU"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    SKU (Stock Keeping Unit)*
+                  </label>
                   <input
                     type="text"
                     name="SKU"
                     id="SKU"
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
                   />
-                  <label
-                    htmlFor="SKU"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    SKU (Stock Keeping Unit)*
-                  </label>
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="Barcode"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Barcode (ISBN, UPC, GTIN, etc.)*
+                  </label>
                   <input
                     type="text"
                     name="Barcode"
                     id="Barcode"
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
                   />
-                  <label
-                    htmlFor="Barcode"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    Barcode (ISBN, UPC, GTIN, etc.)*
-                  </label>
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="Quantity"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Quantity*
+                  </label>
                   <input
                     type="number"
                     name="Quantity"
                     id="Quantity"
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
                   />
-                  <label
-                    htmlFor="Quantity"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    Quantity*
-                  </label>
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="Security"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Security stock*
+                  </label>
                   <input
                     type="number"
                     name="Security"
                     id="Security"
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
                   />
-                  <label
-                    htmlFor="Security"
-                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >
-                    Security stock*
-                  </label>
+
                   <p className="text-gray-400 text-sm pt-5">
                     The safety stock is the limit stock for your products which
                     alerts you if the product stock will soon be out of stock.
@@ -281,7 +283,6 @@ const CreateProduits = () => {
                 </div>
               </div>
             </div>
-
           </form>
         </div>
         {/* section right */}
@@ -291,19 +292,22 @@ const CreateProduits = () => {
               Status
             </h3>
             <BtnToggle name={"Visible"} />
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-500 pb-1 text-sm">
               This product will be hidden from all sales channels.
             </p>
-            <h4 className="font-medium pt-5 text-sm">Availability*</h4>
-            <div>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
-                required
-              />
-            </div>
+            <label
+              htmlFor="Security"
+              className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+            >
+              Availability*
+            </label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+              required
+            />
           </div>
           <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">
             <h3 className="border-b border-gray-200 w-full mb-5 pb-2 font-bold">
@@ -313,7 +317,7 @@ const CreateProduits = () => {
             <div>
               <label
                 for="brand"
-                class="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
+                class="text-sm font-medium text-gray-800 dark:text-white"
               >
                 Brand
               </label>

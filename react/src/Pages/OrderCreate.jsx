@@ -1,50 +1,233 @@
-import React from "react";
-const OrderCreate = () => {
+import React, { useState } from "react";
+import Editor from "../components/Editor";
+
+export const OrderCreate = () => {
+  const [boutonClique, setBoutonClique] = useState(false);
+
+  const handleBoutonClick = (e) => {
+    e.preventDefault();
+    // Inversez la valeur de boutonClique pour basculer entre les éléments
+    setBoutonClique(!boutonClique);
+  };
+  const alertee = (e)=>{
+    e.preventDefault();
+    alert("dhfhfvdhvfd")
+  }
   return (
     <div className="container m-10 mx-auto">
       <h2 className="text-3xl py-3 font-bold">Create Order</h2>
       <div className="bg-white rounded-xl border border-gray-200  ">
-        <ol class="flex items-center w-full text-sm font-medium  text-gray-500 dark:text-gray-400 sm:text-base">
-          <li class="flex md:w-full items-center text-gray-600 dark:text-gray-500  dark:after:border-gray-700">
+        <ol className="flex items-center border-b border-gray-200 w-full text-sm font-medium  text-gray-500 dark:text-gray-400 sm:text-base">
+          <li className="flex md:w-full p-5 items-center text-gray-600 dark:text-gray-500  dark:after:border-gray-700">
             <span className="border-2 flex justify-center items-center w-10 h-10 mr-4 rounded-full border-gray-400">
               01
             </span>
             Order Details
           </li>
-          <li>
-            <svg
-              class="w-full  h-20 text-gray-600 dark:text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 8 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1"
-                d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"
-              />
-            </svg>
-          </li>
-          <li class="flex md:w-full items-center dark:after:border-gray-700">
+          <li className="polygone"></li>
+          <li className="flex md:w-full p-5 items-center dark:after:border-gray-700">
             <span className="border-2 flex justify-center items-center w-10 h-10 mr-4 rounded-full border-gray-400">
               02
             </span>
             Order Items
           </li>
         </ol>
+        <form action="">
+          <div className={boutonClique ? "visible" : "hidden"}>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
+              accusantium totam accusamus saepe ullam hic id iste possimus.
+              Quasi soluta nihil veniam laudantium consectetur quis maxime
+              explicabo eius, fugit ipsam? Dolor quis illo exercitationem vel,
+              blanditiis facere similique rerum ipsum voluptatibus, aspernatur
+              suscipit reiciendis maiores. Illo soluta amet voluptate,
+              perferendis odit magni possimus labore temporibus deserunt!
+              Temporibus animi excepturi quaerat distinctio ab facilis ea enim
+              nobis. Esse doloremque at, quidem, velit possimus ratione modi
+              mollitia, voluptate facilis amet earum? A quo eius ad? Ad, culpa
+              excepturi beatae corporis voluptatum natus vitae unde odit esse
+              cum cumque repudiandae inventore? In, quae.
+            </p>
+          </div>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+          <div className={boutonClique ? "hidden" : "visible"}>
+            <div className="bg-white border border-gray-200 p-5 m-5 rounded-xl">
+              <div className="grid md:grid-cols-2 md:gap-6">
+                <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="number"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Number
+                  </label>
+                  <input
+                    type="text"
+                    name="number"
+                    id="number"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    placeholder="OR-973371"
+                    required
+                  />
+                </div>
+                <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="brand"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Brand
+                  </label>
+                  <select
+                    id="brand"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                  >
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>France</option>
+                    <option>Germany</option>
+                  </select>
+                </div>
+                <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="brand"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Brand
+                  </label>
+                  <select
+                    id="brand"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                  >
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>France</option>
+                    <option>Germany</option>
+                  </select>
+                </div>
+                <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="brand"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Brand
+                  </label>
+                  <select
+                    id="brand"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                  >
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>France</option>
+                    <option>Germany</option>
+                  </select>
+                </div>
+                <div className="relative z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="brand"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Brand
+                  </label>
+                  <select
+                    id="brand"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                  >
+                    <option>United States</option>
+                    <option>Canada</option>
+                    <option>France</option>
+                    <option>Germany</option>
+                  </select>
+                </div>
+                <div className="relative col-span-2 z-0 w-full mb-6 group">
+                  <label
+                    htmlFor="number"
+                    className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                  >
+                    Number
+                  </label>
+                  <input
+                    type="text"
+                    name="number"
+                    id="number"
+                    className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    placeholder="OR-973371"
+                    required
+                  />
+                </div>
+                <div className="flex col-span-2 justify-between gap-5 content-center mb-6">
+                  <div>
+                    <label
+                      htmlFor="City"
+                      className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                    >
+                      City
+                    </label>
+                    <input
+                      type="text"
+                      name="City"
+                      id="City"
+                      className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                      placeholder="City"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="State"
+                      className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                    >
+                      State / Province
+                    </label>
+                    <input
+                      type="text"
+                      name="State"
+                      id="State"
+                      className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                      placeholder="State / Province"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="Zip"
+                      className=" text-sm font-medium text-gray-800 dark:text-gray-400 peer-focus:text-amber-600 peer-focus:dark:text-amber-500"
+                    >
+                      Zip / Postal code
+                    </label>
+                    <input
+                      type="text"
+                      name="Zip"
+                      id="Zip"
+                      className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                      placeholder=" Zip / Postal code"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="">
+                <label htmlFor="">Description</label>
+                <Editor />
+              </div>
+            </div>
+            {/* <button onClick={handleBoutonClick}>Cliquez-moi !</button> */}
+          </div>
+
+          <div className="md:flex p-5 justify-between">
+            <button
+              onClick={handleBoutonClick}
+              className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+            >
+              Cancel
+            </button>
+            <button
+              
+              onClick={(e)=> {{boutonClique ?alertee(e) :  handleBoutonClick(e)}}}
+              className="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg md:text-sm text-xs w-full sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+            >
+              {boutonClique ? " create" : "next"}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

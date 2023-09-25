@@ -5,6 +5,8 @@ import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const BrandsCreate = () => {
   const [nom, setNom] = useState("");
@@ -15,6 +17,7 @@ const BrandsCreate = () => {
   const [validationError, setValidationError] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
+
   const create = async (e) => {
     e.preventDefault();
 
@@ -27,32 +30,34 @@ const BrandsCreate = () => {
         description: description,
       })
       .then(({ data }) => {
-        Swal.fire({
-          icon: "success",
-          text: data.message,
-        });
+        // Swal.fire({
+        //   icon: "success",
+        //   text: data.message,
+        // });
         setNom(""),
           setUrl(""),
           setSlug(" "),
           setVisibility(""),
-          setDescrition("");
-        navigate("/brands");
+          setDescrition(""),
+          toast.success(`${nom} ajouter avec succée`);
       })
       .catch(({ response }) => {
         if (response.status === 422) {
           setValidationError(response.data.errors);
         } else {
-          Swal.fire({
-            text: response.data.message,
-            icon: "error",
-          });
+          // Swal.fire({
+          //   text: response.data.message,
+          //   icon: "error",
+          // });
+          toast.error("response.data.message");
         }
       });
+    // navigate("/brands");
   };
 
   const cancel = async (e) => {
     setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
-    navigate("/categories");
+    navigate("/brands");
   };
   const handleToggle = (e) => {
     setVisibility(!visibility);
@@ -164,6 +169,7 @@ const BrandsCreate = () => {
             Cancel
           </button>
         </div>
+        <ToastContainer  />
       </form>
     </div>
   );

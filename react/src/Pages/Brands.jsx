@@ -105,8 +105,8 @@ const Brands = () => {
                         </label>
                       </div>
                     </td>
-                    <td className="px-6 py-4">{data.nom}</td>
-                    <td className="px-6 py-4">{data.slug}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.nom}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.slug}</td>
                     <td className="px-6 py-4">
                       {data.visibility ? (
                         <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />
@@ -114,7 +114,7 @@ const Brands = () => {
                         <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />
                       )}
                     </td>
-                    <td className="px-6 py-4">{data.updated_at}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.updated_at}</td>
                     <td className="px-6 py-4">
                       <Link
                         to={`/brands/${data.id}/edit`}

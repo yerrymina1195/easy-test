@@ -8,7 +8,6 @@ import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
 import { HiViewColumns } from "react-icons/hi2";
 import FilAriane from "../components/FilAriane";
-HiViewColumns;
 const Order = () => {
   const cart = [
     {
@@ -105,7 +104,7 @@ const Order = () => {
         linkOne={"/brands"}
         nameOne={"Orders"}
         nameTwo={"Orders"}
-        linkTwo={"/orders/create"}
+        linkTwo={"/order/create"}
         button={"New Orders"}
       />
       <div className="grid md:grid-cols-3 my-5 gap-5">

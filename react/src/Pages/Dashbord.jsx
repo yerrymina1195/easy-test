@@ -236,11 +236,11 @@ function Dashbord() {
                       key={index}
                       className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
                     >
-                      <td className="px-6 py-4">{data.name}</td>
-                      <td className="px-6 py-4">{data.email}</td>
-                      <td className="px-6 py-4">{data.contry}</td>
-                      <td className="px-6 py-4">{data.icon}</td>
-                      <td className="px-6 py-4">{data.phone}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{data.email}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{data.contry}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{data.icon}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">{data.phone}</td>
                     </tr>
                   );
                 })}
