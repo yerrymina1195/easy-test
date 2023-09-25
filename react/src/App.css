@@ -14,7 +14,9 @@
 	background-color: #e5e7eb;
 	height: 75px;
 	clip-path: polygon(5% 0, 55% 50%, 5% 100%, 0% 100%, 50% 50%, 0% 0%);
+
 }
+
 
 @-webkit-keyframes spinner {
 	0% {

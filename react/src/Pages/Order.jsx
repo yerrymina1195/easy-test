@@ -89,6 +89,136 @@ const Order = () => {
       total: 123456,
       shipping: 9,
     },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-yellow-500 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-400 border border-yellow-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-400 border border-yellow-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-400 border border-yellow-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
+    {
+      number: "R999555",
+      customer: "Lorem ipsum dolor sit",
+      date: "Jav 12, 2023",
+      status: (
+        <span className="bg-green-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-yellow border border-yellow-400">
+          delivered
+        </span>
+      ),
+      currency: 452,
+      total: 123456,
+      shipping: 9,
+    },
   ];
   const [boutonClique, setBoutonClique] = useState(false);
   const handleBoutonClick = () => {
@@ -98,6 +228,25 @@ const Order = () => {
     setBoutonClique(false);
   };
 
+  const [current, setCurrent] = useState(1);
+  const [count, setCount] = useState(5);
+  const [activePg, setActivePg] = useState(1);
+
+  const last = current * count; // 2*5 =10
+  const first = last - count; // 10 - 5 = 5
+
+  const values = dataTable.slice(first, last);
+
+  const buttonCount = [];
+  for (let i = 1; i <= Math.ceil(dataTable.length / count); i++) {
+    buttonCount.push(i);
+  }
+
+  const handleClick = (i) => {
+    // console.log(i);
+    setCurrent(i);
+    setActivePg(i);
+  };
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <FilAriane
@@ -335,7 +484,7 @@ const Order = () => {
               </tr>
             </thead>
             <tbody>
-              {dataTable.map((data, index) => {
+              {values.map((data, index) => {
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
@@ -391,80 +540,22 @@ const Order = () => {
             </tbody>
           </table>
         </div>
-        <nav
-          className="flex items-center justify-between p-5"
-          aria-label="Table navigation"
-        >
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1-10
-            </span>{" "}
-            of{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1000
-            </span>
-          </span>
-          <ul className=" md:inline-flex hidden -space-x-px text-sm h-8">
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                1
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                2
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                aria-current="page"
-                className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >
-                3
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                4
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                5
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        {/* pagination */}
+        <div className="flex justify-end mx-5">
+          {buttonCount.map((btn) => (
+            <button
+              key={btn}
+              className={
+                btn == activePg
+                  ? " my-3 p-2 text-amber-700 border border-amber-600 w-10 h-10"
+                  : " my-3 p-2 border border-gray-200 w-10 h-10"
+              }
+              onClick={() => handleClick(btn)}
+            >
+              {btn}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

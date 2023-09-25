@@ -6,7 +6,6 @@ import { useStateContext } from "../contexts/ContextProvider";
 import axiosClient from "../axios.js";
 import InputSearch from "../components/InputSearch";
 import { IoMdArrowRoundDown } from "react-icons/io";
-import { Link } from "react-router-dom";
 import CharteOne from "../components/CharteOne";
 import CharteTwo from "../components/CharteTwo";
 
@@ -73,6 +72,29 @@ function Dashbord() {
       ),
     },
     {
+      name: "Latyr SENE",
+      email: "latyr@gmail.com",
+      contry: "Gambie",
+      phone: "+221 77 251 85 31",
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          shipped
+        </span>
+      ),
+    },
+    {
+      name: "Maina SOW",
+      email: "maina@gmail.com",
+      contry: "Mali",
+      phone: "+221 77 754 10 54",
+      icon: (
+        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
+          processing
+        </span>
+      ),
+    },
+
+    {
       name: "Mariéme DIOP",
       email: "diop@gmail.com",
       contry: "Guinée",
@@ -94,7 +116,170 @@ function Dashbord() {
         </span>
       ),
     },
+    {
+      name: "Mariéme DIOP",
+      email: "diop@gmail.com",
+      contry: "Guinée",
+      phone: "+221 77 125 10 31",
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          delivered
+        </span>
+      ),
+    },
+    {
+      name: "Mariéme DIOP",
+      email: "diop@gmail.com",
+      contry: "Guinée",
+      phone: "+221 77 125 10 31",
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          delivered
+        </span>
+      ),
+    },
+    {
+      name: "Rakhma biaye",
+      email: "rakhma@gmail.com",
+      contry: "Sénégal",
+      phone: "+221 77 124 10 31",
+      icon: (
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          cancelled
+        </span>
+      ),
+    },
+    {
+      name: "Abdoulaye SENE",
+      email: "latyr0503@gmail.com",
+      contry: "Sénégal",
+      phone: "+221 77 124 10 31",
+      icon: (
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          cancelled
+        </span>
+      ),
+    },
+    {
+      name: "Latyr SENE",
+      email: "latyr@gmail.com",
+      contry: "Gambie",
+      phone: "+221 77 251 85 31",
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          shipped
+        </span>
+      ),
+    },
+    {
+      name: "Maina SOW",
+      email: "maina@gmail.com",
+      contry: "Mali",
+      phone: "+221 77 754 10 54",
+      icon: (
+        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
+          processing
+        </span>
+      ),
+    },
+
+    {
+      name: "Mariéme DIOP",
+      email: "diop@gmail.com",
+      contry: "Guinée",
+      phone: "+221 77 125 10 31",
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          delivered
+        </span>
+      ),
+    },
+    {
+      name: "Rakhma biaye",
+      email: "rakhma@gmail.com",
+      contry: "Sénégal",
+      phone: "+221 77 124 10 31",
+      icon: (
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          cancelled
+        </span>
+      ),
+    },
+    {
+      name: "Mariéme DIOP",
+      email: "diop@gmail.com",
+      contry: "Guinée",
+      phone: "+221 77 125 10 31",
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          delivered
+        </span>
+      ),
+    },
+    {
+      name: "Rakhma biaye",
+      email: "rakhma@gmail.com",
+      contry: "Sénégal",
+      phone: "+221 77 124 10 31",
+      icon: (
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          cancelled
+        </span>
+      ),
+    },
+    {
+      name: "Abdoulaye SENE",
+      email: "latyr0503@gmail.com",
+      contry: "Sénégal",
+      phone: "+221 77 124 10 31",
+      icon: (
+        <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+          cancelled
+        </span>
+      ),
+    },
+    {
+      name: "Latyr SENE",
+      email: "latyr@gmail.com",
+      contry: "Gambie",
+      phone: "+221 77 251 85 31",
+      icon: (
+        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+          shipped
+        </span>
+      ),
+    },
+    {
+      name: "Maina SOW",
+      email: "maina@gmail.com",
+      contry: "Mali",
+      phone: "+221 77 754 10 54",
+      icon: (
+        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
+          processing
+        </span>
+      ),
+    },
   ];
+  const [current, setCurrent] = useState(1);
+  const [count, setCount] = useState(5);
+  const [activePg, setActivePg] = useState(1);
+
+  const last = current * count; // 2*5 =10
+  const first = last - count; // 10 - 5 = 5
+
+  const values = dataTable.slice(first, last);
+
+  const buttonCount = [];
+  for (let i = 1; i <= Math.ceil(dataTable.length / count); i++) {
+    buttonCount.push(i);
+  }
+
+  const handleClick = (i) => {
+    // console.log(i);
+    setCurrent(i);
+    setActivePg(i);
+  };
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <h2 className="text-3xl py-3 font-bold">Dashboard</h2>
@@ -230,97 +415,49 @@ function Dashbord() {
                 </tr>
               </thead>
               <tbody>
-                {dataTable.map((data, index) => {
+                {values.map((data, index) => {
                   return (
                     <tr
                       key={index}
                       className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
                     >
-                      <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{data.email}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{data.contry}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{data.icon}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{data.phone}</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {data.name}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {data.email}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {data.contry}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {data.icon}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {data.phone}
+                      </td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
           </div>
-          <nav
-            className="flex items-center justify-between p-5"
-            aria-label="Table navigation"
-          >
-            <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-              Showing{" "}
-              <span className="font-semibold text-gray-900 dark:text-white">
-                1-10
-              </span>{" "}
-              of{" "}
-              <span className="font-semibold text-gray-900 dark:text-white">
-                1000
-              </span>
-            </span>
-            <ul className=" md:inline-flex hidden -space-x-px text-sm h-8">
-              <li>
-                <Link
-                  to={"#"}
-                  className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  Previous
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"#"}
-                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  1
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"#"}
-                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  2
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"#"}
-                  aria-current="page"
-                  className="flex items-center justify-center px-3 h-8 text-amber-600 border border-gray-300 bg-amber-50 hover:bg-amber-100 hover:text-amber-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                >
-                  3
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"#"}
-                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  4
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"#"}
-                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  5
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={"#"}
-                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  Next
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          {/* pagination */}
+          <div className="flex justify-end mx-5">
+            {buttonCount.map((btn) => (
+              <button
+                key={btn}
+                className={
+                  btn == activePg
+                    ? " my-3 p-2 text-amber-700 border border-amber-600 w-10 h-10"
+                    : " my-3 p-2 border border-gray-200 w-10 h-10"
+                }
+                onClick={() => handleClick(btn)}
+              >
+                {btn}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

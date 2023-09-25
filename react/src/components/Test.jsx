@@ -1,19 +1,35 @@
 import React, { useState } from "react";
 
 const Test = () => {
-  const [boutonClique, setBoutonClique] = useState(false);
-  // onClick={(e)=> {{boutonClique ? handleBoutonClick(e): alertee(e)}}}
-  // const alertee = (e)=>{
-  //   e.preventDefault();
-  //   alert("dhfhfvdhvfd")
-  // }
-  const handleBoutonClick = () => {
-    // Inversez la valeur de boutonClique pour basculer entre les éléments
-    setBoutonClique(!boutonClique);
-  };
+  // const [boutonClique, setBoutonClique] = useState(false);
+
+  // const handleBoutonClick = () => {
+  //   setBoutonClique(!boutonClique);
+  // };
+  // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+  const [val, setVal] = useState("");
+  const data = ["Java", "JavaScript", "React js", "Python", "C", "C++"];
   return (
     <div>
-      {boutonClique ? (
+      <div className="dropdown">
+        <input
+          list="data"
+          onChange={(e) => setVal(e.target.value)}
+          placeholder="Search"
+          className="input"
+        />
+        <datalist id="data">
+          {data.map((op) => (
+            <option>{op}</option>
+          ))}
+        </datalist>
+
+        {/* <h1>{val}</h1> */}
+      </div>
+
+      {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+      {/* {boutonClique ? (
         // Afficher cet élément lorsque boutonClique est vrai (après le clic)
         <div>
           <img
@@ -33,7 +49,7 @@ const Test = () => {
           />
           <button onClick={handleBoutonClick}>Cliquez-moi !</button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
