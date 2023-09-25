@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import IconNotification from "../components/IconNotification";
+import BtnToggle from "./BtnToggle";
+import Editor from "./Editor";
+import IconNotification from "./IconNotification";
 import example from "../images/cooffe.jpeg";
 import example1 from "../images/code.jpeg";
 import example2 from "../images/in.jpeg";
@@ -10,27 +12,14 @@ import example5 from "../images/machine.jpeg";
 import example6 from "../images/startup.jpeg";
 import example7 from "../images/team.jpeg";
 import example10 from "../images/wifi.jpeg";
-import InputSearch from "../components/InputSearch";
-import { HiViewColumns } from "react-icons/hi2";
+import InputSearch from "./InputSearch";
+import { HiViewColumns, HiTrash } from "react-icons/hi2";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
-import { FaRegPenToSquare } from "react-icons/fa6";
-import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
-const Produits = () => {
-  const cart = [
-    {
-      title: "Total Products",
-      number: 50,
-    },
-    {
-      title: "Product Inventory",
-      number: 252,
-    },
-    {
-      title: "Average price",
-      number: 248.63,
-    },
-  ];
+import { IoMdArrowRoundDown } from "react-icons/io";
+import { FaRegPenToSquare } from "react-icons/fa6";
+
+const EditeBrand = (props) => {
   const dataTable = [
     {
       name: "Lorem ipsum dolor sit amet",
@@ -133,40 +122,136 @@ const Produits = () => {
     },
   ];
   return (
-    <div className="mt-5">
-      <div className="columns-2">
-        <div className="grid justify-items-start">
-          <p className="">Products &#62; List</p>
-          <h2 className="text-2xl py-3 font-bold">Products</h2>
+    <div className="container overflow-auto m-10 mx-auto">
+      <div className="md:columns-2">
+        <div className="">
+          <p className="text-gray-500 md:text-base text-sm">
+            <Link to={"/brands"}>Brands</Link>
+            &#62; {"props.name"} &#62; Edit
+          </p>
+          <h2 className="text-3xl pt-2 font-bold">{"props.name"}</h2>
         </div>
-        <div className="grid justify-items-end ">
-          <Link to="/produits/create">
-            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-              New Products
+        <div className="grid md:justify-items-end">
+          <Link to="/categories/create">
+            <button className="rounded-md my-5 bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
+              Delete
             </button>
           </Link>
         </div>
       </div>
-      <div className="grid md:grid-cols-3 my-5 gap-5">
-        {cart.map((carte, index) => (
-          <div
-            className="bg-white border rounded-xl border-gray-200 p-5"
-            key={index}
-          >
-            <p className="text-gray-500">{carte.title}</p>
-            <h2 className="text-4xl font-medium">{carte.number}</h2>
+      <div className="grid md:grid-cols-3 md:gap-5">
+        <div className="md:col-span-2">
+          <form>
+            <div className="bg-white border border-gray-200 my-5 md:p-5 p-2.5 rounded-2xl">
+              <div className="grid md:grid-cols-2 md:gap-6">
+                <div className="relative z-0 w-full mb-6 group">
+                  <input
+                    type="text"
+                    name="floating_first_name"
+                    id="floating_first_name"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    htmlFor="floating_first_name"
+                    className="peer-focus:font-medium absolute text-sm text-gray-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Name
+                  </label>
+                </div>
+                <div className="relative z-0 w-full mb-6 group">
+                  <input
+                    type="text"
+                    readOnly
+                    name="slug"
+                    id="slug"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    placeholder=" "
+                    disabled
+                  />
+                  <label
+                    htmlFor="slug"
+                    className="peer-focus:font-medium absolute text-sm text-gray-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Slug
+                  </label>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-1">
+                <div className="relative z-0 w-full mb-6 group">
+                  <input
+                    type="text"
+                    name="parent"
+                    id="parent"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    htmlFor="parent"
+                    className="peer-focus:font-medium absolute text-sm text-gray-700 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-amber-600 peer-focus:dark:text-amber-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    Parent
+                  </label>
+                </div>
+                <div className="relative z-0 mb-6 group">
+                  <BtnToggle name={"Visible to customers."} />
+                </div>
+              </div>
+              <div className="grid md:grid-cols-1">
+                <div className="relative z-0 w-full mb-12 group">
+                  <Editor />
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-5">
+              <button
+                type="submit"
+                className="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-auto px-4 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              >
+                Save changes
+              </button>
+              
+              <button
+                type="submit"
+                className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className="bg-white border border-gray-200 p-5 my-5 rounded-xl h-40">
+          <div>
+            <p className="font-medium">Created at</p>
+            <p className="text-gray-600">{"props.dateCreate"}</p>
           </div>
-        ))}
+          <div className="mt-5">
+            <p className="font-medium">Last modified at</p>
+            <p className="text-gray-600">{"props.dateEdite"}</p>
+          </div>
+        </div>
       </div>
       {/* tableau */}
       <div className="relative border-2 my-5 bg-white rounded-2xl">
-        <div className="flex items-center border-b-2 gap-3 justify-end p-4  dark:bg-gray-800">
+        <div className="flex items-center border-b-2 gap-3 justify-between p-4  dark:bg-gray-800">
+          <h2 className="font-medium">Products</h2>
+          <Link to="# ">
+            <button className="rounded-md bg-amber-600 md:px-3 px-2 py-1 md:py-1.5 text-sm font-semibold  text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
+              New Products
+            </button>
+          </Link>
+        </div>
+        <div className="flex items-center border-b-2 gap-2 justify-end p-4  dark:bg-gray-800">
           <InputSearch />
           <IconNotification icon={<FaFilter />} number={0} />
-          <HiViewColumns className="text-gray-400 w-6 h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
+          <button>
+            <HiViewColumns className="text-gray-400 md:w-6 md:h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
+          </button>
         </div>
-        <div className="relative overflow-x-auto">
-          <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
+        <div className="overflow-x-auto relative ">
+          <table className="w-full text-sm text-left table-auto text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="p-4">
@@ -257,11 +342,11 @@ const Produits = () => {
               </tr>
             </thead>
             <tbody>
-              {dataTable.map((data, index) => {
+              {dataTable.map((data) => {
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
-                    key={index}
+                    key={data.id}
                   >
                     <td className="w-4 p-4">
                       <div className="flex items-center">
@@ -270,7 +355,10 @@ const Produits = () => {
                           type="checkbox"
                           className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label htmlFor="checkbox-table-search-1" className="sr-only">
+                        <label
+                          htmlFor="checkbox-table-search-1"
+                          className="sr-only"
+                        >
                           checkbox
                         </label>
                       </div>
@@ -279,7 +367,9 @@ const Produits = () => {
                       <img src={data.image} alt={data.name} />
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.brand}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.brand}
+                    </td>
                     <td className="px-6 py-4">{data.icon}</td>
                     <td className="px-6 py-4">{data.price}</td>
                     <td className="px-6 py-4">{data.sKU}</td>
@@ -287,14 +377,10 @@ const Produits = () => {
                     <td className="px-6 py-4">{data.securityStock}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.date}</td>
                     <td className="px-6 py-4">
-                      <a
-                        href="#"
-                        type="button"
-                        className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
-                      >
-                        <FaRegPenToSquare />
-                        Edit
-                      </a>
+                      <button className=" gap-1 text-red-600 hover:text-red-800 justify-center items-center flex font-medium">
+                        <HiTrash />
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
@@ -377,99 +463,8 @@ const Produits = () => {
           </ul>
         </nav> */}
       </div>
-
-      {/* <div className="px-20">
-        <nav
-          className="flex items-center justify-between p-5"
-          aria-label="Table navigation"
-        >
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1-10
-            </span>{" "}
-            of{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1000
-            </span>
-          </span>
-          <div className="flex focus:ring-amber-500 dark:focus:ring-amber-600">
-            <p className="mt-2">Per Page </p>
-            <select
-              name=""
-              id=""
-              vlaue="Per Page"
-              className="rounded-sm ml-2 border-opacity-0 focus:ring-amber-500 dark:focus:ring-amber-600"
-            >
-              <option value="20">5</option>
-              <option value="2">10</option>
-              <option value="3">15</option>
-              <option value="4">20</option>
-            </select>
-          </div>
-          <ul className="inline-flex -space-x-px text-sm h-8">
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                1
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                2
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                aria-current="page"
-                className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >
-                3
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                4
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                5
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div> */}
     </div>
   );
 };
 
-export default Produits;
+export default EditeBrand;

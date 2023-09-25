@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useStateContext } from "../contexts/ContextProvider";
 import axiosClient from "../axios.js";
 function Connexion() {
-  const { updateUser, setUserToken, setLoading } = useStateContext();
+  const { setCurrentUser, setUserToken, setLoading } = useStateContext();
   const navitage = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,8 +21,8 @@ function Connexion() {
  
       })
       .then(({ data }) => {
-        updateUser(data.user);
-        setUserToken(data.token);
+        setCurrentUser(data.user);
+        setUserToken(data.token,data.user);
          setLoading(true)
       console.log(data)
       alert(`Bienvenu ${data.user.name}`)
@@ -30,13 +30,19 @@ function Connexion() {
       window.location.reload();
       })
       .catch((error) => {
+        // const response= error.response;
+
+        // if (response && response.status == 422) {
+        //   alert(response.data.message)
+        //   console.log(response);
+        // }
         
         if (error.response) {
-            const finalErrors = Object.values(error.response.data.errors).reduce((accum, next) => [...accum, ...next], [])
+            const finalErrors = Object.values(error.response.data.message).reduce((accum, next) => [...accum, ...next], [])
             console.log(finalErrors)
-            setError({__html: finalErrors.join('<br>')})
+            setError({__html: finalErrors.join('')})
           }
-          console.error(error)
+          // console.error(error)
       });
   };
 
