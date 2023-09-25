@@ -9,10 +9,6 @@ export const Inscription = () => {
   const [password, setPassword] = useState("");
   const [confirmation, setPasswordConfirmation] = useState("");
   const [error, setError] = useState({ __html: "" });
-  //   console.log({fullName});
-  //   console.log({email});
-  // console.log({password});
-  // console.log({confirmation});
 
   const onSubmit = (e) => {
     e.preventDefault();

@@ -16,6 +16,7 @@ import Test from "./components/Test"
 import Order from "./Pages/Order";
 import EditeBrand from "./components/EditeBrand";
 import EditeCustomers from "./components/EditeCustomers";
+import OrderCreate from "./Pages/OrderCreate";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/produits" element={<Produits />} />
           <Route path="/produits/create" element={<CreateProduits />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/order/create" element={<OrderCreate/>} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/create" element={<CategoriesCreate />} />
           <Route path="/brands" element={<Brands />} />

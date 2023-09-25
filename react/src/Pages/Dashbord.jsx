@@ -7,6 +7,8 @@ import axiosClient from "../axios.js";
 import InputSearch from "../components/InputSearch";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { Link } from "react-router-dom";
+import CharteOne from "../components/CharteOne";
+import CharteTwo from "../components/CharteTwo";
 
 function Dashbord() {
   const { currentUser, setCurrentUser, setUserToken } = useStateContext();
@@ -93,120 +95,6 @@ function Dashbord() {
       ),
     },
   ];
-  // charte 1
-  // window.addEventListener("load", function () {
-  //   let options = {
-  //     xaxis: {
-  //       show: true,
-  //       categories: [
-  //         "Jav",
-  //         "Feb",
-  //         "Mar",
-  //         "Avr",
-  //         "Mai",
-  //         "Jun",
-  //         "Jul",
-  //         "Aug",
-  //         "Sep",
-  //         "Oct",
-  //         "Nov",
-  //         "Dec",
-  //       ],
-  //       labels: {
-  //         show: true,
-  //         style: {
-  //           fontFamily: "Inter, sans-serif",
-  //           cssClass: "text-xs font-normal fill-gray-500 dark:fill-gray-400",
-  //         },
-  //       },
-  //       axisBorder: {
-  //         show: false,
-  //       },
-  //       axisTicks: {
-  //         show: false,
-  //       },
-  //     },
-  //     yaxis: {
-  //       show: true,
-  //       labels: {
-  //         show: true,
-  //         style: {
-  //           fontFamily: "Inter, sans-serif",
-  //           cssClass: "text-xs font-normal fill-gray-500 dark:fill-gray-400",
-  //         },
-  //         formatter: function (value) {
-  //           return "$" + value;
-  //         },
-  //       },
-  //     },
-  //     chart: {
-  //       height: "75%",
-  //       maxWidth: "100%",
-  //       type: "area",
-  //       fontFamily: "Inter, sans-serif",
-  //       // dropShadow: {
-  //       //   enabled: false,
-  //       // },
-  //       toolbar: {
-  //         show: false,
-  //       },
-  //     },
-  //     // tooltip: {
-  //     //   enabled: true,
-  //     //   x: {
-  //     //     show: false,
-  //     //   },
-  //     // },
-  //     // fill: {
-  //     //   type: "gradient",
-  //     //   gradient: {
-  //     //     opacityFrom: 0.55,
-  //     //     opacityTo: 0,
-  //     //     shade: "#d97706",
-  //     //     gradientToColors: ["#d97706"],
-  //     //   },
-  //     // },
-  //     // dataLabels: {
-  //     //   enabled: false,
-  //     // },
-  //     stroke: {
-  //       width: 2,
-  //     },
-  //     // grid: {
-  //     //   show: false,
-  //     //   strokeDashArray: 4,
-  //     //   padding: {
-  //     //     left: 2,
-  //     //     right: 2,
-  //     //     top: 0,
-  //     //   },
-  //     // },
-  //     series: [
-  //       {
-  //         name: "New users",
-  //         data: [
-  //           1500, 1418, 1456, 1526, 1356, 1256, 1500, 1418, 1456, 1526, 1356,
-  //           1256,
-  //         ],
-
-  //         color: "#d97706",
-  //       },
-  //     ],
-  //   };
-
-  //   if (
-  //     document.getElementById("area-chart") &&
-  //     typeof ApexCharts !== "undefined"
-  //   ) {
-  //     const chartOne = new ApexCharts(
-  //       document.getElementById("area-chart"),
-  //       options
-  //       );
-  //     }
-  //     chartOne.render()
-  // });
-  // charte 2
-
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <h2 className="text-3xl py-3 font-bold">Dashboard</h2>
@@ -288,26 +176,8 @@ function Dashbord() {
       </div>
 
       <div className="md:grid md:grid-cols-2 my-5 gap-5">
-        <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200">
-          <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800">
-            <div className="flex p-5 justify-start">
-              <h5 className="leading-none text-xl font-bold text-gray-900 dark:text-white pb-2">
-                Orders per month
-              </h5>
-            </div>
-            <div id="area-chart"></div>
-          </div>
-        </div>
-        <div className="bg-white my-5 md:my-0 rounded-lg border border-gray-200 ">
-          <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800 ">
-            <div className="flex p-5 justify-start">
-              <h5 className="leading-none text-xl font-bold text-gray-900 dark:text-white pb-2">
-                Total customers
-              </h5>
-            </div>
-            {/* <div id="data-series-chart"></div> */}
-          </div>
-        </div>
+        <CharteOne />
+        <CharteTwo />
       </div>
 
       <div className="grid grid-cols-1">
