@@ -1,31 +1,124 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Editor from "../components/Editor";
 import BtnToggle from "../components/BtnToggle";
-
+import ShipedToggle from "../components/ShipedToggle";
+import axios from "axios";
+import axiosClient from "../axios";
+import Swal from "sweetalert2";
 const CreateProduits = () => {
+  // useState
+  const [nom, setNom] = useState("");
+  const [email, setEmail] = useState("");
+  const [description, setDescrition] = useState("");
+  const [prix, setPrix] = useState(0);
+  const [prixCompare, setPrixCompare] = useState(0);
+  const [cost, setCost] = useState(0);
+  const [sku, setSku] = useState(0);
+  const [BarCode, setBarCode] = useState(0);
+  const [quantite, setQuantite] = useState(0);
+  const [securiteStock, setSecuriteStock] = useState(0);
+  const [productReturn, setProductReturn] = useState(false);
+  const [productShiped, setProductShiped] = useState(false);
+  const [visibility, setVisibility] = useState(false);
+  const [date, setDate] = useState("");
+  const [brand, setBrand] = useState("");
+  const [brandValue, setBrandValue] = useState([]);
+  const [categorie, setCategorie] = useState("");
+  const [categorieValue, setCategorieValue] = useState([]);
+  const [produit, setProduit] = useState([]);
+  const [image, setImage] = useState();
+  const [validationError, setValidationError] = useState({});
+
   // Créez des références pour le champ de fichier et l'image
-  const fileInputRef = useRef(null);
-  const imageRef = useRef(null);
 
-  // Gérez le changement de fichier
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
+    setImage(e.target.files[0]);
+    // if (file) {
+    //   // Utilisez createObjectURL pour obtenir l'URL de l'image
+    //   const imageURL = URL.createObjectURL(file);
 
-    if (file) {
-      // Utilisez createObjectURL pour obtenir l'URL de l'image
-      const imageURL = URL.createObjectURL(file);
-
-      // Mettez à jour la source de l'image
-      imageRef.current.src = imageURL;
-    }
+    //   // Mettez à jour la source de l'image
+    //   imageRef.current.src = imageURL;
+    // }
   };
+  const handleToggle = (e) => {
+    setVisibility(!visibility);
+  };
+  const handleReturn = (e) => {
+    setProductReturn(!productReturn);
+  };
+  const handleShiped = (e) => {
+    setProductShiped(!productShiped);
+  };
+  // recuperer les donnes brands
+  useEffect(() => {
+    fetchBrand();
+  }, []);
+
+  const fetchBrand = async () => {
+    await axios.get(`http://localhost:8000/api/brand`).then(({ data }) => {
+      setBrandValue(data);
+    });
+  };
+  // recuperer donnees categories
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    await axios.
+    get(`http://localhost:8000/api/categorie`).then(({ data }) => {
+      setCategorieValue(data);
+    });
+  };
+  //  recuperer donnes produits
+  // const create = async (e) => {
+  //   e.preventDefault();
+  //   await axios
+  //     .post(`http://localhost:8000/api/produit`, {
+  //       nom: nom,
+  //       email: email,
+  //       description: description,
+  //       image: image,
+  //       prix: prix,
+  //       compare_prix: prixCompare,
+  //       cost: cost,
+  //       sku: sku,
+  //       barcode: BarCode,
+  //       quantity: quantite,
+  //       securite_stock: securiteStock,
+  //       product_return: productReturn,
+  //       product_shiped: productShiped,
+  //       visibility: visibility,
+  //       date: date,
+  //       brand: brand,
+  //       category: categorie,
+  //     })
+  //     .then(({ data }) => {
+  //       Swal.fire({
+  //         icon: "success",
+  //         text: data.message,
+  //       });
+  //     })
+  //     .catch(({ response }) => {
+  //       if (response.status === 422) {
+  //         setValidationError(response.data.errors);
+  //       } else {
+  //         Swal.fire({
+  //           text: response.data.message,
+  //           icon: "error",
+  //         });
+  //       }
+  //     });
+  // };
+
   return (
     <div className="container m-10 mx-auto">
       <h2 className="text-3xl py-3 font-bold">Create Produit</h2>
       <div className="grid lg:grid-cols-3 gap-5">
         {/* section left */}
         <div className="lg:col-span-2">
-          <form>
+          <form onSubmit={create}>
             {/* premier section */}
             <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">
               <div className="grid md:grid-cols-2 md:gap-6">
@@ -37,6 +130,10 @@ const CreateProduits = () => {
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
+                    value={nom}
+                    onChange={(e) => {
+                      setNom(e.target.value);
+                    }}
                   />
                   <label
                     htmlFor="name"
@@ -53,6 +150,8 @@ const CreateProduits = () => {
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <label
                     htmlFor="email"
@@ -64,7 +163,7 @@ const CreateProduits = () => {
               </div>
               <div className="">
                 <label htmlFor="">Description</label>
-                <Editor />
+                <Editor value={description} onChange={setDescrition} />
               </div>
             </div>
             {/* deuxiéme section */}
@@ -94,7 +193,7 @@ const CreateProduits = () => {
                       />
                     </svg>
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span className="font-semibold">Click to upload</span> 
+                      <span className="font-semibold">Click to upload</span>
                       {/* or drag and drop */}
                     </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
@@ -102,7 +201,6 @@ const CreateProduits = () => {
                     </p>
                   </div>
                   <input
-                    ref={fileInputRef}
                     onChange={handleFileChange}
                     id="dropzone-file"
                     type="file"
@@ -110,13 +208,7 @@ const CreateProduits = () => {
                   />
                 </label>
               </div>
-              <img
-                src={""}
-                id="image"
-                ref={imageRef}
-                className="flex w-full mx-auto"
-                alt=""
-              />
+              <img src={""} id="image" className="flex w-full mx-auto" alt="" />
             </div>
             {/*  troisieme section */}
             <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">
@@ -132,6 +224,8 @@ const CreateProduits = () => {
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
+                    value={prix}
+                    onChange={(e) => setPrix(e.target.value)}
                   />
                   <label
                     htmlFor="price"
@@ -148,6 +242,8 @@ const CreateProduits = () => {
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
+                    value={prixCompare}
+                    onChange={(e) => setPrixCompare(e.target.value)}
                   />
                   <label
                     htmlFor="Compare"
@@ -164,6 +260,8 @@ const CreateProduits = () => {
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
+                    value={cost}
+                    onChange={(e) => setCost(e.target.value)}
                   />
                   <label
                     htmlFor="Cost"
@@ -191,6 +289,8 @@ const CreateProduits = () => {
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
+                    value={sku}
+                    onChange={(e) => setSku(e.target.value)}
                   />
                   <label
                     htmlFor="SKU"
@@ -207,6 +307,8 @@ const CreateProduits = () => {
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
+                    value={BarCode}
+                    onChange={(e) => setBarCode(e.target.value)}
                   />
                   <label
                     htmlFor="Barcode"
@@ -223,6 +325,8 @@ const CreateProduits = () => {
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
+                    value={quantite}
+                    onChange={(e) => setQuantite(e.target.value)}
                   />
                   <label
                     htmlFor="Quantity"
@@ -239,6 +343,8 @@ const CreateProduits = () => {
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                     placeholder=" "
                     required
+                    value={securiteStock}
+                    onChange={(e) => setSecuriteStock(e.target.value)}
                   />
                   <label
                     htmlFor="Security"
@@ -254,122 +360,117 @@ const CreateProduits = () => {
               </div>
             </div>
             {/* cinquieme section */}
-            <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">
-              <h3 className="border-b border-gray-200 w-full mb-5 pb-2 font-bold">
-                Shipping
-              </h3>
-              <div className="grid md:grid-cols-2 md:gap-6">
-                <div className="flex gap-3 items-center">
-                  <input
-                    id="link-checkbox"
-                    type="checkbox"
-                    value=""
-                    class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
+            <ShipedToggle
+              checkedshiped={productShiped}
+              valueReturn={productReturn}
+              checkedReturn={productReturn}
+              valueShiped={productShiped}
+              handleReturn={handleReturn}
+              handleShiped={handleShiped}
+              onChangeReturn={(e) => setProductReturn(e.target.value)}
+              onChangeShiped={(e) => setProductShiped(e.target.value)}
+            />
+            {/* section right */}
+            <div>
+              <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">
+                <h3 className="border-b border-gray-200 w-full mb-5 pb-2 font-bold">
+                  Status
+                </h3>
+                <BtnToggle
+                  checked={visibility}
+                  value={visibility}
+                  handleClick={handleToggle}
+                  onChange={(event) => {
+                    setVisibility(event.target.value);
+                  }}
+                  name={"Visible"}
+                />
 
-                  <p>This product can be returned</p>
+                <p className="text-gray-500 text-sm">
+                  This product will be hidden from all sales channels.
+                </p>
+                <h4 className="font-medium pt-5 text-sm">Availability*</h4>
+                <div>
+                  <input
+                    type="date"
+                    id="date"
+                    name="date"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
+                    required
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                  />
                 </div>
-                <div className="flex gap-3 items-center">
-                  <input
-                    id="link-checkbox"
-                    type="checkbox"
-                    value=""
-                    class="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-
-                  <p>This product will be shipped</p>
+              </div>
+              <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">
+                <h3 className="border-b border-gray-200 w-full mb-5 pb-2 font-bold">
+                  Status
+                </h3>
+                {/* Brand */}
+                <div>
+                  <label
+                    for="brand"
+                    class="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
+                  >
+                    Brand
+                  </label>
+                  <select
+                    id="brand"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-amber-500 dark:focus:border-amber-500"
+                    value={brand}
+                    onChange={(e) => setBrand(e.target.value)}
+                  >
+                    {brandValue.map((option, index) => {
+                      return <option key={index}>{option.nom}</option>;
+                    })}
+                  </select>
+                </div>
+                {/* categorie */}
+                <div className="pt-5">
+                  <label
+                    for="categories"
+                    class="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
+                  >
+                    Categories
+                  </label>
+                  <select
+                    id="brand"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-amber-500 dark:focus:border-amber-500"
+                    value={categorie}
+                    onChange={(e) => setCategorie(e.target.value)}
+                  >
+                    {categorieValue.map((option, index) => {
+                      return <option key={index}>{option.nom}</option>;
+                    })}
+                  </select>
                 </div>
               </div>
             </div>
-
+            {/* section button */}
+            <div className="lg:col-span-2">
+              {/* les Boutons */}
+              <div className="md:flex grid grid-cols-3 gap-4">
+                <button
+                  type="submit"
+                  className="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg md:text-sm text-xs w-full sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+                >
+                  Create
+                </button>
+                <button
+                  type="submit"
+                  className="col-span-2 border-2 bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+                >
+                  Create & create another
+                </button>
+                <button
+                  type="submit"
+                  className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           </form>
-        </div>
-        {/* section right */}
-        <div>
-          <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">
-            <h3 className="border-b border-gray-200 w-full mb-5 pb-2 font-bold">
-              Status
-            </h3>
-            <BtnToggle name={"Visible"} />
-            <p className="text-gray-500 text-sm">
-              This product will be hidden from all sales channels.
-            </p>
-            <h4 className="font-medium pt-5 text-sm">Availability*</h4>
-            <div>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
-                required
-              />
-            </div>
-          </div>
-          <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">
-            <h3 className="border-b border-gray-200 w-full mb-5 pb-2 font-bold">
-              Status
-            </h3>
-            {/* Brand */}
-            <div>
-              <label
-                for="brand"
-                class="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
-              >
-                Brand
-              </label>
-              <select
-                id="brand"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-amber-500 dark:focus:border-amber-500"
-              >
-                <option>United States</option>
-                <option>Canada</option>
-                <option>France</option>
-                <option>Germany</option>
-              </select>
-            </div>
-            {/* Brand */}
-            <div className="pt-5">
-              <label
-                for="categories"
-                class="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
-              >
-                Categories
-              </label>
-              <select
-                id="categories"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-amber-500 dark:focus:border-amber-500"
-              >
-                <option>United States</option>
-                <option>Canada</option>
-                <option>France</option>
-                <option>Germany</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        {/* section button */}
-        <div className="lg:col-span-2">
-          {/* les Boutons */}
-          <div className="md:flex grid grid-cols-3 gap-4">
-            <button
-              type="submit"
-              className="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg md:text-sm text-xs w-full sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-            >
-              Create
-            </button>
-            <button
-              type="submit"
-              className="col-span-2 border-2 bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-            >
-              Create & create another
-            </button>
-            <button
-              type="submit"
-              className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-            >
-              Cancel
-            </button>
-          </div>
         </div>
       </div>
     </div>
