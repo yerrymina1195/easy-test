@@ -9,6 +9,8 @@ import axiosClient from "../axios";
 import FilAriane from "../components/FilAriane";
 const Brands = () => {
   const [brand, SetBrand] = useState([]);
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     fetchCategory();
   }, []);
@@ -50,7 +52,7 @@ const Brands = () => {
 
       <div className="relative border-2 bg-white rounded-2xl">
         <div className="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
-          <InputSearch />
+        <InputSearch  handleChange={(e)=> setSearch(e.target.value)}/>
         </div>
         <div className="relative overflow-x-auto">
           <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
@@ -104,7 +106,8 @@ const Brands = () => {
               </tr>
             </thead>
             <tbody>
-              {values.map((data, index) => {
+              {values.filter(data => (data.nom.toLowerCase().includes(search) || data.slug.includes(search))
+              ).map((data, index) => {
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"

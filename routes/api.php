@@ -27,6 +27,7 @@ Route::post('/clients', [ClientController::class, 'store']);
 Route::get('/clients', [ClientController::class, 'index']);
 Route::get('/clients/{id}', [ClientController::class, 'show']);
 Route::delete('/clients/{id}', [ClientController::class, 'destroy']);
+Route::delete('/bgCategory/{id}/delete', [ClientController::class, 'destroy']);
 Route::put('/clients/{id}', [ClientController::class, 'update']);
 Route::resource('/categorie',CategoryController::class);
 Route::resource('/brand',BrandController::class);

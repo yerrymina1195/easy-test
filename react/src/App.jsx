@@ -6,6 +6,7 @@ import { Inscription } from "./Pages/Inscription";
 import Customers from "./Pages/Customers";
 import CustomersCreate from "./Pages/CustomersCreate";
 import Categories from "./Pages/Categories";
+import BlogCategory from "./Pages/BlogCategory";
 import Brands from "./Pages/Brands";
 import BrandsCreate from "./Pages/BrandsCreate";
 import CategoriesCreate from "./Pages/CategoriesCreate";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/order/create" element={<OrderCreate/>} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/create" element={<CategoriesCreate />} />
+          <Route path="/blogCategory" element={<BlogCategory />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/brands/create" element={<BrandsCreate />} />
           <Route path="/brands/:id/edit" element={<EditeBrand />} />

@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/yerrymina1195/easy-test#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "sweetalert2": "^11.7.28"
   }
 }

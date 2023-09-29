@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import InputSearch from "../components/InputSearch";
-
+import { GoSearch } from "react-icons/go";
 import { FaFilter } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
@@ -8,12 +8,17 @@ import IconNotification from "../components/IconNotification";
 import { Link } from "react-router-dom";
 import axiosClient from "../axios";
 import FilAriane from "../components/FilAriane";
+
 const Customers = () => {
   const [client, SetClient] = useState([]);
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     fetchCategory();
   }, []);
+  
 
+ 
   const fetchCategory = async () => {
     await axiosClient.get(`/clients`).then(({ data }) => {
       SetClient(data);
@@ -47,10 +52,11 @@ const Customers = () => {
         linkTwo={"/customers/create"}
         button={"New Customers"}
       />
-
+         
+       
       <div className="relative border-2 bg-white overflow-x-auto rounded-2xl">
         <div className="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
-          <InputSearch />
+             <InputSearch  handleChange={(e)=> setSearch(e.target.value)}/>
           <IconNotification icon={<FaFilter />} number={0} />
         </div>
         <div className="relative overflow-x-auto">
@@ -103,19 +109,22 @@ const Customers = () => {
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600">
                 <td className="w-4 p-4"></td>
                 <td className="px-6 py-4">
-                  <InputSearch />
+                <InputSearch  handleChange={(e)=> setSearch(e.target.value)}/>
+
                 </td>
                 <td className="px-6 py-4">
-                  <InputSearch />
+                <InputSearch  handleChange={(e)=> setSearch(e.target.value)}/>
                 </td>
                 <td className="px-6 py-4"></td>
                 <td className="px-6 py-4"></td>
                 <td className="px-6 py-4"></td>
               </tr>
-              {values.map((data, index) => {
+           
+              {values.filter(data => (data.nom.toLowerCase().includes(search) ||  data.email.includes(search))
+              ).map((data) => {
                 return (
                   <tr
-                    key={index}
+                    key={data.id}
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
                   >
                     <td className="w-4 p-4">
