@@ -10,6 +10,8 @@ import FilAriane from "../components/FilAriane";
 
 const Categories = () => {
   const { updatecategorie, category } = useStateContext();
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     fetchCategory();
   }, []);
@@ -28,10 +30,12 @@ const Categories = () => {
         nameTwo={"Categories"}
         linkTwo={"/categories/create"}
         button={"New Categories"}
+
+        // teste
       />
       <div className="relative border-2 bg-white rounded-2xl">
         <div className="flex items-center justify-center border-b-2 gap-5 md:justify-end p-4  dark:bg-gray-800">
-          <InputSearch />
+        <InputSearch  handleChange={(e)=> setSearch(e.target.value)}/>
         </div>
         <div className="relative overflow-x-auto">
           <table className="w-full text-sm text-left  text-gray-500 dark:text-gray-400 ">
@@ -54,7 +58,7 @@ const Categories = () => {
                     Name{" "}
                     <span>
                       <IoMdArrowRoundDown />
-                    </span>
+                    </span>       
                   </div>
                 </th>
                 <th scope="col" className="px-6 py-3">
@@ -85,12 +89,13 @@ const Categories = () => {
               </tr>
             </thead>
             <tbody>
-              {category.map((data, index) => {
+              {category.filter(data => (data.nom.toLowerCase().includes(search) ||  data.slug.includes(search))
+              ).map((data) => {
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700
                    hover:bg-gray-50 dark:hover:bg-amber-600"
-                    key={index}
+                    key={data.id}
                   >
                     <td className="w-4 p-4">
                       <div className="flex items-center">

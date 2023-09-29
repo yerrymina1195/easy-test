@@ -1,14 +1,17 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import InputSearch from "../components/InputSearch";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
+import { GrFormView } from "react-icons/gr";
+import { MdDelete } from "react-icons/md";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axiosClient from "../axios";
+import { useStateContext } from "../contexts/ContextProvider";
+import axiosClient from "../axios.js";
 import FilAriane from "../components/FilAriane";
-const Brands = () => {
-  const [brand, SetBrand] = useState([]);
+
+const BlogCategory = () => {
+  const { updatecategorie, category } = useStateContext();
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -16,22 +19,38 @@ const Brands = () => {
   }, []);
 
   const fetchCategory = async () => {
-    await axiosClient.get(`/brand`).then(({ data }) => {
-      SetBrand(data);
+    await axiosClient.get(`/blogCategory`).then(({ data }) => {
+      updatecategorie(data);
     });
   };
+
+  const deleteEl = (e, id) =>{
+    e.preventDefault();
+     const thisClicked = e.currentTarget;
+     thisClicked.innerText = "Deleting..."
+     axios.delete(`http:localhost:8000/api/bgCategory/{id}/delete`)
+      .then(res =>{
+     thisClicked.closest("tr").remove();
+            
+      })
+      .catch(function (error){
+
+      })
+     
+  }
+
   return (
     <div className="container overflow-auto m-10 mx-auto">
-      <FilAriane
-        linkOne={"/brands"}
-        nameOne={"Brands"}
-        nameTwo={"Brands"}
-        linkTwo={"/brands/create"}
-        button={"New Brand"}
+        <FilAriane
+        linkOne={"/categories"}
+        nameOne={"Categories"}
+        nameTwo={"Categories"}
+        linkTwo={"/categories/create"}
+        button={"New Categories"}
       />
-
+      {/* <h1 className="text-3xl mb-3 font-bold">Categories</h1> */}
       <div className="relative border-2 bg-white rounded-2xl">
-        <div className="flex items-center border-b-2 gap-5 justify-end p-4  dark:bg-gray-800">
+        <div className="flex items-center justify-center border-b-2 gap-5 md:justify-end p-4  dark:bg-gray-800">
         <InputSearch  handleChange={(e)=> setSearch(e.target.value)}/>
         </div>
         <div className="relative overflow-x-auto">
@@ -55,12 +74,12 @@ const Brands = () => {
                     Name{" "}
                     <span>
                       <IoMdArrowRoundDown />
-                    </span>
+                    </span>       
                   </div>
                 </th>
                 <th scope="col" className="px-6 py-3">
                   <div className="flex gap-2">
-                    Website{" "}
+                    Parent{" "}
                     <span>
                       <IoMdArrowRoundDown />
                     </span>
@@ -86,12 +105,13 @@ const Brands = () => {
               </tr>
             </thead>
             <tbody>
-              {brand.filter(data => (data.nom.toLowerCase().includes(search) || data.slug.includes(search))
-              ).map((data, index) => {
+              {category.filter(data => (data.nom.toLowerCase().includes(search) ||  data.slug.includes(search))
+              ).map((data) => {
                 return (
                   <tr
-                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
-                    key={index}
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700
+                   hover:bg-gray-50 dark:hover:bg-amber-600"
+                    key={data.id}
                   >
                     <td className="w-4 p-4">
                       <div className="flex items-center">
@@ -108,8 +128,8 @@ const Brands = () => {
                         </label>
                       </div>
                     </td>
-                    <td className="px-6 py-4">{data.nom}</td>
-                    <td className="px-6 py-4">{data.slug}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.nom}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.slug}</td>
                     <td className="px-6 py-4">
                       {data.visibility ? (
                         <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />
@@ -117,15 +137,36 @@ const Brands = () => {
                         <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />
                       )}
                     </td>
-                    <td className="px-6 py-4">{data.updated_at}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.updated_at}</td>
                     <td className="px-6 py-4">
-                      <Link
-                        to={`/brands/${data.id}/edit`}
-                        className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
+                      <a
+                        href="#"
+                        type="button"
+                        className="font-medium  font-bold flex gap-2 text-gray-600 dark:text-amber-500 hover:underline"
                       >
-                        <FaRegPenToSquare />
+                        <GrFormView className="text-2xl"/>
+                        View
+                      </a>
+                    </td>
+                    <td className="px-6 py-4">
+                      <a
+                        href="#"
+                        type="button"
+                        className="font-medium  font-bold flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
+                      >
+                        <FaRegPenToSquare/>
                         Edit
-                      </Link>
+                      </a>
+                    </td>
+                    <td className="px-6 py-4">
+                      <a
+                        href="#"
+                        type="button"
+                        className="font-medium  font-bold flex gap-2 text-red-600 dark:text-amber-500 hover:underline"
+                      >
+                        <MdDelete className="text-2xl" onClick={(e) => deleteEl(e, data.id)}/>
+                        Delete
+                      </a>
                     </td>
                   </tr>
                 );
@@ -212,4 +253,4 @@ const Brands = () => {
   );
 };
 
-export default Brands;
+export default BlogCategory;
