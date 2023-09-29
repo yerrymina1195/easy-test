@@ -20,6 +20,26 @@ const Brands = () => {
       SetBrand(data);
     });
   };
+
+  const [current, setCurrent] = useState(1);
+  const [count, setCount] = useState(5);
+  const [activePg, setActivePg] = useState(1);
+
+  const last = current * count; // 2*5 =10
+  const first = last - count; // 10 - 5 = 5
+
+  const values = brand.slice(first, last);
+
+  const buttonCount = [];
+  for (let i = 1; i <= Math.ceil(brand.length / count); i++) {
+    buttonCount.push(i);
+  }
+
+  const handleClick = (i) => {
+    // console.log(i);
+    setCurrent(i);
+    setActivePg(i);
+  };
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <FilAriane
@@ -86,7 +106,7 @@ const Brands = () => {
               </tr>
             </thead>
             <tbody>
-              {brand.filter(data => (data.nom.toLowerCase().includes(search) || data.slug.includes(search))
+              {values.filter(data => (data.nom.toLowerCase().includes(search) || data.slug.includes(search))
               ).map((data, index) => {
                 return (
                   <tr
@@ -108,8 +128,8 @@ const Brands = () => {
                         </label>
                       </div>
                     </td>
-                    <td className="px-6 py-4">{data.nom}</td>
-                    <td className="px-6 py-4">{data.slug}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.nom}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.slug}</td>
                     <td className="px-6 py-4">
                       {data.visibility ? (
                         <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />
@@ -117,7 +137,9 @@ const Brands = () => {
                         <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />
                       )}
                     </td>
-                    <td className="px-6 py-4">{data.updated_at}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.updated_at}
+                    </td>
                     <td className="px-6 py-4">
                       <Link
                         to={`/brands/${data.id}/edit`}
@@ -133,80 +155,21 @@ const Brands = () => {
             </tbody>
           </table>
         </div>
-        <nav
-          className="flex items-center justify-between p-5"
-          aria-label="Table navigation"
-        >
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1-10
-            </span>{" "}
-            of{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1000
-            </span>
-          </span>
-          <ul className=" md:inline-flex hidden -space-x-px text-sm h-8">
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                1
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                2
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                aria-current="page"
-                className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >
-                3
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                4
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                5
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={"#"}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <div className="flex justify-end mx-5">
+          {buttonCount.map((btn) => (
+            <button
+              key={btn}
+              className={
+                btn == activePg
+                  ? "my-3 p-2 text-amber-700 border border-amber-600 w-10 h-10"
+                  : " my-3 p-2 border border-gray-200 w-10 h-10"
+              }
+              onClick={() => handleClick(btn)}
+            >
+              {btn}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

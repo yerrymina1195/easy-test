@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import IconNotification from "../components/IconNotification";
 import example from "../images/cooffe.jpeg";
 import example1 from "../images/code.jpeg";
@@ -16,6 +15,7 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
+import FilAriane from "../components/FilAriane";
 const Produits = () => {
   const cart = [
     {
@@ -132,21 +132,34 @@ const Produits = () => {
       securityStock: 3,
     },
   ];
+  const [current, setCurrent] = useState(1);
+  const [count, setCount] = useState(5);
+  const [activePg, setActivePg] = useState(1);
+
+  const last = current * count; // 2*5 =10
+  const first = last - count; // 10 - 5 = 5
+
+  const values = dataTable.slice(first, last);
+
+  const buttonCount = [];
+  for (let i = 1; i <= Math.ceil(dataTable.length / count); i++) {
+    buttonCount.push(i);
+  }
+
+  const handleClick = (i) => {
+    // console.log(i);
+    setCurrent(i);
+    setActivePg(i);
+  };
   return (
-    <div className="mt-5">
-      <div className="columns-2">
-        <div className="grid justify-items-start">
-          <p className="">Products &#62; List</p>
-          <h2 className="text-2xl py-3 font-bold">Products</h2>
-        </div>
-        <div className="grid justify-items-end ">
-          <Link to="/produits/create">
-            <button className="rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-400">
-              New Products
-            </button>
-          </Link>
-        </div>
-      </div>
+    <div className="container overflow-auto m-10 mx-auto">
+      <FilAriane
+        linkOne={"/produits"}
+        nameOne={"Products"}
+        nameTwo={"Products"}
+        linkTwo={"/produits/create"}
+        button={"New Products"}
+      />
       <div className="grid md:grid-cols-3 my-5 gap-5">
         {cart.map((carte, index) => (
           <div
@@ -257,7 +270,7 @@ const Produits = () => {
               </tr>
             </thead>
             <tbody>
-              {dataTable.map((data, index) => {
+              {values.map((data, index) => {
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
@@ -270,7 +283,10 @@ const Produits = () => {
                           type="checkbox"
                           className="w-4 h-4 text-amber-600 bg-gray-100 border-gray-300 rounded focus:ring-amber-500 dark:focus:ring-amber-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
-                        <label htmlFor="checkbox-table-search-1" className="sr-only">
+                        <label
+                          htmlFor="checkbox-table-search-1"
+                          className="sr-only"
+                        >
                           checkbox
                         </label>
                       </div>
@@ -279,7 +295,9 @@ const Produits = () => {
                       <img src={data.image} alt={data.name} />
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.brand}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {data.brand}
+                    </td>
                     <td className="px-6 py-4">{data.icon}</td>
                     <td className="px-6 py-4">{data.price}</td>
                     <td className="px-6 py-4">{data.sKU}</td>
@@ -302,172 +320,23 @@ const Produits = () => {
             </tbody>
           </table>
         </div>
-        {/* <nav
-          className="flex items-center justify-between p-5"
-          aria-label="Table navigation"
-        >
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1-10
-            </span>{" "}
-            of{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1000
-            </span>
-          </span>
-          <ul className="inline-flex -space-x-px text-sm h-8">
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                1
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                2
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                aria-current="page"
-                className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >
-                3
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                4
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                5
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav> */}
+      {/* pagination */}
+      <div className="flex justify-end mx-5">
+        {buttonCount.map((btn) => (
+          <button
+            key={btn}
+            className={
+              btn == activePg
+                ? " my-3 p-2 text-amber-700 border border-amber-600 w-10 h-10"
+                : " my-3 p-2 border border-gray-200 w-10 h-10"
+            }
+            onClick={() => handleClick(btn)}
+          >
+            {btn}
+          </button>
+        ))}
       </div>
-
-      {/* <div className="px-20">
-        <nav
-          className="flex items-center justify-between p-5"
-          aria-label="Table navigation"
-        >
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-            Showing{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1-10
-            </span>{" "}
-            of{" "}
-            <span className="font-semibold text-gray-900 dark:text-white">
-              1000
-            </span>
-          </span>
-          <div className="flex focus:ring-amber-500 dark:focus:ring-amber-600">
-            <p className="mt-2">Per Page </p>
-            <select
-              name=""
-              id=""
-              vlaue="Per Page"
-              className="rounded-sm ml-2 border-opacity-0 focus:ring-amber-500 dark:focus:ring-amber-600"
-            >
-              <option value="20">5</option>
-              <option value="2">10</option>
-              <option value="3">15</option>
-              <option value="4">20</option>
-            </select>
-          </div>
-          <ul className="inline-flex -space-x-px text-sm h-8">
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Previous
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                1
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                2
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                aria-current="page"
-                className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-              >
-                3
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                4
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                5
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-              >
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div> */}
+      </div>
     </div>
   );
 };

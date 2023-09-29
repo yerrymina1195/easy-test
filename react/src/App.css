@@ -9,6 +9,15 @@
 	animation: spinner 1.5s linear infinite;
 }
 
+.polygone {
+	width: 60px;
+	background-color: #e5e7eb;
+	height: 75px;
+	clip-path: polygon(5% 0, 55% 50%, 5% 100%, 0% 100%, 50% 50%, 0% 0%);
+
+}
+
+
 @-webkit-keyframes spinner {
 	0% {
 		-webkit-transform: rotate(0deg);

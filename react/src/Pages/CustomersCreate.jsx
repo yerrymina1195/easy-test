@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axiosClient from "../axios.js";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const CustomersCreate = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +21,8 @@ const CustomersCreate = () => {
       })
       .then(({ data }) => {
         console.log(data);
-        alert("donnée bien entrée");
+        // alert("donnée bien entrée");
+        toast.success(`${fullName} ajouter avec succée`);
       })
       .catch((error) => {
         if (error.response) {
@@ -30,6 +32,7 @@ const CustomersCreate = () => {
           );
           console.log(finalErrors);
           setError({ __html: finalErrors.join("<br>") });
+          toast.error("response.data.message");
         }
         console.error(error);
       });
@@ -122,22 +125,23 @@ const CustomersCreate = () => {
             <button
               type="submit"
               className="text-white bg-amber-600 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg md:text-sm text-xs w-full sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-              >
+            >
               Create
             </button>
             <button
               type="submit"
               className="col-span-2 border-2 bg-white focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-              >
+            >
               Create & create another
             </button>
             <button
               type="submit"
               className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
-              >
+            >
               Cancel
             </button>
           </div>
+          <ToastContainer />
         </form>
       </div>
       {error.__html && (

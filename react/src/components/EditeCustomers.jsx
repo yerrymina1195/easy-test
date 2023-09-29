@@ -81,7 +81,7 @@ const delateClient= async(e)=>{
 };
 
   return (
-    <div className="container m-10  mx-auto">
+    <div className="container m-10 mx-auto">
       <div className="grid grid-cols-2">
         <div className="">
           <p className="text-gray-500 md:text-base text-sm">
