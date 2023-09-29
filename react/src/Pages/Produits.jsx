@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import IconNotification from "../components/IconNotification";
 import example from "../images/cooffe.jpeg";
@@ -17,6 +17,7 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
 import FilAriane from "../components/FilAriane";
+import axiosClient from "../axios";
 const Produits = () => {
   const cart = [
     {
@@ -133,6 +134,17 @@ const Produits = () => {
       securityStock: 3,
     },
   ];
+  const [produit, setProduit] = useState([]);
+  // recuperer les donnes produits
+  useEffect(() => {
+    fetchProduit();
+  }, []);
+
+  const fetchProduit = async () => {
+    await axiosClient.get(`/produit`).then(({ data }) => {
+      setProduit(data);
+    });
+  };
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <FilAriane
@@ -232,31 +244,16 @@ const Produits = () => {
                     </span>
                   </div>
                 </th>
-                <th scope="col" className="px-6 py-3">
-                  <div className="flex gap-2">
-                    Security stock
-                    <span>
-                      <IoMdArrowRoundDown />
-                    </span>
-                  </div>
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  <div className="flex gap-2">
-                    Updated Date{" "}
-                    <span>
-                      <IoMdArrowRoundDown />
-                    </span>
-                  </div>
-                </th>
                 <th scope="col" className="px-6 py-3"></th>
               </tr>
             </thead>
             <tbody>
-              {dataTable.map((data, index) => {
+              {produit.map((data) => {
+                console.log(data.image);
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
-                    key={index}
+                    key={data.id}
                   >
                     <td className="w-4 p-4">
                       <div className="flex items-center">
@@ -273,20 +270,29 @@ const Produits = () => {
                         </label>
                       </div>
                     </td>
-                    <td className="w-4 p-4">
-                      <img src={data.image} alt={data.name} />
+                    <td className=" p-4 ">
+                      <img
+                        src={`${data.image}`}
+                        alt={data.nom}
+                        className="h-8 w-8"
+                      />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">{data.nom}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {data.brand}
                     </td>
-                    <td className="px-6 py-4">{data.icon}</td>
-                    <td className="px-6 py-4">{data.price}</td>
-                    <td className="px-6 py-4">{data.sKU}</td>
-                    <td className="px-6 py-4">{data.quantity}</td>
-                    <td className="px-6 py-4">{data.securityStock}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.date}</td>
                     <td className="px-6 py-4">
+                      {data.visibility ? (
+                        <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />
+                      ) : (
+                        <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />
+                      )}
+                    </td>
+                    <td className="px-6 py-4">{data.prix}</td>
+                    <td className="px-6 py-4">{data.sku}</td>
+                    <td className="px-6 py-4">{data.quantity}</td>
+                    <td className="px-6 py-4">
+                      <Link  to={`/produits/${data.id}/edit`}>
                       <a
                         href="#"
                         type="button"
@@ -295,6 +301,7 @@ const Produits = () => {
                         <FaRegPenToSquare />
                         Edit
                       </a>
+                      </Link>
                     </td>
                   </tr>
                 );

@@ -125,7 +125,6 @@ const EditeCategory = (props) => {
   ];
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
   const [nom, setNom] = useState("");
   const [slug, setSlug] = useState("");
   const [url, setUrl] = useState("");
@@ -170,7 +169,7 @@ const EditeCategory = (props) => {
       console.log(error.response.data);
     }
   };
-  const deleteProduct = async (e) => {
+  const deleteCategory = async (e) => {
     e.preventDefault()
     const isConfirm = await Swal.fire({
         title: 'Are you sure?',
@@ -220,7 +219,7 @@ const EditeCategory = (props) => {
         </div>
         <div className="grid justify-items-end">
           
-            <button  onClick={deleteProduct} className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
+            <button  onClick={deleteCategory} className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
               Delete
             </button>
          
