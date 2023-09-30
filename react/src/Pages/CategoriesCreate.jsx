@@ -20,8 +20,8 @@ const CategoriesCreate = () => {
     await axios
       .post(`http://localhost:8000/api/categorie`, {
         nom: nom,
-        url: url,
-        slug: slug,
+        url: url,      
+        slug: nom,
         visibility: visibility,
         description: description,
       })
@@ -209,5 +209,6 @@ const CategoriesCreate = () => {
     </div>
   );
 };
+
 
 export default CategoriesCreate;
