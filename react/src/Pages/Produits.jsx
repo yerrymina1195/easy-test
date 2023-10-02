@@ -110,7 +110,7 @@ const Produits = () => {
       securityStock: 3,
     },
     {
-      name: "Lorem ipsum dolor sit amet",
+      name: "orem ipsum dolor sit amet",
       brand: "Lorem ipsum dolor sit",
       date: "Mai 7, 2023",
       icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
@@ -135,6 +135,8 @@ const Produits = () => {
   const [current, setCurrent] = useState(1);
   const [count, setCount] = useState(5);
   const [activePg, setActivePg] = useState(1);
+  const [search, setSearch] = useState("");
+
 
   const last = current * count; // 2*5 =10
   const first = last - count; // 10 - 5 = 5
@@ -174,7 +176,7 @@ const Produits = () => {
       {/* tableau */}
       <div className="relative border-2 my-5 bg-white rounded-2xl">
         <div className="flex items-center border-b-2 gap-3 justify-end p-4  dark:bg-gray-800">
-          <InputSearch />
+          <InputSearch handleChange={(e) => setSearch(e.target.value)}/>
           <IconNotification icon={<FaFilter />} number={0} />
           <HiViewColumns className="text-gray-400 w-6 h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
         </div>
@@ -270,11 +272,12 @@ const Produits = () => {
               </tr>
             </thead>
             <tbody>
-              {values.map((data, index) => {
+            {values.filter(data => (data.name.toLowerCase().includes(search) || data.price.includes(search))
+              ).map((data) => {
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
-                    key={index}
+                    key={data.id}
                   >
                     <td className="w-4 p-4">
                       <div className="flex items-center">

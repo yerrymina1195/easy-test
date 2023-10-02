@@ -8,6 +8,7 @@ import { IoMdArrowRoundDown } from "react-icons/io";
 import { FaFilter } from "react-icons/fa";
 import { HiViewColumns } from "react-icons/hi2";
 import FilAriane from "../components/FilAriane";
+
 const Order = () => {
   const cart = [
     {
@@ -25,7 +26,7 @@ const Order = () => {
   ];
   const dataTable = [
     {
-      number: "R999555",
+      number: "M999555",
       customer: "Lorem ipsum dolor sit",
       date: "Jav 12, 2023",
       status: (
@@ -231,6 +232,7 @@ const Order = () => {
   const [current, setCurrent] = useState(1);
   const [count, setCount] = useState(5);
   const [activePg, setActivePg] = useState(1);
+  const [search, setSearch] = useState("");
 
   const last = current * count; // 2*5 =10
   const first = last - count; // 10 - 5 = 5
@@ -403,7 +405,7 @@ const Order = () => {
             </div>
           </div>
           <div className="flex items-center gap-3 mr-3">
-            <InputSearch />
+            <InputSearch handleChange={(e) => setSearch(e.target.value)}/>
             <IconNotification icon={<FaFilter />} number={0} />
             <HiViewColumns className="text-gray-400 w-6 h-7 focus:ring-amber-600 focus:border-amber-600 rounded-lg" />
           </div>
@@ -484,11 +486,12 @@ const Order = () => {
               </tr>
             </thead>
             <tbody>
-              {values.map((data, index) => {
+              {values.filter(data => (data.number.toLowerCase().includes(search) || data.customer.toLowerCase().includes(search)  || data.status.toLowerCase().includes(search)  || data.currency.toLowerCase().includes(search))
+              ).map((data) => {
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
-                    key={index}
+                    key={data.id} 
                   >
                     <td className="w-4 p-4">
                       <div className="flex items-center">
@@ -505,7 +508,7 @@ const Order = () => {
                         </label>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4 whitespace-nowrap" >
                       {data.number}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

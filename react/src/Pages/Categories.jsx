@@ -130,7 +130,7 @@ const Categories = () => {
                         </label>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.nom}</td>
+                    <td className="px-6 py-4 whitespace-nowrap" >{data.nom}</td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.slug}</td>
                     <td className="px-6 py-4">
                       {data.visibility ? (
