@@ -15,13 +15,14 @@ const Categories = () => {
   }, []);
 
   const fetchCategory = async () => {
-    await axiosClient.get(`/categorie`).then(({ data }) => {
-      updatecategorie(data);
+    await axiosClient.get(`categorie`).then(({ data }) => {
+      console.log(data);
     });
   };
   const [current, setCurrent] = useState(1);
   const [count, setCount] = useState(5);
   const [activePg, setActivePg] = useState(1);
+ 
 
   const last = current * count; // 2*5 =10
   const first = last - count; // 10 - 5 = 5
@@ -138,6 +139,7 @@ const Categories = () => {
                       {data.updated_at}
                     </td>
                     <td className="px-6 py-4">
+                    <Link  to={`/categories/${data.id}/edit`}>
                       <a
                         href="#"
                         type="button"
@@ -146,6 +148,7 @@ const Categories = () => {
                         <FaRegPenToSquare />
                         Edit
                       </a>
+                    </Link>
                     </td>
                   </tr>
                 );

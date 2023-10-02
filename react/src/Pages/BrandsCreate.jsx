@@ -16,7 +16,6 @@ const BrandsCreate = () => {
   const [visibility, setVisibility] = useState(false);
   const [validationError, setValidationError] = useState({});
   const navigate = useNavigate();
-  const { id } = useParams();
 
   const create = async (e) => {
     e.preventDefault();
@@ -25,7 +24,7 @@ const BrandsCreate = () => {
       .post(`http://localhost:8000/api/brand`, {
         nom: nom,
         url: url,
-        slug: slug,
+        slug: nom,
         visibility: visibility,
         description: description,
       })
@@ -96,7 +95,8 @@ const BrandsCreate = () => {
                 id="slug"
                 className="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
                 placeholder=" "
-                value={slug}
+                disabled
+                value={nom}
                 onChange={(event) => {
                   setSlug(event.target.value);
                 }}

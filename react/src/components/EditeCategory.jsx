@@ -19,9 +19,9 @@ import { FaFilter } from "react-icons/fa";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosClient from "../axios";
-import Swal from "sweetalert2";
 import axios from 'axios'
-const EditeBrand = (props) => {
+import Swal from "sweetalert2";
+const EditeCategory = (props) => {
   const dataTable = [
     {
       name: "Lorem ipsum dolor sit amet",
@@ -131,35 +131,28 @@ const EditeBrand = (props) => {
   const [url, setUrl] = useState("");
   const [description, setDescrition] = useState("");
   const [visibility, setVisibility] = useState(false);
-  const [validationError, setValidationError] = useState({});
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetchBrand();
-  }, [id]);
-  const fetchBrand = async () => {
-    await axiosClient
-      .get(`/brand/${id}`)
-      .then(({ data }) => {
-        const { nom, slug, url, description, visibility } = data.brand;
-        setNom(nom),
-          setUrl(url),
-          setSlug(slug),
-          setVisibility(visibility),
-          setDescrition(description);
-        setData(data.brand);
-      })
-      .catch(({ response: { data } }) => {
-        Swal.fire({
-          text: data.message,
-          icon: "error",
-        });
-      });
-  };
-  const updateBrand = async (e) => {
+    fetchCategory();
+  }, []);
+  const fetchCategory = async () => {
+
+    await axios.get(`http://localhost:8000/api/categorie/${id}`)
+    .then(( { data } ) => {
+      const { nom, slug, url, description, visibility }= data.category;
+      setNom(nom),
+      setUrl(url),
+      setSlug(slug),
+      setVisibility(visibility),
+      setDescrition(description);
+      setData(data.category)
+    })
+  }
+  const updateCategory = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axiosClient.put(`/brand/${id}`, {
+      const response = await axiosClient.put(`/categorie/${id}`, {
         nom: nom,
         url: url,
         slug: nom,
@@ -170,20 +163,13 @@ const EditeBrand = (props) => {
         icon: "success",
         text: response.data.message,
       });
-      navigate("/brands");
+      console.log(data);
+      navigate("/categories");
     } catch (error) {
       console.log(error);
       console.log(error.response.data);
     }
   };
-  const cancel = async (e) => {
-    setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
-    navigate("/brands");
-  };
-  const handleToggle = (e) => {
-    setVisibility(!visibility);
-  };
-  const t = 7;
   const deleteProduct = async (e) => {
     e.preventDefault()
     const isConfirm = await Swal.fire({
@@ -202,12 +188,12 @@ const EditeBrand = (props) => {
         return;
       }
 
-      await axios.delete(`http://localhost:8000/api/brand/${id}`).then(({data})=>{
+      await axios.delete(`http://localhost:8000/api/categorie/${id}`).then(({data})=>{
         Swal.fire({
             icon:"success",
             text:data.message
         })
-       
+       navigate('/categories')
       }).catch(({response:{data}})=>{
         Swal.fire({
             text:data.message,
@@ -215,7 +201,14 @@ const EditeBrand = (props) => {
         })
       })
 }
-console.log(id);
+  const cancel = async (e) => {
+    setNom(""), setUrl(""), setSlug(" "), setVisibility(""), setDescrition("");
+    navigate("/categories");
+  };
+  const handleToggle = (e) => {
+    e.preventDefault()
+    setVisibility(!visibility);
+  };
   return (
     <div className="md:m-5">
       <div className="grid grid-cols-2">
@@ -227,16 +220,15 @@ console.log(id);
         </div>
         <div className="grid justify-items-end">
           
-            <button 
-             onClick={deleteProduct} className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
+            <button  onClick={deleteProduct} className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
               Delete
             </button>
-          
+         
         </div>
       </div>
       <div className="grid md:grid-cols-3 md:gap-5">
         <div className="md:col-span-2">
-          <form onSubmit={updateBrand}>
+          <form onSubmit={updateCategory}>
             <div className="bg-white border border-gray-200 my-5 md:p-5 p-2.5 rounded-2xl">
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-6 group">
@@ -579,4 +571,4 @@ console.log(id);
   );
 };
 
-export default EditeBrand;
+export default EditeCategory;

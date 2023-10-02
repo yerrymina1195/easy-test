@@ -6,16 +6,19 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosClient from "../axios";
+import axios from "axios";
 import FilAriane from "../components/FilAriane";
+import { useStateContext } from "../contexts/ContextProvider";
 const Brands = () => {
-  const [brand, SetBrand] = useState([]);
+  const { updatebrand, brand } = useStateContext();
   useEffect(() => {
-    fetchCategory();
+    fetchBrand();
   }, []);
 
-  const fetchCategory = async () => {
-    await axiosClient.get(`/brand`).then(({ data }) => {
-      SetBrand(data);
+  const fetchBrand = async () => {
+    await axios.get(`http://localhost:8000/api/brand`).then(({ data }) => {
+      updatebrand(data);
+    
     });
   };
 
@@ -125,9 +128,9 @@ const Brands = () => {
                         </label>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.nom}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{data.slug}</td>
-                    <td className="px-6 py-4">
+                    <td class="px-6 py-4">{data.nom}</td>
+                    <td class="px-6 py-4">{data.url}</td>
+                    <td class="px-6 py-4">
                       {data.visibility ? (
                         <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />
                       ) : (
