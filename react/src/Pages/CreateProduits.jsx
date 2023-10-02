@@ -31,12 +31,11 @@ const CreateProduits = () => {
 
   // Créez des références pour le champ de fichier et l'image
   const fileInputRef = useRef(null);
-  const imageRef = useRef(null );
+  const imageRef = useRef(null);
   const handleFileChange = (e) => {
     const selectedImage = e.target.files[0]; // Récupère le premier fichier sélectionné
     setImage(selectedImage);
     // afficher l'image
-  
 
     if (selectedImage) {
       // Utilisez createObjectURL pour obtenir l'URL de l'image
@@ -75,6 +74,7 @@ const CreateProduits = () => {
       setCategorieValue(data);
     });
   };
+  console.log(image);
   //  envoyer les donner produits dans la basses de donner
   const create = async (e) => {
     e.preventDefault();
@@ -96,7 +96,7 @@ const CreateProduits = () => {
     formData.append("date", date);
     formData.append("brand", brand);
     formData.append("category", categorie);
-   
+
     if (image) {
       formData.append("image", image);
     }
@@ -111,7 +111,6 @@ const CreateProduits = () => {
           icon: "success",
           text: data.message,
         });
-        console.log(formData);
         setNom(" ");
         setDescrition(" ");
         setPrix(" ");
@@ -227,7 +226,7 @@ const CreateProduits = () => {
                   htmlFor="image"
                   className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                 >
-                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
                     <svg
                       className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
                       aria-hidden="true"
@@ -246,11 +245,11 @@ const CreateProduits = () => {
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                       <span className="font-semibold">Click to upload</span>
                       {/* or drag and drop */}
-                  </p>
+                    </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
                       SVG, PNG, JPG or GIF (MAX. 800x400px)
                     </p>
-                  </div> 
+                  </div>
                   <input
                     ref={fileInputRef}
                     onChange={handleFileChange}
@@ -262,7 +261,13 @@ const CreateProduits = () => {
                   />
                 </label>
               </div>
-              <img    ref={imageRef} src={""} id="image" className="flex w-full mx-auto" alt="" />
+              <img
+                ref={imageRef}
+                src={""}
+                id="image"
+                className="flex w-full mx-auto"
+                alt=""
+              />
             </div>
             {/*  troisieme section */}
             <div className="bg-white border border-gray-200 p-5 mb-5 rounded-xl">

@@ -39,15 +39,10 @@ const EditeProduits = (props) => {
     if (selectedImage) {
       // Utilisez createObjectURL pour obtenir l'URL de l'image
       const imageURL = URL.createObjectURL(selectedImage);
-
       // Mettez à jour la source de l'image
       imageRef.current.src = imageURL;
     }
   };
-  useEffect(() => {
-    // Mettre à jour imageRef avec la nouvelle valeur de image
-    imageRef.current.src = image;
-  }, [image]);
   const handleToggle = () => {
     setVisibility(!visibility);
   };
@@ -141,6 +136,7 @@ const EditeProduits = (props) => {
       console.log(data);
     });
   };
+
   //  mise a jour des donner produits dans la basses de donner
   const update = async (e) => {
     e.preventDefault();
@@ -179,6 +175,7 @@ const EditeProduits = (props) => {
       console.log(error.response.data);
     }
   };
+  console.log(image);
   // supprimer un produit
   const deleteProduct = async (e) => {
     e.preventDefault();
@@ -295,7 +292,7 @@ const EditeProduits = (props) => {
                   htmlFor="image"
                   className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                 >
-                  <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                  {/* <div className="flex flex-col items-center justify-center pt-5 pb-6">
                     <svg
                       className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
                       aria-hidden="true"
@@ -314,11 +311,11 @@ const EditeProduits = (props) => {
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                       <span className="font-semibold">Click to upload</span>
                       {/* or drag and drop */}
-                    </p>
+                  {/* </p>
                     <p className="text-xs text-gray-500 dark:text-gray-400">
                       SVG, PNG, JPG or GIF (MAX. 800x400px)
                     </p>
-                  </div>
+                  </div> */}
                   <input
                     ref={fileInputRef}
                     onChange={handleFileChange}
@@ -326,7 +323,6 @@ const EditeProduits = (props) => {
                     name="image"
                     accept="image/*"
                     type="file"
-                    className=""
                   />
                 </label>
               </div>
