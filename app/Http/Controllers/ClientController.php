@@ -9,12 +9,12 @@ use App\Models\Client;
 
 class ClientController extends Controller
 {
-    public function index()
+public function index()
     {
         $clients = Client::all();
         return response()->json($clients);
     }
-    public function store(CreateClientRequest $request)
+public function store(CreateClientRequest $request)
 {
     $data = $request->validated();
 

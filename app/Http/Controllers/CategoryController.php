@@ -35,16 +35,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request )
     {
-        //    $validatedData = $request->validate([
-    //     'marque' => 'required|max:255',
-    //     'prix' => 'required',
-    // ]);
-
-    // $car = Car::create($validatedData);
-
-    // return redirect('/cars')->with('success', 'Voiture créer avec succèss');
-
-
      $category =  Category::create([
             "nom"=>$request->nom,
             'url'=>$request->url,
@@ -54,6 +44,7 @@ class CategoryController extends Controller
         ]);
          return response()->json(['message' =>'Category Created Successfully!!',
         'category'=> $category]);
+    
     }
 
     /**
@@ -62,13 +53,16 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        
-        return response()->json([
-            'category'=>$category
-            
-        ]);
+        $category = Category::find($id);
+
+        if (!$category) {
+            return response()->json(['message' => 'Client non trouvé'], 404);
+        }
+    
+     
+        return response()->json(['category'=>$category ]);
     }
 
     /**
@@ -89,9 +83,18 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $request->validate([
+            'nom' => 'required',
+            'slug' => 'required',
+            'url' => 'required',
+            'visibility' => 'boolean',
+            'description' => 'required',
+        ]);
+    $category ->update($request->all());
+    return response()->json(['message' => 'Categories mise à jour avec succès'], 200);
     }
 
     /**
@@ -100,8 +103,18 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         //
+           //
+           $category = Category::find($id);
+           if($category){
+               $category->delete();
+               return  response()->json(['message' => 'category supprimer ']);
+           }
+           else {
+               // Gérer le cas où l'objet n'a pas été trouvé
+               return response()->json(['message' => 'L\'objet n\'existe pas.'], 404);
+           }
     }
 }

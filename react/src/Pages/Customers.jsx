@@ -5,8 +5,8 @@ import { FaFilter } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdArrowRoundDown } from "react-icons/io";
 import IconNotification from "../components/IconNotification";
+import axiosClient from "../axios.js";
 import { Link } from "react-router-dom";
-import axiosClient from "../axios";
 import FilAriane from "../components/FilAriane";
 
 const Customers = () => {

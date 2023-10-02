@@ -17,8 +17,8 @@ const Categories = () => {
   }, []);
 
   const fetchCategory = async () => {
-    await axiosClient.get(`/categorie`).then(({ data }) => {
-      updatecategorie(data);
+    await axiosClient.get(`categorie`).then(({ data }) => {
+      console.log(data);
     });
   };
   const [current, setCurrent] = useState(1);
@@ -143,6 +143,7 @@ const Categories = () => {
                       {data.updated_at}
                     </td>
                     <td className="px-6 py-4">
+                    <Link  to={`/categories/${data.id}/edit`}>
                       <a
                         href="#"
                         type="button"
@@ -151,6 +152,7 @@ const Categories = () => {
                         <FaRegPenToSquare />
                         Edit
                       </a>
+                    </Link>
                     </td>
                   </tr>
                 );

@@ -6,18 +6,21 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axiosClient from "../axios";
+import axios from "axios";
 import FilAriane from "../components/FilAriane";
+import { useStateContext } from "../contexts/ContextProvider";
 const Brands = () => {
   const [brand, SetBrand] = useState([]);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetchCategory();
+    fetchBrand();
   }, []);
 
-  const fetchCategory = async () => {
-    await axiosClient.get(`/brand`).then(({ data }) => {
-      SetBrand(data);
+  const fetchBrand = async () => {
+    await axios.get(`http://localhost:8000/api/brand`).then(({ data }) => {
+      updatebrand(data);
+    
     });
   };
 
