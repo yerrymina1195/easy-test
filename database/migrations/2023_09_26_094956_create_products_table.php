@@ -19,9 +19,9 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->text('description');
             $table->string('image');
-            $table->number('prix');  
-            $table->number('compare_prix');  
-            $table->number('cost');  
+            $table->decimal('prix');  
+            $table->decimal('compare_prix');  
+            $table->decimal('cost');  
             $table->integer('sku');
             $table->integer('barcode');
             $table->integer('quantity');

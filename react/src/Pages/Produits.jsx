@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import IconNotification from "../components/IconNotification";
-import example from "../images/cooffe.jpeg";
-import example1 from "../images/code.jpeg";
-import example2 from "../images/in.jpeg";
-import example3 from "../images/inf.jpeg";
-import example4 from "../images/hijab.jpeg";
-import example5 from "../images/machine.jpeg";
-import example6 from "../images/startup.jpeg";
-import example7 from "../images/team.jpeg";
-import example10 from "../images/wifi.jpeg";
 import InputSearch from "../components/InputSearch";
 import { HiViewColumns } from "react-icons/hi2";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
@@ -33,118 +24,29 @@ const Produits = () => {
       number: 248.63,
     },
   ];
-  const dataTable = [
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Jav 12, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-      image: example,
-      price: 452,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Nov 22, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-      image: example1,
-      price: 415,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Avr 5, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-      image: example2,
-      price: 157,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Dec 6, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-      image: example3,
-      price: 568,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Mai 7, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-      image: example5,
-      price: 345,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Jav 17, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-      image: example4,
-      price: 451,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Dec 6, 2023",
-      icon: <AiOutlineCheckCircle className="w-5 h-5 text-green-700" />,
-      image: example6,
-      price: 956,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Mai 7, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-      image: example7,
-      price: 653,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      brand: "Lorem ipsum dolor sit",
-      date: "Jav 17, 2023",
-      icon: <AiOutlineCloseCircle className="w-5 h-5 text-red-700" />,
-      image: example10,
-      price: 230,
-      sKU: 123456,
-      quantity: 9,
-      securityStock: 3,
-    },
-  ];
+
+  const [produit, setProduit] = useState([]);
+  // recuperer les donnes produits
+  useEffect(() => {
+    fetchProduit();
+  }, []);
+
+  const fetchProduit = async () => {
+    await axiosClient.get(`/produit`).then(({ data }) => {
+      setProduit(data);
+    });
+  };
+
   const [current, setCurrent] = useState(1);
   const [count, setCount] = useState(5);
   const [activePg, setActivePg] = useState(1);
-
   const last = current * count; // 2*5 =10
   const first = last - count; // 10 - 5 = 5
 
-  const values = dataTable.slice(first, last);
+  const values = produit.slice(first, last);
 
   const buttonCount = [];
-  for (let i = 1; i <= Math.ceil(dataTable.length / count); i++) {
+  for (let i = 1; i <= Math.ceil(produit.length / count); i++) {
     buttonCount.push(i);
   }
 
@@ -153,7 +55,7 @@ const Produits = () => {
     setCurrent(i);
     setActivePg(i);
   };
-  
+
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <FilAriane
@@ -284,6 +186,7 @@ const Produits = () => {
                         alt={data.nom}
                         className="h-8 w-8"
                       />
+                      {/* console.log({data.image}); */}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.nom}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -300,15 +203,15 @@ const Produits = () => {
                     <td className="px-6 py-4">{data.sku}</td>
                     <td className="px-6 py-4">{data.quantity}</td>
                     <td className="px-6 py-4">
-                      <Link  to={`/produits/${data.id}/edit`}>
-                      <a
-                        href="#"
-                        type="button"
-                        className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
-                      >
-                        <FaRegPenToSquare />
-                        Edit
-                      </a>
+                      <Link to={`/produits/${data.id}/edit`}>
+                        <a
+                          href="#"
+                          type="button"
+                          className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
+                        >
+                          <FaRegPenToSquare />
+                          Edit
+                        </a>
                       </Link>
                     </td>
                   </tr>
@@ -317,22 +220,22 @@ const Produits = () => {
             </tbody>
           </table>
         </div>
-      {/* pagination */}
-      <div className="flex justify-end mx-5">
-        {buttonCount.map((btn) => (
-          <button
-            key={btn}
-            className={
-              btn == activePg
-                ? " my-3 p-2 text-amber-700 border border-amber-600 w-10 h-10"
-                : " my-3 p-2 border border-gray-200 w-10 h-10"
-            }
-            onClick={() => handleClick(btn)}
-          >
-            {btn}
-          </button>
-        ))}
-      </div>
+        {/* pagination */}
+        <div className="flex justify-end mx-5">
+          {buttonCount.map((btn) => (
+            <button
+              key={btn}
+              className={
+                btn == activePg
+                  ? " my-3 p-2 text-amber-700 border border-amber-600 w-10 h-10"
+                  : " my-3 p-2 border border-gray-200 w-10 h-10"
+              }
+              onClick={() => handleClick(btn)}
+            >
+              {btn}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

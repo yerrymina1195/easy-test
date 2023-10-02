@@ -135,10 +135,8 @@ class ProduitController extends Controller
         $produit= Produit::find($id);
         if (!$produit) {
             return response()->json(['message' => 'Produit non trouvé'], 404);
-        }
-      
-
-          // 5. Traitement de l'image
+        }  
+    // 5. Traitement de l'image
        if ($request->hasFile('image')) {
            $imagePath = $request->file('image')->store('public/images');
            $imageUrl = asset(Storage::url($imagePath));
@@ -146,7 +144,7 @@ class ProduitController extends Controller
        }
 
         $produit->update($data);
-          return response()->json(['message' => 'brand mise à jour avec succès'], 200);
+          return response()->json(['message' => 'produit mise à jour avec succès'], 200);
     }
 
     /**

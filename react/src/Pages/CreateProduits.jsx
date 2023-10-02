@@ -74,6 +74,7 @@ const CreateProduits = () => {
       setCategorieValue(data);
     });
   };
+  console.log(image);
   //  envoyer les donner produits dans la basses de donner
   const create = async (e) => {
     e.preventDefault();
@@ -110,7 +111,6 @@ const CreateProduits = () => {
           icon: "success",
           text: data.message,
         });
-        console.log(formData);
         setNom(" ");
         setDescrition(" ");
         setPrix(" ");
@@ -262,10 +262,10 @@ const CreateProduits = () => {
                 </label>
               </div>
               <img
+                ref={imageRef}
                 src={""}
                 id="image"
-                ref={imageRef}
-                className="flex w-full rounded-xl  mx-auto"
+                className="flex w-full mx-auto"
                 alt=""
               />
             </div>
