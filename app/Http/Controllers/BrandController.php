@@ -60,7 +60,7 @@ public function index()
             'brand'=>$brand
             
         ]);
-        console.log($brand);
+       
     }
 
     /**
