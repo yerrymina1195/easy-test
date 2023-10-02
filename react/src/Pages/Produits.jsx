@@ -43,7 +43,7 @@ const Produits = () => {
   const last = current * count; // 2*5 =10
   const first = last - count; // 10 - 5 = 5
 
-  const values = produit.slice(first, last);
+  // const values = produit.slice(first, last);
 
   const buttonCount = [];
   for (let i = 1; i <= Math.ceil(produit.length / count); i++) {
@@ -159,7 +159,8 @@ const Produits = () => {
               </tr>
             </thead>
             <tbody>
-              {values.map((data, index) => {
+              {produit.map((data) => {
+                console.log(data.image);
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
@@ -186,7 +187,6 @@ const Produits = () => {
                         alt={data.nom}
                         className="h-8 w-8"
                       />
-                      {/* console.log({data.image}); */}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">{data.nom}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
