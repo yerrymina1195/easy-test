@@ -175,7 +175,7 @@ const EditeProduits = (props) => {
       console.log(error.response.data);
     }
   };
-  console.log(image);
+
   // supprimer un produit
   const deleteProduct = async (e) => {
     e.preventDefault();
