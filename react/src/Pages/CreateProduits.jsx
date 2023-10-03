@@ -32,6 +32,7 @@ const CreateProduits = () => {
   // Créez des références pour le champ de fichier et l'image
   const fileInputRef = useRef(null);
   const imageRef = useRef(null);
+  console.log(imageRef);
   const handleFileChange = (e) => {
     const selectedImage = e.target.files[0]; // Récupère le premier fichier sélectionné
     setImage(selectedImage);
@@ -60,7 +61,7 @@ const CreateProduits = () => {
   }, []);
 
   const fetchBrand = async () => {
-    await axios.get(`http://localhost:8000/api/brand`).then(({ data }) => {
+    await axiosClient.get(`/brand`).then(({ data }) => {
       setBrandValue(data);
     });
   };
@@ -70,7 +71,7 @@ const CreateProduits = () => {
   }, []);
 
   const fetchCategory = async () => {
-    await axios.get(`http://localhost:8000/api/categorie`).then(({ data }) => {
+    await axiosClient.get(`/categorie`).then(({ data }) => {
       setCategorieValue(data);
     });
   };
@@ -100,8 +101,8 @@ const CreateProduits = () => {
     if (image) {
       formData.append("image", image);
     }
-    await axios
-      .post(`http://localhost:8000/api/produit`, formData, {
+    await axiosClient
+      .post(`/produit`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -111,6 +112,8 @@ const CreateProduits = () => {
           icon: "success",
           text: data.message,
         });
+        console.log(image);
+        console.log(formData);
         setNom(" ");
         setDescrition(" ");
         setPrix(" ");
@@ -349,7 +352,7 @@ const CreateProduits = () => {
                     SKU (Stock Keeping Unit)*
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="SKU"
                     id="SKU"
                     className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
@@ -367,7 +370,7 @@ const CreateProduits = () => {
                     Barcode (ISBN, UPC, GTIN, etc.)*
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     name="Barcode"
                     id="Barcode"
                     className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"

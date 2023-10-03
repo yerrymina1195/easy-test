@@ -115,7 +115,7 @@ class ProduitController extends Controller
             'nom' => 'required',
             'slug' => 'required',
             'description' => 'required',
-            'image' =>'required|image|mimes:jpeg,png,jpg,gif|max:2048' ,
+            'image' =>'nullable' ,
             'prix' =>'required' ,  
             'compare_prix' => 'required',  
             'cost' => 'required',  
@@ -130,21 +130,33 @@ class ProduitController extends Controller
             'brand' => 'required',
             'category' => 'required',
         ]);
+        
+        try {
         $data= $request->all();
-
+        
         $produit= Produit::find($id);
         if (!$produit) {
             return response()->json(['message' => 'Produit non trouvé'], 404);
         }  
+        $produit->update($request->all());
     // 5. Traitement de l'image
        if ($request->hasFile('image')) {
+        if($produit->image){
+            $exist= asset(Storage::url($request->file('image')->store('public/images')));
+            if($exists){
+                Storage::url($request->file('image')->store('public/images'));
+            };
+        };
            $imagePath = $request->file('image')->store('public/images');
            $imageUrl = asset(Storage::url($imagePath));
            $data['image'] = $imageUrl;
+           $produit->save();
        }
-
-        $produit->update($data);
-          return response()->json(['message' => 'produit mise à jour avec succès'], 200);
+       
+        return response()->json(['message' => 'Produit mis à jour avec succès'], 200);
+    } catch (\Exception $e) {
+        return response()->json(['message' => 'Erreur lors de la mise à jour du produit'], 500);
+    }
     }
 
     /**
