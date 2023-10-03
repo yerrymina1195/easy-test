@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Router } from "react-router-dom";
 const axiosClient = axios.create({
-    baseURL: `http://localhost:8000/api`,  
+    baseURL: `http://localhost:8000/api`,
   });
 
   axiosClient.interceptors.request.use((config) => {
@@ -15,7 +15,6 @@ const axiosClient = axios.create({
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('TOKEN')
       window.location.reload();
-      // router.navigate('/login')
       Router.navigate('/')
       return error;
     }

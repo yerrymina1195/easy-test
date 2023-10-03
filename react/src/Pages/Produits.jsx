@@ -43,7 +43,7 @@ const Produits = () => {
   const last = current * count; // 2*5 =10
   const first = last - count; // 10 - 5 = 5
 
-  // const values = produit.slice(first, last);
+  const values = produit.slice(first, last);
 
   const buttonCount = [];
   for (let i = 1; i <= Math.ceil(produit.length / count); i++) {
