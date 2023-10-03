@@ -61,7 +61,7 @@ const CreateProduits = () => {
   }, []);
 
   const fetchBrand = async () => {
-    await axios.get(`http://localhost:8000/api/brand`).then(({ data }) => {
+    await axiosClient.get(`/brand`).then(({ data }) => {
       setBrandValue(data);
     });
   };
@@ -71,7 +71,7 @@ const CreateProduits = () => {
   }, []);
 
   const fetchCategory = async () => {
-    await axios.get(`http://localhost:8000/api/categorie`).then(({ data }) => {
+    await axiosClient.get(`/categorie`).then(({ data }) => {
       setCategorieValue(data);
     });
   };
@@ -101,8 +101,8 @@ const CreateProduits = () => {
     if (image) {
       formData.append("image", image);
     }
-    await axios
-      .post(`http://localhost:8000/api/produit`, formData, {
+    await axiosClient
+      .post(`/produit`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
