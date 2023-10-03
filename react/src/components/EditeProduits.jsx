@@ -30,18 +30,20 @@ const EditeProduits = (props) => {
   const [validationError, setValidationError] = useState({});
   const [dataProduit, setDataProduit] = useState([]);
   // Créez des références pour le champ de fichier et l'image
-  const fileInputRef = useRef(null);
-  const imageRef = useRef(null);
+  // const fileInputRef = useRef(null);
+  // const imageRef = useRef(null);
   const handleFileChange = (e) => {
     const selectedImage = e.target.files[0]; // Récupère le premier fichier sélectionné
+    console.log(selectedImage);
     setImage(selectedImage);
     // afficher l'image
-    if (selectedImage) {
-      // Utilisez createObjectURL pour obtenir l'URL de l'image
-      const imageURL = URL.createObjectURL(selectedImage);
-      // Mettez à jour la source de l'image
-      imageRef.current.src = imageURL;
-    }
+    // if (selectedImage) {
+    //   // Utilisez createObjectURL pour obtenir l'URL de l'image
+    //   const imageURL = URL.createObjectURL(selectedImage);
+    //   // Mettez à jour la source de l'image
+    //   imageRef.current.src = imageURL;
+    //   console.log(imageURL);
+    // }
   };
   const handleToggle = () => {
     setVisibility(!visibility);
@@ -96,7 +98,7 @@ const EditeProduits = (props) => {
   useEffect(() => {
     fetchProduit();
   }, []);
-  const fetchProduit = async () => {
+  const fetchProduit = async () => { 
     await axiosClient.get(`/produit/${id}`).then(({ data }) => {
       const {
         nom,
@@ -136,33 +138,36 @@ const EditeProduits = (props) => {
       console.log(data);
     });
   };
-
   //  mise a jour des donner produits dans la basses de donner
   const update = async (e) => {
     e.preventDefault();
-
+    const data = {
+      nom: nom,
+      slug: nom,
+      description: description,
+      prix: prix,
+      compare_prix: prixCompare,
+      cost: cost,
+      sku: sku,
+      barcode: BarCode,
+      quantity: quantite,
+      security_stock: securiteStock,
+      product_return: productReturn,
+      product_shiped: productShiped,
+      visibility: visibility,
+      date: date,
+      brand: brand,
+      category: categorie,
+    };
+    if (image) {
+      data.image = image;
+      console.log(image);
+    }
+    
     try {
       const response = await axios.put(
         `http://localhost:8000/api/produit/${id}`,
-        {
-          nom: nom,
-          slug: nom,
-          description: description,
-          image: image,
-          prix: prix,
-          compare_prix: prixCompare,
-          cost: cost,
-          sku: sku,
-          barcode: BarCode,
-          quantity: quantite,
-          security_stock: securiteStock,
-          product_return: productReturn,
-          product_shiped: productShiped,
-          visibility: visibility,
-          date: date,
-          brand: brand,
-          category: categorie,
-        }
+        data
       );
       Swal.fire({
         icon: "success",
@@ -317,7 +322,7 @@ const EditeProduits = (props) => {
                     </p>
                   </div> */}
                   <input
-                    ref={fileInputRef}
+                    // ref={fileInputRef}
                     onChange={handleFileChange}
                     id="image"
                     name="image"
@@ -327,7 +332,7 @@ const EditeProduits = (props) => {
                 </label>
               </div>
               <img
-                ref={imageRef}
+                // ref={imageRef}
                 src={image}
                 id="image"
                 className="flex w-full mx-auto pt-4"

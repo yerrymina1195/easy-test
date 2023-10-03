@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import IconNotification from "../components/IconNotification";
-import example from "../images/cooffe.jpeg";
-import example1 from "../images/code.jpeg";
-import example2 from "../images/in.jpeg";
-import example3 from "../images/inf.jpeg";
-import example4 from "../images/hijab.jpeg";
-import example5 from "../images/machine.jpeg";
-import example6 from "../images/startup.jpeg";
-import example7 from "../images/team.jpeg";
-import example10 from "../images/wifi.jpeg";
 import InputSearch from "../components/InputSearch";
 import { HiViewColumns } from "react-icons/hi2";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
@@ -19,22 +10,54 @@ import { FaFilter } from "react-icons/fa";
 import FilAriane from "../components/FilAriane";
 import axiosClient from "../axios";
 const Produits = () => {
+  const [produit, setProduit] = useState([]);
+  // recuper les  products inventory
+  const sumInventory = produit.reduce(
+    (accumulator, produit) => accumulator + produit.quantity,
+    0
+  );
+  /* const InitialInventory = {
+  //   sku: 0,
+  //   quantity: 0,
+  //   barcode: 0,
+  //   security_stock: 0,
+  // };
+
+  // const sumInventory = produit.reduce((accumulator, currentValue) => {
+  //   return {
+  //     sku: accumulator.sku + currentValue.sku,
+  //     quantity: accumulator.quantity + currentValue.quantity,
+  //     barcode: accumulator.barcode + currentValue.barcode,
+  //     security_stock: accumulator.security_stock + currentValue.security_stock,
+  //   };
+  // }, InitialInventory);
+
+  // const totalInventory =
+  //   sumInventory.sku +
+  //   sumInventory.quantity +
+  //   sumInventory.barcode +
+  //   sumInventory.security_stock;
+  */
+  //  recuperer average price
+  let sumPrice = 0;
+  produit.forEach((produit) => {
+    sumPrice += parseFloat(produit.prix);
+  });
   const cart = [
     {
       title: "Total Products",
-      number: 50,
+      number: produit.length,
     },
     {
       title: "Product Inventory",
-      number: 252,
+      number: sumInventory,
     },
     {
       title: "Average price",
-      number: 248.63,
+      number: sumPrice,
     },
   ];
 
-  const [produit, setProduit] = useState([]);
   // recuperer les donnes produits
   useEffect(() => {
     fetchProduit();
@@ -45,6 +68,7 @@ const Produits = () => {
       setProduit(data);
     });
   };
+
   return (
     <div className="container overflow-auto m-10 mx-auto">
       <FilAriane
@@ -149,7 +173,6 @@ const Produits = () => {
             </thead>
             <tbody>
               {produit.map((data) => {
-                console.log(data.image);
                 return (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-amber-600"
@@ -192,15 +215,15 @@ const Produits = () => {
                     <td className="px-6 py-4">{data.sku}</td>
                     <td className="px-6 py-4">{data.quantity}</td>
                     <td className="px-6 py-4">
-                      <Link  to={`/produits/${data.id}/edit`}>
-                      <a
-                        href="#"
-                        type="button"
-                        className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
-                      >
-                        <FaRegPenToSquare />
-                        Edit
-                      </a>
+                      <Link to={`/produits/${data.id}/edit`}>
+                        <a
+                          href="#"
+                          type="button"
+                          className="font-medium flex gap-2 text-amber-600 dark:text-amber-500 hover:underline"
+                        >
+                          <FaRegPenToSquare />
+                          Edit
+                        </a>
                       </Link>
                     </td>
                   </tr>

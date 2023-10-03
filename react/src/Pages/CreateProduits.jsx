@@ -32,6 +32,7 @@ const CreateProduits = () => {
   // Créez des références pour le champ de fichier et l'image
   const fileInputRef = useRef(null);
   const imageRef = useRef(null);
+  console.log(imageRef);
   const handleFileChange = (e) => {
     const selectedImage = e.target.files[0]; // Récupère le premier fichier sélectionné
     setImage(selectedImage);
@@ -111,6 +112,8 @@ const CreateProduits = () => {
           icon: "success",
           text: data.message,
         });
+        console.log(image);
+        console.log(formData);
         setNom(" ");
         setDescrition(" ");
         setPrix(" ");
@@ -342,7 +345,7 @@ const CreateProduits = () => {
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-6 group">
                   <input
-                    type="text"
+                    type="number"
                     name="SKU"
                     id="SKU"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
@@ -360,7 +363,7 @@ const CreateProduits = () => {
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
                   <input
-                    type="text"
+                    type="number"
                     name="Barcode"
                     id="Barcode"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
