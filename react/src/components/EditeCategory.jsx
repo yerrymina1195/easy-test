@@ -131,22 +131,42 @@ const EditeCategory = (props) => {
   const [description, setDescrition] = useState("");
   const [visibility, setVisibility] = useState(false);
   const [data, setData] = useState([]);
+  const [monthCreated, setMonthCretead] = useState("");
+  const [monthUpdated, setMonthUpdated] = useState("");
   useEffect(() => {
     fetchCategory();
   }, []);
   const fetchCategory = async () => {
-
     await axios.get(`http://localhost:8000/api/categorie/${id}`)
     .then(( { data } ) => {
-      const { nom, slug, url, description, visibility }= data.category;
+      const { nom, slug, url, description, visibility,created_at,
+        updated_at,}= data.category;
       setNom(nom),
       setUrl(url),
       setSlug(slug),
       setVisibility(visibility),
       setDescrition(description);
+      setMonthCretead(created_at);
+      setMonthUpdated(updated_at);
       setData(data.category)
     })
   }
+  // difference created_up
+  const mois = (monthCreated) => {
+    const date = new Date(monthCreated);
+    const dateActuelle = new Date();
+    const differenceMonth = dateActuelle.getFullYear() - date.getFullYear();
+    if (differenceMonth === 0) {
+      return "moins d'un mois";
+    } else if (differenceMonth === 1) {
+      return "il y a 1 mois";
+    } else {
+      return `il y a ${differenceMonth} mois`;
+    }
+  };
+// created up
+  const dateMonthCreated = mois(monthCreated);
+  const dateMonthUpdated = mois(monthUpdated);
   const updateCategory = async (e) => {
     e.preventDefault();
 
@@ -213,7 +233,7 @@ const EditeCategory = (props) => {
       <div className="grid grid-cols-2">
         <div className="">
           <p className="text-gray-500 md:text-base text-sm">
-            Brand &#62; {data?.nom} &#62; Edit
+            Category &#62; {data?.nom} &#62; Edit
           </p>
           <h2 className="text-3xl pt-2 font-bold">{data?.nom}</h2>
         </div>
@@ -328,11 +348,11 @@ const EditeCategory = (props) => {
         <div className="bg-white border border-gray-200 p-5 my-5 rounded-xl h-40">
           <div>
             <p className="font-medium">Created at</p>
-            <p className="text-gray-600">{"props.dateCreate"}</p>
+            <p className="text-gray-600">{dateMonthCreated}</p>
           </div>
           <div className="mt-5">
             <p className="font-medium">Last modified at</p>
-            <p className="text-gray-600">{"props.dateEdite"}</p>
+            <p className="text-gray-600">{dateMonthUpdated}</p>
           </div>
         </div>
       </div>

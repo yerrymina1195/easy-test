@@ -22,6 +22,7 @@ const Customers = () => {
   const fetchCategory = async () => {
     await axiosClient.get(`/clients`).then(({ data }) => {
       SetClient(data);
+      console.log(data);
     });
   };
   const [current, setCurrent] = useState(1);
