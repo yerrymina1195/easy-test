@@ -4,12 +4,20 @@ import OrderItems from "../components/OrderItems";
 
 export const OrderCreate = () => {
   const [boutonClique, setBoutonClique] = useState(false);
+  const [number, setNumber] = useState('')
 
   const handleBoutonClick = (e) => {
     e.preventDefault();
     // Inversez la valeur de boutonClique pour basculer entre les éléments
-    setBoutonClique(!boutonClique);
+      if(number !==''){
+        setBoutonClique(!boutonClique);
+      }
+      else{
+       setBoutonClique(boutonClique);
+      }
+    
   };
+ 
   const alertee = (e) => {
     e.preventDefault();
     alert("dhfhfvdhvfd");
@@ -20,17 +28,32 @@ export const OrderCreate = () => {
       <div className="bg-white rounded-xl border border-gray-200  ">
         <ol className="flex items-center border-b border-gray-200 w-full text-sm font-medium  text-gray-500 dark:text-gray-400 sm:text-base">
           <li
+          id='details'
             onClick={handleBoutonClick}
-            className="flex md:w-full p-5 items-center text-gray-600 dark:text-gray-500  dark:after:border-gray-700"
+            className= {boutonClique? (` m-active flex md:w-full p-5 items-center text-gray-600 dark:text-gray-500 
+                dark:after:border-gray-700`):(
+                    `flex md:w-full p-5 items-center text-amber-600 dark:text-amber-500 
+                dark:after:border-amber-700`
+                )}
           >
-            <span className="border-2 flex justify-center items-center w-10 h-10 mr-4 rounded-full border-gray-400">
-              01
+            <span className= {boutonClique? 
+                 (`border-2 flex justify-center items-center w-10 text-white h-10 mr-4 rounded-full bg-amber-600 border-amber-600`):(
+                    `border-2 flex justify-center items-center w-10 h-10 mr-4 rounded-full border-amber-600 `
+                )}>
+           
+              {boutonClique ? ('V'):('01')}
             </span>
-            Order Details
+            Order details
           </li>
           <li className="polygone"></li>
-          <li className="flex md:w-full p-5 items-center dark:after:border-gray-700">
-            <span className="border-2 flex justify-center items-center w-10 h-10 mr-4 rounded-full border-gray-400">
+          <li  id='order'  className= {boutonClique ?(
+                    `flex md:w-full p-5 items-center text-amber-600 dark:text-amber-500 
+                dark:after:border-amber-700`
+                ): (` m-active flex md:w-full p-5 items-center text-gray-600 dark:text-gray-500 
+                dark:after:border-gray-700`)}>
+            <span className= {boutonClique? (
+                    `border-2 flex justify-center items-center w-10 h-10 mr-4 rounded-full border-amber-600`
+                ):(`border-2 flex justify-center items-center w-10 h-10 mr-4 rounded-full border-gray-600`)}>
               02
             </span>
             Order Items
@@ -63,7 +86,11 @@ export const OrderCreate = () => {
                     name="number"
                     id="number"
                     className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
-                    placeholder="OR-973371"
+                   
+                    value={number}
+                    onChange={(e) => {
+                      setNumber(e.target.value);
+                    }}
                     required
                   />
                 </div>
@@ -212,10 +239,14 @@ export const OrderCreate = () => {
 
           <div className="md:flex p-5 justify-between">
             <button
-              onClick={handleBoutonClick}
+              onClick={(e) => {
+                {
+                  boutonClique ? handleBoutonClick(e) : handleBoutonClick(e);
+                }
+              }}
               className=" bg-white border-2 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-xs w-full md:text-sm sm:w-auto px-3 py-2 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800"
             >
-              Cancel
+              {boutonClique ? " Back" : "Cancel"}
             </button>
             <button
               onClick={(e) => {
