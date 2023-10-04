@@ -230,8 +230,8 @@ const EditeBrand = (props) => {
       return;
     }
 
-    await axios
-      .delete(`http://localhost:8000/api/brand/${id}`)
+    await axiosClient
+      .delete(`/brand/${id}`)
       .then(({ data }) => {
         Swal.fire({
           icon: "success",

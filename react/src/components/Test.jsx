@@ -1,55 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Test = () => {
-  // const [boutonClique, setBoutonClique] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState("");
 
-  // const handleBoutonClick = () => {
-  //   setBoutonClique(!boutonClique);
-  // };
-  // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountries(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching countries:", error);
+      });
+  }, []);
 
-  const [val, setVal] = useState("");
-  const data = ["Java", "JavaScript", "React js", "Python", "C", "C++"];
+  const handleCountryChange = (event) => {
+    setSelectedCountry(event.target.value);
+  };
   return (
-    <div>
-      <div className="dropdown">
-        <input
-          list="data"
-          onChange={(e) => setVal(e.target.value)}
-          placeholder="Search"
-          className="input"
-        />
-        <datalist id="data">
-          {data.map((op) => (
-            <option>{op}</option>
-          ))}
-        </datalist>
-
-        {/* <h1>{val}</h1> */}
-      </div>
-
-      {/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */}
-      {/* {boutonClique ? (
-        // Afficher cet élément lorsque boutonClique est vrai (après le clic)
-        <div>
-          <img
-            src="https://img.freepik.com/photos-gratuite/expression-du-visage-concept-personnes-emotionnelles_53876-121175.jpg?size=626&ext=jpg&ga=GA1.1.345113574.1684237935&semt=sph"
-            alt=""
-            className="w-full"
-          />
-          <button onClick={handleBoutonClick}>Réinitialiser</button>
-        </div>
-      ) : (
-        // Afficher cet élément par défaut (avant le clic)
-        <div>
-          <img
-            src="https://img.freepik.com/photos-gratuite/coup-moyen-silhouette-humaine-nature_23-2150203188.jpg?size=626&ext=jpg&ga=GA1.1.345113574.1684237935&semt=sph"
-            className="w-full"
-            alt=""
-          />
-          <button onClick={handleBoutonClick}>Cliquez-moi !</button>
-        </div>
-      )} */}
+    <div className="mt-10">
+      <select value={selectedCountry} onChange={handleCountryChange}>
+        <option value="">Sélectionnez un pays</option>
+        {countries.map((country) => (
+          <option key={country.name.common} value={country.name.common}>
+            {country.name.common}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

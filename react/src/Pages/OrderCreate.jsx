@@ -4,6 +4,7 @@ import OrderItems from "../components/OrderItems";
 
 export const OrderCreate = () => {
   const [boutonClique, setBoutonClique] = useState(false);
+  const [editer, setEditer] = useState(false);
 
   const handleBoutonClick = (e) => {
     e.preventDefault();
@@ -196,7 +197,7 @@ export const OrderCreate = () => {
                       name="Zip"
                       id="Zip"
                       className=" py-2.5 px-3 mt-2 w-full text-sm text-gray-900 bg-transparent rounded-xl border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-amber-500 focus:outline-none focus:ring-0 focus:border-amber-600 peer"
-                      placeholder=" Zip / Postal code"
+                      placeholder="Zip / Postal code"
                       required
                     />
                   </div>
@@ -204,10 +205,9 @@ export const OrderCreate = () => {
               </div>
               <div className="">
                 <label htmlFor="">Description</label>
-                <Editor />
+                <Editor value={editer} onChange={(e) => {setEditer(e.target.value)}}/>
               </div>
             </div>
-            {/* <button onClick={handleBoutonClick}>Cliquez-moi !</button> */}
           </div>
 
           <div className="md:flex p-5 justify-between">
