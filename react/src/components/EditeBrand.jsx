@@ -20,7 +20,7 @@ import { IoMdArrowRoundDown } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosClient from "../axios";
 import Swal from "sweetalert2";
-import axios from 'axios'
+import axios from "axios";
 const EditeBrand = (props) => {
   const dataTable = [
     {
@@ -125,7 +125,6 @@ const EditeBrand = (props) => {
   ];
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
   const [nom, setNom] = useState("");
   const [slug, setSlug] = useState("");
   const [url, setUrl] = useState("");
@@ -133,6 +132,8 @@ const EditeBrand = (props) => {
   const [visibility, setVisibility] = useState(false);
   const [validationError, setValidationError] = useState({});
   const [data, setData] = useState([]);
+  const [monthCreated, setMonthCretead] = useState("");
+  const [monthUpdated, setMonthUpdated] = useState("");
   useEffect(() => {
     fetchBrand();
   }, [id]);
@@ -140,12 +141,22 @@ const EditeBrand = (props) => {
     await axiosClient
       .get(`/brand/${id}`)
       .then(({ data }) => {
-        const { nom, slug, url, description, visibility } = data.brand;
+        const {
+          nom,
+          slug,
+          url,
+          description,
+          visibility,
+          created_at,
+          updated_at,
+        } = data.brand;
         setNom(nom),
           setUrl(url),
           setSlug(slug),
           setVisibility(visibility),
           setDescrition(description);
+        setMonthCretead(created_at);
+        setMonthUpdated(updated_at);
         setData(data.brand);
       })
       .catch(({ response: { data } }) => {
@@ -155,6 +166,23 @@ const EditeBrand = (props) => {
         });
       });
   };
+// difference created_up
+  const mois = (monthCreated) => {
+    const date = new Date(monthCreated);
+    const dateActuelle = new Date();
+    const differenceMonth = dateActuelle.getFullYear() - date.getFullYear();
+    if (differenceMonth === 0) {
+      return "moins d'un mois";
+    } else if (differenceMonth === 1) {
+      return "il y a 1 mois";
+    } else {
+      return `il y a ${differenceMonth} mois`;
+    }
+  };
+// created up
+  const dateMonthCreated = mois(monthCreated);
+  const dateMonthUpdated = mois(monthUpdated);
+
   const updateBrand = async (e) => {
     e.preventDefault();
 
@@ -183,39 +211,41 @@ const EditeBrand = (props) => {
   const handleToggle = (e) => {
     setVisibility(!visibility);
   };
-  const t = 7;
+
   const deleteProduct = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const isConfirm = await Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        return result.isConfirmed
-      });
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      return result.isConfirmed;
+    });
 
-      if(!isConfirm){
-        return;
-      }
+    if (!isConfirm) {
+      return;
+    }
 
-      await axios.delete(`http://localhost:8000/api/brand/${id}`).then(({data})=>{
+    await axios
+      .delete(`http://localhost:8000/api/brand/${id}`)
+      .then(({ data }) => {
         Swal.fire({
-            icon:"success",
-            text:data.message
-        })
-       
-      }).catch(({response:{data}})=>{
-        Swal.fire({
-            text:data.message,
-            icon:"error"
-        })
+          icon: "success",
+          text: data.message,
+        });
       })
-}
-console.log(id);
+      .catch(({ response: { data } }) => {
+        Swal.fire({
+          text: data.message,
+          icon: "error",
+        });
+      });
+  };
+
   return (
     <div className="md:m-5">
       <div className="grid grid-cols-2">
@@ -226,12 +256,12 @@ console.log(id);
           <h2 className="text-3xl pt-2 font-bold">{data?.nom}</h2>
         </div>
         <div className="grid justify-items-end">
-          
-            <button 
-             onClick={deleteProduct} className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400">
-              Delete
-            </button>
-          
+          <button
+            onClick={deleteProduct}
+            className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400"
+          >
+            Delete
+          </button>
         </div>
       </div>
       <div className="grid md:grid-cols-3 md:gap-5">
@@ -337,11 +367,11 @@ console.log(id);
         <div className="bg-white border border-gray-200 p-5 my-5 rounded-xl h-40">
           <div>
             <p className="font-medium">Created at</p>
-            <p className="text-gray-600">{"props.dateCreate"}</p>
+            <p className="text-gray-600">{dateMonthCreated}</p>
           </div>
           <div className="mt-5">
             <p className="font-medium">Last modified at</p>
-            <p className="text-gray-600">{"props.dateEdite"}</p>
+            <p className="text-gray-600">{dateMonthUpdated}</p>
           </div>
         </div>
       </div>

@@ -17,8 +17,10 @@ const Customers = () => {
   const fetchCategory = async () => {
     await axiosClient.get(`/clients`).then(({ data }) => {
       SetClient(data);
+      console.log(data);
     });
   };
+  console.log(client);
   return (
     <div className="container m-10 mx-auto">
       <FilAriane
